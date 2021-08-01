@@ -53,9 +53,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
         <Button isRounded isGhost className="px-0">
           <div className="flex items-center">
             <Aperture size={22} className="mx-1" />
-            <div className="hidden lg:block rounded-full m-1">Change Theme</div>
+            <div className="hidden rounded-full m-1">Change Theme</div>
           </div>
-          <div className="flex items-center pl-2">
+          <div className="flex items-center">
             <ChevronDown size="22" />
           </div>
         </Button>
@@ -64,29 +64,23 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   };
 
   return (
-    <div className="navbar mb-6 px-0 md:px-2 md:mb-11">
-      <div className="flex-none mr-3 lg:hidden">
+    <div className="navbar px-0">
+      <div className="flex-none mr-3">
         <Button isLink isSquare isGhost size="extra-small" onClick={handleToggleDrawer}>
           <Menu size={24} />
         </Button>
       </div>
-      <div className="flex-none xl:mr-10 md:mr-0">
-        <span className="text-lg font-bold">Cryptonic</span>
+      <div className="flex-none">
+        <span className="text-lg font-bold">Game Store</span>
       </div>
       <div className="flex-1 px-2 mx-2">
-        <div className="items-stretch hidden lg:flex">
+        <div className="items-stretch hidden">
           <Button isGhost isRounded className="text-base mr-2">
               Home
           </Button>
         </div>
       </div>
-
-      <div className="flex-none">
-        <Button isCircle isGhost>
-          <Bell size={22} />
-        </Button>
-      </div>
-      <div className="flex-none align-middle mx-2">{renderThemeDropDown()}</div>
+      <div className="flex-none align-middle">{renderThemeDropDown()}</div>
     </div>
   );
 };

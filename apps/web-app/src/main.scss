@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.phone-x {
+  width: 320px;
+  height: 667px;
+}
+
+* {
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track
+  {
+    box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+    border-radius: 10px;
+    background-color: #{theme('colors[base-100]')};
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: 5px;
+    height: 5px;
+    background-color: #{theme('colors[base-100]')};
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0,0,0,.5);
+    background-color: #{theme('colors[base-content]')};
+  }
+}
+
+.carousel {
+  &::-webkit-scrollbar {
+    display: block;
+  }
+  scrollbar-width: 5px;
+}
+
+.text-base-content-secondary {
+  @apply text-base-content text-opacity-60;
+}
+
+.divide-base-content-secondary {
+  @apply divide-base-content divide-opacity-20
+}
+
+.btn-addon-right {
+  @apply absolute right-0 top-0 rounded-l-none
+}

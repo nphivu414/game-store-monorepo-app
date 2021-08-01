@@ -5,9 +5,18 @@ import MainLayout from 'src/components//MainLayout';
 export function App() {
   return (
     <ThemeProvider>
-      <MainLayout>
-        <Home/>
-      </MainLayout>
+      <div className="flex justify-center pt-4">
+        <div className="mockup-phone">
+          <div className="camera"></div> 
+          <div className="display">
+            <div className="artboard phone-x artboard-demo">
+              <MainLayout>
+                <Home/>
+              </MainLayout>
+            </div>
+          </div>
+        </div>
+      </div>
     </ThemeProvider>
   );
 }
