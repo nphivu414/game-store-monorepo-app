@@ -1,7 +1,12 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
 
 module.exports = {
-  purge: createGlobPatternsForDependencies(__dirname),
+  mode: 'jit',
+  purge: [
+    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
+    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
+    createGlobPatternsForDependencies(__dirname)
+  ],
   darkMode: 'media', // or 'media' or 'class'
   plugins: [require('daisyui')],
     variants: {

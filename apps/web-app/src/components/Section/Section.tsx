@@ -37,11 +37,11 @@ const Section: React.FC<SectionProps> = ({
       <div className="flex">
         {leftElement && <div className={cn('mr-2', leftElementClassName)}>{leftElement}</div>}
         <div className="flex flex-1 justify-between items-center">
-          {titleText && <p className={cn('text-xl font-bold', titleClassName)}>{titleText}</p>}
+          {titleText && <p className={cn('font-bold', titleClassName)}>{titleText}</p>}
           {rightElement && <div className={rightElementClassName}>{rightElement}</div>}
         </div>
       </div>
-      <div className={contentClassName}>{children}</div>
+      <div className={cn("mt-1", contentClassName)}>{children}</div>
     </div>
   );
 };

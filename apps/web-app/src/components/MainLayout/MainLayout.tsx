@@ -24,7 +24,7 @@ const MainLayout: React.FC = ({ children }) => {
 
   const renderDrawerMenu = () => {
     return (
-      <ul className="menu p-4 overflow-y-auto w-[80%] sm:w-80 bg-base-100 text-base-content">
+      <ul className="menu p-4 overflow-y-auto w-[80%] bg-base-100 text-base-content">
         <li>
           <div className="flex justify-between items-center">
             <a href="/">
