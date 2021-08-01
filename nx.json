@@ -1,0 +1,48 @@
+{
+  "npmScope": "game-store-monorepo",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "nestjs-app": {
+      "tags": []
+    },
+    "react-native-app": {
+      "tags": []
+    },
+    "react-native-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-native-app"]
+    },
+    "web-app": {
+      "tags": []
+    },
+    "web-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-app"]
+    }
+  }
+}
