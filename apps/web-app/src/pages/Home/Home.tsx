@@ -1,5 +1,5 @@
 import * as React from 'react';
-import BestGames from './BestGames/BestGames';
+import BestGames from './BestGames';
 import FeaturedGames from './FeaturedGames';
 
 const Home: React.FC = () => {

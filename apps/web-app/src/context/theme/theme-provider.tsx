@@ -17,7 +17,7 @@ const themeList: ThemeItem[] = [
 export const ThemeProvider: React.FC = ({ children }) => {
                            
   
-                    const [theme, setTheme] = React.useState<ThemeValue>('dracula');
+  const [theme, setTheme] = React.useState<ThemeValue>('dracula');
 
   const changeTheme = React.useCallback((value: ThemeValue) => {
     setTheme(value);

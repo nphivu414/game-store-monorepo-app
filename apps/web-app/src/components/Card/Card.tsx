@@ -9,12 +9,11 @@ type CardProps = {
   isCompact?: boolean;
   cardSideLayout?: boolean;
   glass?: boolean;
-  className?: string;
   titleClassName?: string;
   bodyClassName?: string;
   footerClassName?: string;
   isHeaderImageFull?: boolean;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const Card: React.FC<CardProps> = ({
   headerImageUrl,
@@ -30,6 +29,7 @@ const Card: React.FC<CardProps> = ({
   bodyClassName,
   footerClassName,
   children,
+  ...rest
 }) => {
   const cardClass = cn({
     card: true,
@@ -54,7 +54,7 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className={cn(cardClass, className)}>
+    <div className={cn(cardClass, className)} {...rest}>
       {headerImageUrl && (
         <figure>
           <img src={headerImageUrl} alt=""/>
