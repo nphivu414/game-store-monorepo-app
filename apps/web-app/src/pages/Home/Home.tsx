@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Card from 'src/components/Card';
+import Section from 'src/components/Section';
 import TabView from 'src/components/TabView';
 import { TabViewItem } from 'src/components/TabView/TabView';
 import BestGames from './BestGames';
@@ -19,11 +21,13 @@ const tabData: TabViewItem[] = [
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <>
       <FeaturedGames/>
       <BestGames/>
-      <TabView data={tabData} className="mt-4"/>
-    </div>
+      <Card isCompact className="mt-4">
+        <TabView data={tabData} className="mt-4"/>
+      </Card>
+    </>
   )
 }
 

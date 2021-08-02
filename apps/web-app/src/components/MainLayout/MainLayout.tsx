@@ -3,16 +3,10 @@ import { X } from 'react-feather';
 import NavigationBar from 'src/components//NavigationBar';
 import Button from 'src/components//Button';
 import {ThemeContext} from 'src/context/theme';
-import cn from 'classnames';
 
 const MainLayout: React.FC = ({ children }) => {
   const { theme } = React.useContext(ThemeContext);
   const [isDrawerOpened, setIsDrawerOpened] = React.useState<boolean>(false);
-  const drawerClass = cn({
-    drawer: true,
-    'overflow-y': true,
-    'h-full': true,
-  });
 
   const handleToggleDrawer = React.useCallback(() => {
     setIsDrawerOpened(!isDrawerOpened);
@@ -43,19 +37,17 @@ const MainLayout: React.FC = ({ children }) => {
   };
 
   return (
-    <div className="bg-base-300 min-h-full w-full" data-theme={theme}>
-      <div className={drawerClass}>
-        <input type="checkbox" className="drawer-toggle" checked={isDrawerOpened} readOnly />
-        <div className="drawer-content overflow-y-hidden !max-h-initial pt-5">
-          <div className="px-4 pb-4 text-base-content">
-            <NavigationBar handleToggleDrawer={handleToggleDrawer} />
-            {children}
-          </div>
+    <div className="bg-base-300 w-full flex-grow h-full drawer text-base-content" data-theme={theme}>
+      <input type="checkbox" className="drawer-toggle" checked={isDrawerOpened} readOnly />
+      <div className="flex flex-col flex-grow h-full drawer-content">
+        <NavigationBar handleToggleDrawer={handleToggleDrawer} />
+        <div className="w-full h-full overflow-y-auto px-4 pt-5 pb-5">
+          {children}
         </div>
-        <div className="drawer-side">
-          <label className="drawer-overlay" onClick={closeDrawer} />
-          {renderDrawerMenu()}
-        </div>
+      </div>
+      <div className="drawer-side">
+        <label className="drawer-overlay" onClick={closeDrawer} />
+        {renderDrawerMenu()}
       </div>
     </div>
   );

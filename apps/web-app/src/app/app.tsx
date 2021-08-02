@@ -9,7 +9,7 @@ export function App() {
         <div className="mockup-phone">
           <div className="camera"></div> 
           <div className="display">
-            <div className="artboard phone-x artboard-demo">
+            <div className="relative flex flex-col overflow-hidden shadow rounded-box artboard phone-x">
               <MainLayout>
                 <Home/>
               </MainLayout>

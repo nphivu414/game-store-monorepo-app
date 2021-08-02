@@ -30,7 +30,9 @@ const data: CarouselItem[] = [
 
 const FeaturedGames: React.FC = () => {
   return (
-    <Carousel data={data} className="carousel-center" itemClassName="w-4/5"/>
+    <div>
+      <Carousel data={data} className="carousel-center" itemClassName="w-4/5"/>
+    </div>
   )
 }
 

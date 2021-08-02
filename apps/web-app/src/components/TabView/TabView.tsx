@@ -64,7 +64,7 @@ const TabView: React.FC<TabViewProps> = ({
           })
           return (
             <Button isLink key={tab.id} className={tabClass} onClick={handleOnTabChange(index)}>
-              {tab.icon} <span>{tab.title}</span>
+              {tab.icon} <span className="text-xs font-bold">{tab.title}</span>
             </Button> 
           )
         })}
