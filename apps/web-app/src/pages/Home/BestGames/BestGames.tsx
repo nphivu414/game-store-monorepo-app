@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from 'src/components/Button';
-import Card from 'src/components/Card';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
 import Section from 'src/components/Section';
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Card from 'src/components/Card';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
 
 const data: CarouselItem[] = [

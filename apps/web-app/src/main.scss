@@ -33,7 +33,9 @@
 
 .carousel {
   &::-webkit-scrollbar {
-    display: block;
+    @media (min-width: 500px) {
+      display: block;
+    }
   }
   scrollbar-width: 5px;
 }
