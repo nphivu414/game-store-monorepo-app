@@ -1,0 +1,27 @@
+type Game {
+    id: Int!
+    name: String
+    background_image: String
+    rating: Int,
+    platforms: [Platform]
+}
+
+type PlatformDetails {
+    id: Int!,
+    name: String,
+    slug: String,
+    image: String,
+    year_end: Int,
+    year_start: Int,
+    games_count: Int,
+    image_background: String
+  }
+
+type Platform {
+  platform: PlatformDetails,
+  released_at: String
+}
+
+type Query {
+    allGames: [Game]
+}
