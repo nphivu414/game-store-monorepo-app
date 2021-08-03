@@ -1,38 +1,54 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 type ListProps = {
-  data?: ListItem[]
+  data?: ListItem[],
+  onItemClick?: (id: string) => void
 }
 
-type ListItem = {
-  avatarUrl?: string;
+export type ListItem = {
+  id: string;
   title: string;
+  avatarUrl?: string;
   subTitle: string;
 }
 
 const List: React.FC<ListProps> = ({
-  data
+  data,
+  onItemClick,
 }) => {
   if (!data) {
     return null;
   }
 
+  const handleOnItemClick = (id: string) => {
+    return () => {
+      onItemClick && onItemClick(id);
+    }
+  }
+
   return (
     <div>
       {
-        data.map((item) => {
-          const { title, subTitle, avatarUrl } = item;
+        data.map((item, index) => {
+          const { id, title, subTitle, avatarUrl } = item;
+          const isLastItem = index === data.length -1;
+          const itemClass = cn({
+            'grid grid-cols-5 gap-2': true,
+            'mb-5': !isLastItem
+          })
           return (
-            <div className="grid grid-cols-5">
+            <div key={id} className={itemClass} onClick={handleOnItemClick(id)}>
               <div className="flex justify-center items-center">
                 <div className="avatar">
-                  <div className="mb-8 rounded-full w-10 h-10">
+                  <div className="rounded-full w-10 h-10">
                     <img src={avatarUrl} alt=""/>
                   </div>
                 </div>
               </div>
-              <div className="flex col-span-4">
-                
+              <div className="flex col-span-4 flex-col justify-center">
+                {title && <p className="font-semibold mb-1">{title}</p>}
+                {subTitle && <p className="text-xs text-base-content-secondary">{subTitle}</p>}
               </div>
             </div>
           )
@@ -42,3 +58,4 @@ const List: React.FC<ListProps> = ({
   )
 }
 
+export default List

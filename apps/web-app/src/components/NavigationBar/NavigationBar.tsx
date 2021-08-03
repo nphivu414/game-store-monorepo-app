@@ -66,7 +66,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   return (
     <div className="navbar w-full pt-6 bg-neutral text-neutral-content">
       <div className="flex-none mr-3">
-        <Button isLink isSquare isGhost size="extra-small" onClick={handleToggleDrawer}>
+        <Button isSquare isGhost size="extra-small" onClick={handleToggleDrawer}>
           <Menu size={24} />
         </Button>
       </div>

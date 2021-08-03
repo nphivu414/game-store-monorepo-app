@@ -11,23 +11,23 @@
   scrollbar-width: thin;
   &::-webkit-scrollbar-track
   {
-    box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.4);
     border-radius: 10px;
-    background-color: #{theme('colors[base-100]')};
+    background-color: #{theme('colors[base-200]')};
   }
 
   &::-webkit-scrollbar
   {
     width: 5px;
     height: 5px;
-    background-color: #{theme('colors[base-100]')};
+    background-color: #{theme('colors[base-200]')};
   }
 
   &::-webkit-scrollbar-thumb
   {
     border-radius: 10px;
-    box-shadow: inset 0 0 2px rgba(0,0,0,.5);
-    background-color: #{theme('colors[base-content]')};
+    box-shadow: inset 0 0 2px rgba(0,0,0,.4);
+    background-color: #{theme('colors[base-100]')};
   }
 }
 
