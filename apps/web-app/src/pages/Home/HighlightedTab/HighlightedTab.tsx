@@ -12,7 +12,7 @@ const tabData: TabViewItem[] = [
   },
   {
     id: '2',
-    title: 'Comming Soon',
+    title: 'Up Comming',
     content: <UpcomingGames/>
   },
 ]

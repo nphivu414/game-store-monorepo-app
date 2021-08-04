@@ -18,8 +18,8 @@
 
   &::-webkit-scrollbar
   {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     background-color: #{theme('colors[base-200]')};
   }
 
@@ -37,7 +37,7 @@
       display: block;
     }
   }
-  scrollbar-width: 5px;
+  scrollbar-width: 7px;
 }
 
 .text-base-content-secondary {

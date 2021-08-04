@@ -3,6 +3,7 @@ import { X } from 'react-feather';
 import NavigationBar from 'src/components//NavigationBar';
 import Button from 'src/components//Button';
 import {ThemeContext} from 'src/context/theme';
+import { Link } from 'react-router-dom';
 
 const MainLayout: React.FC = ({ children }) => {
   const { theme } = React.useContext(ThemeContext);
@@ -21,9 +22,9 @@ const MainLayout: React.FC = ({ children }) => {
       <ul className="menu p-4 overflow-y-auto w-[80%] bg-base-100 text-base-content">
         <li>
           <div className="flex justify-between items-center">
-            <a href="/">
+            <Link to="/">
               <p className="text-lg font-bold">Game Store</p>
-            </a>
+            </Link>
             <Button isGhost isCircle onClick={closeDrawer}>
               <X />
             </Button>

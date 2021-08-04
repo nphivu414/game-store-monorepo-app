@@ -34,8 +34,10 @@ const List: React.FC<ListProps> = ({
           const { id, title, subTitle, avatarUrl } = item;
           const isLastItem = index === data.length -1;
           const itemClass = cn({
-            'grid grid-cols-5 gap-2': true,
-            'mb-5': !isLastItem
+            'grid grid-cols-5 gap-2 rounded-lg cursor-pointer': true,
+            'mb-1': !isLastItem,
+            'p-2': true,
+            'hover:bg-base-200 transition duration-300 ease-in-out': true
           })
           return (
             <div key={id} className={itemClass} onClick={handleOnItemClick(id)}>

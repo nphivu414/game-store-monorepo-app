@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import Card from '../Card';
+import Button from '../Button';
 
 type CarouselProps = {
   className?: string;
@@ -34,6 +35,8 @@ const Carousel: React.FC<CarouselProps> = ({
   })
   const carouselItemClass = cn({
     'carousel-item mr-4 w-1/2 last:mr-0': true,
+    'cursor-pointer': true,
+    'transition duration-200 ease-in-out transform hover:-translate-y-1 hover:-translate-y-1': true
   })
 
   const handleOnItemClick = (value: CarouselItem) => {

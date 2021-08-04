@@ -32,7 +32,7 @@ const data: CarouselItem[] = [
 
 const BestGames: React.FC = () => {
   return (
-    <Section titleText="Best Of All Time" className="mt-6" rightElement={<Button variant="primary" size="extra-small" isLink>See all</Button>}>
+    <Section titleText="Best Of All Time" className="mb-6" rightElement={<Button variant="primary" size="extra-small" isLink>See all</Button>}>
       <Carousel data={data} isCompact/>
     </Section>
   )

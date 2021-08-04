@@ -1,6 +1,9 @@
 import { ThemeProvider } from '../context/theme/theme-provider';
-import Home from 'src/pages/Home';
 import MainLayout from 'src/components//MainLayout';
+import {
+  BrowserRouter,
+} from "react-router-dom";
+import Routes from 'src/routes';
 
 export function App() {
   return (
@@ -10,9 +13,11 @@ export function App() {
           <div className="camera"></div> 
           <div className="display">
             <div className="relative flex flex-col overflow-hidden shadow rounded-box artboard phone-x">
-              <MainLayout>
-                <Home/>
-              </MainLayout>
+              <BrowserRouter>
+                <MainLayout>
+                  <Routes/>
+                </MainLayout>
+              </BrowserRouter>
             </div>
           </div>
         </div>

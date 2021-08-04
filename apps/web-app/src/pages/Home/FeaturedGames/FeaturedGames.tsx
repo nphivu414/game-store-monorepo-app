@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
 
 const data: CarouselItem[] = [
@@ -29,10 +30,16 @@ const data: CarouselItem[] = [
 ]
 
 const FeaturedGames: React.FC = () => {
+  const { push } = useHistory()
+
+  const onItemClick = () => {
+    return () => {
+      push('/games/123')
+    }
+  }
+  
   return (
-    <div>
-      <Carousel data={data} className="carousel-center" itemClassName="w-4/5"/>
-    </div>
+    <Carousel data={data} className="carousel-center mb-6" itemClassName="w-4/5" onItemClick={onItemClick()}/>
   )
 }
 
