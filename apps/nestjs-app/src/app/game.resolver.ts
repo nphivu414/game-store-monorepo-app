@@ -1,44 +1,18 @@
+import { Injectable, Logger } from '@nestjs/common';
+import {HttpService} from '@nestjs/axios'
+import { ConfigService } from '@nestjs/config';
 import { Query, Resolver } from '@nestjs/graphql';
-
-export interface GameEntity {
-  id: number
-  name?: string
-  background_image?: string
-  rating?: number,
-  platforms?: Platform[]
-}
-
-export interface PlatformDetails {
-  id: number,
-  name?: string,
-  slug?: string,
-  image?: string,
-  year_end?: number,
-  year_start?: number,
-  games_count?: number,
-  image_background?: string
-}
-
-export interface Platform {
-  platform: PlatformDetails,
-  released_at?: string
-}
-
+import { GameEntity, RawgGameResponse } from './types';
+@Injectable()
 @Resolver('Game')
 export class GameResolver {
-  private games: GameEntity[] = [
-    {
-      id: 1,
-      name: 'Voltron',
-    },
-    {
-      id: 2,
-      name: 'Ship in a Bottle',
-    }
-  ];
-
+  constructor(private httpService: HttpService, private configService: ConfigService) {}
+  private readonly logger = new Logger(GameResolver.name);
+  host = this.configService.get<string>('RAWG_API_HOST');
+  apiKey = this.configService.get<string>('RAWG_API_KEY');
   @Query('allGames')
-  getAllSets(): GameEntity[] {
-    return this.games;
+  async getAllGames(): Promise<GameEntity[]> {
+    const res = await this.httpService.get<RawgGameResponse>(`${this.host}/games?key=${this.apiKey}&page=1&page_size=2`).toPromise();
+    return res.data.results;
   }
 }
