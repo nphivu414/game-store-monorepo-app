@@ -1,17 +1,26 @@
 import * as React from 'react';
-import { Bell, ChevronDown, Aperture } from 'react-feather';
+import { ChevronDown, Aperture, ArrowLeft } from 'react-feather';
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { Menu } from 'react-feather';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
+import { useHistory, useLocation } from 'react-router-dom';
 
 type NavigationBarProps = {
   handleToggleDrawer: () => void;
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => {
+  const { goBack } = useHistory();
+  const { pathname } = useLocation()
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
+
+  const isRoot = pathname === '/';
+
+  const onBackButtonClick = () => {
+    goBack();
+  }
 
   const onThemeChange = React.useCallback(
     (theme: ThemeValue) => {
@@ -66,9 +75,17 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   return (
     <div className="navbar w-full pt-6 bg-neutral text-neutral-content">
       <div className="flex-none mr-3">
-        <Button isSquare isGhost size="extra-small" onClick={handleToggleDrawer}>
-          <Menu size={24} />
-        </Button>
+        {
+          isRoot ? (
+            <Button isSquare isGhost size="small" onClick={handleToggleDrawer}>
+              <Menu size={24} />
+            </Button>
+          ) : (
+            <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
+              <ArrowLeft size={24} />
+            </Button>
+          )
+        }
       </div>
       <div className="flex-none">
         <span className="text-lg font-bold">Game Store</span>
