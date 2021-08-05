@@ -1,7 +1,7 @@
 type Game {
     id: Int!
     name: String
-    background_image: String
+    backgroundImage: String
     rating: Int,
     platforms: [Platform]
 }
