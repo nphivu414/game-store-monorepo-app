@@ -23,5 +23,12 @@ type Platform {
 }
 
 type Query {
-    allGames: [Game]
+    allGames(
+        page: Int,
+        pageSize: Int,
+        search: String,
+        genres: String,
+        tags: String,
+        dates: String
+    ): [Game]
 }

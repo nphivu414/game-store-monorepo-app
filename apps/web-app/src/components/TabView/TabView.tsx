@@ -20,13 +20,7 @@ type TabViewProps = {
   isFullWidth?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const TabView: React.FC<TabViewProps> = ({
-  selectedIndex = 0,
-  data,
-  onTabIndexChange,
-  isFullWidth,
-  ...rest
-}) => {
+const TabView: React.FC<TabViewProps> = ({ selectedIndex = 0, data, onTabIndexChange, isFullWidth, ...rest }) => {
   const [selectedSceneIndex, setSelectedSceneIndex] = React.useState(selectedIndex);
   const [scenes, setScenes] = React.useState<Scene>({});
 
@@ -34,7 +28,7 @@ const TabView: React.FC<TabViewProps> = ({
     tabs: true,
     'justify-center': true,
     'w-full': isFullWidth,
-  })
+  });
 
   React.useEffect(() => {
     const cenes: Scene = {};
@@ -42,38 +36,36 @@ const TabView: React.FC<TabViewProps> = ({
       cenes[index] = item.content;
     });
     setScenes(cenes);
-  }, [data])
+  }, [data]);
 
   const handleOnTabChange = (index: number) => {
     return () => {
       setSelectedSceneIndex(index);
-      onTabIndexChange && onTabIndexChange(index)
-    }
-  }
+      onTabIndexChange && onTabIndexChange(index);
+    };
+  };
 
   return (
     <div {...rest}>
       <div className={tabClass}>
         {data.map((tab, index) => {
           const tabClass = cn({
-            'tab': true,
+            tab: true,
             'tab-bordered': true,
             'tab-active': index === selectedSceneIndex,
             'border-t-0 border-l-0 border-r-0 rounded-none': true,
             'flex-none': true,
-          })
+          });
           return (
             <Button isLink key={tab.id} className={tabClass} onClick={handleOnTabChange(index)}>
               {tab.icon} <span className="text-xs font-bold">{tab.title}</span>
-            </Button> 
-          )
+            </Button>
+          );
         })}
       </div>
-      <div className="mt-4">
-        {scenes[selectedSceneIndex]}
-      </div>
+      <div className="mt-4">{scenes[selectedSceneIndex]}</div>
     </div>
-  )
-}
+  );
+};
 
 export default TabView;

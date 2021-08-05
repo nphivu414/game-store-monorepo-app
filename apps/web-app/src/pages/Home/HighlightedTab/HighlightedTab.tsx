@@ -8,21 +8,21 @@ const tabData: TabViewItem[] = [
   {
     id: '1',
     title: 'New Releases',
-    content: <NewReleases/>
+    content: <NewReleases />,
   },
   {
     id: '2',
     title: 'Up Comming',
-    content: <UpcomingGames/>
+    content: <UpcomingGames />,
   },
-]
+];
 
 const HighlightedTab: React.FC = () => {
   return (
     <Card isCompact className="mt-4">
       <TabView data={tabData} />
     </Card>
-  )
-}
+  );
+};
 
-export default HighlightedTab
+export default HighlightedTab;

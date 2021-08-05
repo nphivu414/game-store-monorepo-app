@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-export type ThemeValue =
-  | 'light'
-  | 'dracula';
+export type ThemeValue = 'light' | 'dracula';
 
 export type ThemeItem = {
   icon: string;
@@ -20,5 +18,5 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
   themeList: [],
   changeTheme: () => {
     return;
-  }
+  },
 });

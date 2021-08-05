@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  Switch,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { animated, useTransition } from 'react-spring';
 
 import Home from 'src/pages/Home';
@@ -16,7 +12,7 @@ const Routes: React.FC = () => {
     enter: () => ({ opacity: 1 }),
     leave: () => ({ opacity: 0, position: 'absolute', display: 'none' }),
     trail: 200,
-  })
+  });
 
   return transitions((styles, location) => (
     <animated.div style={styles}>
@@ -29,8 +25,7 @@ const Routes: React.FC = () => {
         </Route>
       </Switch>
     </animated.div>
-  ))
-  
-}
+  ));
+};
 
 export default Routes;

@@ -41,7 +41,7 @@ const Section: React.FC<SectionProps> = ({
           {rightElement && <div className={rightElementClassName}>{rightElement}</div>}
         </div>
       </div>
-      <div className={cn("mt-2", contentClassName)}>{children}</div>
+      <div className={cn('mt-2', contentClassName)}>{children}</div>
     </div>
   );
 };

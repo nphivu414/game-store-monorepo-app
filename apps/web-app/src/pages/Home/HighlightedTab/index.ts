@@ -1,1 +1,1 @@
-export { default } from './HighlightedTab'
+export { default } from './HighlightedTab';

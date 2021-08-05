@@ -4,10 +4,10 @@ import BestGames from '../Home/BestGames';
 const GameDetails: React.FC = () => {
   return (
     <>
-      <BestGames/>
-      <BestGames/>
+      <BestGames />
+      <BestGames />
     </>
-  )
-}
+  );
+};
 
-export default GameDetails
+export default GameDetails;

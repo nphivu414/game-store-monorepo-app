@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import {HttpModule} from '@nestjs/axios'
+import { HttpModule } from '@nestjs/axios';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule } from '@nestjs/config';
-import { GameResolver } from './game.resolver';
+import { GameResolver } from './resolvers';
 @Module({
   imports: [
     HttpModule,
     ConfigModule,
     GraphQLModule.forRoot({
-      typePaths: ['./**/*.graphql']
-    })
+      typePaths: ['./**/*.graphql'],
+    }),
   ],
   providers: [GameResolver],
 })

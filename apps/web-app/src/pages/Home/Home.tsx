@@ -3,15 +3,14 @@ import BestGames from './BestGames';
 import FeaturedGames from './FeaturedGames';
 import HighlightedTab from './HighlightedTab';
 
-
 const Home: React.FC = () => {
   return (
     <>
-      <FeaturedGames/>
-      <BestGames/>
-      <HighlightedTab/>
+      <FeaturedGames />
+      <BestGames />
+      <HighlightedTab />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

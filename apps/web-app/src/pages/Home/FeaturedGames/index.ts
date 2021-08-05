@@ -1,1 +1,1 @@
-export {default} from './FeaturedGames' 
+export { default } from './FeaturedGames';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { X } from 'react-feather';
 import NavigationBar from 'src/components//NavigationBar';
 import Button from 'src/components//Button';
-import {ThemeContext} from 'src/context/theme';
+import { ThemeContext } from 'src/context/theme';
 import { Link } from 'react-router-dom';
 
 const MainLayout: React.FC = ({ children }) => {
@@ -42,9 +42,7 @@ const MainLayout: React.FC = ({ children }) => {
       <input type="checkbox" className="drawer-toggle" checked={isDrawerOpened} readOnly />
       <div className="flex flex-col flex-grow h-full drawer-content">
         <NavigationBar handleToggleDrawer={handleToggleDrawer} />
-        <div className="w-full h-full overflow-y-auto px-4 pt-5 pb-5">
-          {children}
-        </div>
+        <div className="w-full h-full overflow-y-auto px-4 pt-5 pb-5">{children}</div>
       </div>
       <div className="drawer-side">
         <label className="drawer-overlay" onClick={closeDrawer} />
