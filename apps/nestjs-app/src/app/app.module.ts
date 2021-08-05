@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
 import {HttpModule} from '@nestjs/axios'
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { GameResolver } from './game.resolver';
 import { ConfigModule } from '@nestjs/config';
+import { GameResolver } from './game.resolver';
 @Module({
   imports: [
     HttpModule,
@@ -13,7 +11,6 @@ import { ConfigModule } from '@nestjs/config';
       typePaths: ['./**/*.graphql']
     })
   ],
-  controllers: [AppController],
-  providers: [AppService, GameResolver],
+  providers: [GameResolver],
 })
 export class AppModule {}

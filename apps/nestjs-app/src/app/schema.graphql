@@ -2,7 +2,7 @@ type Game {
     id: Int!
     name: String
     backgroundImage: String
-    rating: Int,
+    rating: Float,
     platforms: [Platform]
 }
 
@@ -11,15 +11,15 @@ type PlatformDetails {
     name: String,
     slug: String,
     image: String,
-    year_end: Int,
-    year_start: Int,
-    games_count: Int,
-    image_background: String
-  }
+    yearEnd: Int,
+    yearStart: Int,
+    gamesCount: Int,
+    imageBackground: String
+}
 
 type Platform {
   platform: PlatformDetails,
-  released_at: String
+  releasedAt: String
 }
 
 type Query {

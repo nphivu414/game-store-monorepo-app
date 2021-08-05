@@ -41,6 +41,7 @@
     "daisyui": "^1.10.0",
     "document-register-element": "1.13.1",
     "graphql": "^15.5.1",
+    "graphql-config": "^4.0.1",
     "graphql-tools": "^8.0.0",
     "postcss": "^8.3.6",
     "react": "17.0.2",
