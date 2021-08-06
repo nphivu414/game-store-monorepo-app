@@ -51,6 +51,7 @@
     "react-native": "0.65.0-rc.2",
     "react-router-dom": "^5.2.0",
     "react-spring": "^9.2.4",
+    "react-toastify": "^7.0.4",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
     "rxjs": "~6.6.3",

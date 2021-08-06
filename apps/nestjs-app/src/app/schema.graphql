@@ -29,6 +29,7 @@ type Query {
         search: String,
         genres: String,
         tags: String,
-        dates: String
+        dates: String,
+        ordering: String,
     ): [Game]
 }

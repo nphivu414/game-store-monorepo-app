@@ -22,6 +22,7 @@ export class GameResolver {
     @Args('genres') genres: string,
     @Args('tags') tags: string,
     @Args('dates') dates: string,
+    @Args('ordering') ordering: string,
   ): Promise<GameEntity[]> {
     const params = {
       key: this.apiKey,
@@ -31,6 +32,7 @@ export class GameResolver {
       genres,
       tags,
       dates,
+      ordering,
     };
     const res = await this.httpService
       .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
