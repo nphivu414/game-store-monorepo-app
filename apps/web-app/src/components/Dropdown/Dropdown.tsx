@@ -23,7 +23,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items, children, position = 'end', 
     'dropdown-left': position === 'left',
     'dropdown-right': position === 'right',
     'dropdown-hover': trigger === 'hover',
-    'dropdown-open': trigger === isOpened,
+    'dropdown-open': isOpened,
   });
 
   const renderDropdownItems = () => {

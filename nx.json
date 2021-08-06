@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "data-access": {
+      "tags": []
+    },
     "nestjs-app": {
       "tags": []
     },

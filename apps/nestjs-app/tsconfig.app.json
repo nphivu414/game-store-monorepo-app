@@ -5,7 +5,11 @@
     "module": "commonjs",
     "types": ["node"],
     "emitDecoratorMetadata": true,
-    "target": "es2015"
+    "target": "es2015",
+    "baseUrl": ".",
+    "paths": {
+      "@game-store-monorepo/data-access": ["../../libs/data-access/src/index.ts"],
+    }
   },
   "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]

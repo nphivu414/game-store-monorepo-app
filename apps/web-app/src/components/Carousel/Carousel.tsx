@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
 import Card from '../Card';
-import Button from '../Button';
 
 type CarouselProps = {
   className?: string;
@@ -12,7 +11,7 @@ type CarouselProps = {
 };
 
 export type CarouselItem = {
-  id: string;
+  id: string | number;
   headerImageUrl?: string;
   title?: string;
   subTitle?: string;
