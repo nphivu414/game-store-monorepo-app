@@ -47,7 +47,7 @@ const Card: React.FC<CardProps> = ({
     }
 
     if (typeof title === 'string') {
-      return <h2 className={cn('card-title', titleClassName)}>{title}</h2>;
+      return <h2 className={cn('card-title truncate', titleClassName)}>{title}</h2>;
     }
 
     return <div className={className}>{title}</div>;
@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({
     <div className={cn(cardClass, className)} {...rest}>
       {headerImageUrl && (
         <figure>
-          <img className="max-h-[125px] object-cover" src={headerImageUrl} alt="" />
+          <img className="h-[125px] object-cover" src={headerImageUrl} alt="" />
         </figure>
       )}
       <div className={cn('card-body', bodyClassName)}>

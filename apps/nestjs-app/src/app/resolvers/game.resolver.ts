@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { GameEntity, RawgGameResponse } from '@game-store-monorepo/data-access';
+import { Game, RawgGameResponse } from '@game-store-monorepo/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 
@@ -23,7 +23,7 @@ export class GameResolver {
     @Args('tags') tags: string,
     @Args('dates') dates: string,
     @Args('ordering') ordering: string,
-  ): Promise<GameEntity[]> {
+  ): Promise<Game[]> {
     const params = {
       key: this.apiKey,
       page,

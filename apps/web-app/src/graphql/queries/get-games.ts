@@ -6,7 +6,7 @@ export const GET_GAMES = gql`
       id
       name
       backgroundImage
-      platforms {
+      parentPlatforms {
         platform {
           name
         }

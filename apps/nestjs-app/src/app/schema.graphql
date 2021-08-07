@@ -3,7 +3,8 @@ type Game {
     name: String
     backgroundImage: String
     rating: Float,
-    platforms: [Platform]
+    platforms: [Platform],
+    parentPlatforms: [Platform],
 }
 
 type PlatformDetails {

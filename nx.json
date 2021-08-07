@@ -40,6 +40,9 @@
       "tags": [],
       "implicitDependencies": ["react-native-app"]
     },
+    "utils": {
+      "tags": []
+    },
     "web-app": {
       "tags": []
     },

@@ -48,8 +48,8 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
           className={cn(carouselItemClass, itemClassName)}
           onClick={handleOnItemClick(item)}
         >
-          {title && <p className="font-semibold mb-1">{title}</p>}
-          {subTitle && <p>{subTitle}</p>}
+          {title && <p className="font-semibold truncate  mb-1">{title}</p>}
+          {subTitle && <p className="text-xs">{subTitle}</p>}
         </Card>
       );
     });
