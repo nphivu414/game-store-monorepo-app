@@ -1,16 +1,13 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ConfigModule } from '@nestjs/config';
-import { GameResolver } from './resolvers';
+import { join } from 'path';
+import { GamesModule } from './games/games.module';
 @Module({
   imports: [
-    HttpModule,
-    ConfigModule,
+    GamesModule,
     GraphQLModule.forRoot({
-      typePaths: ['./**/*.graphql'],
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
   ],
-  providers: [GameResolver],
 })
 export class AppModule {}

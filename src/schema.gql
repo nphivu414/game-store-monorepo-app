@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Genre {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type PlatformDetails {
+  id: Int!
+  name: String
+  slug: String
+  image: String
+  yearEnd: Int!
+  yearStart: Int!
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type Platform {
+  platform: PlatformDetails!
+  releasedAt: String
+}
+
+type Game {
+  id: Int!
+  name: String
+  backgroundImage: String
+  rating: Float!
+  platforms: [Platform!]!
+  parentPlatforms: [Platform!]!
+  genres: [Genre!]!
+}
+
+type Query {
+  allGames(ordering: String, dates: String, tags: String, genres: String, search: String, pageSize: Int, page: Int): [Game!]!
+}

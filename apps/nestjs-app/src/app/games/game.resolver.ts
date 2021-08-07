@@ -1,28 +1,30 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { Game, RawgGameResponse } from '@game-store-monorepo/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 
 @Injectable()
-@Resolver('Game')
+@Resolver(() => Game)
 export class GameResolver {
   constructor(private httpService: HttpService, private configService: ConfigService) {}
   private readonly logger = new Logger(GameResolver.name);
   host = this.configService.get<string>('RAWG_API_HOST');
   apiKey = this.configService.get<string>('RAWG_PUBLIC_API_KEY');
 
-  @Query('allGames')
+  @Query(() => [Game], {
+    name: 'allGames',
+  })
   async getAllGames(
-    @Args('page') page: number,
-    @Args('pageSize') pageSize: number,
-    @Args('search') search: string,
-    @Args('genres') genres: string,
-    @Args('tags') tags: string,
-    @Args('dates') dates: string,
-    @Args('ordering') ordering: string,
+    @Args('page', { nullable: true, type: () => Int }) page?: number,
+    @Args('pageSize', { nullable: true, type: () => Int }) pageSize?: number,
+    @Args('search', { nullable: true }) search?: string,
+    @Args('genres', { nullable: true }) genres?: string,
+    @Args('tags', { nullable: true }) tags?: string,
+    @Args('dates', { nullable: true }) dates?: string,
+    @Args('ordering', { nullable: true }) ordering?: string,
   ): Promise<Game[]> {
     const params = {
       key: this.apiKey,
