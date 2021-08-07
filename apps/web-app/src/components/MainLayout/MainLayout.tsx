@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { X } from 'react-feather';
+import { FiX } from 'react-icons/fi';
 import NavigationBar from 'src/components//NavigationBar';
 import Button from 'src/components//Button';
 import { ThemeContext } from 'src/context/theme';
@@ -26,7 +26,7 @@ const MainLayout: React.FC = ({ children }) => {
               <p className="text-lg font-bold">Game Store</p>
             </Link>
             <Button isGhost isCircle onClick={closeDrawer}>
-              <X />
+              <FiX />
             </Button>
           </div>
         </li>

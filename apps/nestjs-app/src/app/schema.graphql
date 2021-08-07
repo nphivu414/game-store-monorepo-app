@@ -5,6 +5,7 @@ type Game {
     rating: Float,
     platforms: [Platform],
     parentPlatforms: [Platform],
+    genres: [Genre]
 }
 
 type PlatformDetails {
@@ -23,6 +24,14 @@ type Platform {
   releasedAt: String
 }
 
+type Genre {
+    id: Int!,
+    name: String,
+    slug: String,
+    gamesCount: Int,
+    imageBackground: String
+}
+
 type Query {
     allGames(
         page: Int,
@@ -31,6 +40,6 @@ type Query {
         genres: String,
         tags: String,
         dates: String,
-        ordering: String,
+        ordering: String
     ): [Game]
 }

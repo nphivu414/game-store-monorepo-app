@@ -1,4 +1,5 @@
 import { Expose, Type } from 'class-transformer';
+import { Genre } from './genre.entity';
 import { Platform } from './platform.entity';
 
 export class Game {
@@ -12,6 +13,9 @@ export class Game {
   @Expose({ name: 'parent_platforms' })
   @Type(() => Platform)
   parentPlatforms?: Platform[];
+  @Expose({ name: 'genres' })
+  @Type(() => Genre)
+  genres?: Genre[];
 }
 
 export class RawgGameResponse {

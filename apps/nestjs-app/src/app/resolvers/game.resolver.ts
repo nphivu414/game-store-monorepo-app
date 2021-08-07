@@ -34,6 +34,7 @@ export class GameResolver {
       dates,
       ordering,
     };
+    this.logger.debug('getAllGames called with params', params);
     const res = await this.httpService
       .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
       .toPromise();

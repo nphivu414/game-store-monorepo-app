@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_GAMES } from 'src/graphql/queries';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
 import { GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { getMultiplePlatformNames } from '@game-store-monorepo/util';
+import { getMultipleGenreNames } from '@game-store-monorepo/util';
 
 const FeaturedGames: React.FC = () => {
   const { push } = useHistory();
@@ -25,7 +25,7 @@ const FeaturedGames: React.FC = () => {
         id: item.id,
         headerImageUrl: item.backgroundImage,
         title: item.name,
-        subTitle: `Platforms: ${getMultiplePlatformNames(item.parentPlatforms, 3)}`,
+        subTitle: `Genres: ${getMultipleGenreNames(item.genres, 3)}`,
       };
     });
   }, [data]);

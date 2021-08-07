@@ -8,8 +8,13 @@ export const GET_GAMES = gql`
       backgroundImage
       parentPlatforms {
         platform {
+          id
           name
         }
+      }
+      genres {
+        id
+        name
       }
     }
   }

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ChevronDown, Aperture, ArrowLeft } from 'react-feather';
+import { FiMenu, FiChevronDown, FiAperture, FiArrowLeft } from 'react-icons/fi';
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
-import { Menu } from 'react-feather';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -61,11 +60,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
       <Dropdown items={themeDropdownItems} trigger="hover" className="max-h-96">
         <Button isRounded isGhost className="px-0">
           <div className="flex items-center">
-            <Aperture size={22} className="mx-1" />
+            <FiAperture size={22} className="mx-1" />
             <div className="hidden rounded-full m-1">Change Theme</div>
           </div>
           <div className="flex items-center">
-            <ChevronDown size="22" />
+            <FiChevronDown size="22" />
           </div>
         </Button>
       </Dropdown>
@@ -77,11 +76,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
       <div className="flex-none mr-3">
         {isRoot ? (
           <Button isSquare isGhost size="small" onClick={handleToggleDrawer}>
-            <Menu size={24} />
+            <FiMenu size={24} />
           </Button>
         ) : (
           <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
-            <ArrowLeft size={24} />
+            <FiArrowLeft size={24} />
           </Button>
         )}
       </div>
