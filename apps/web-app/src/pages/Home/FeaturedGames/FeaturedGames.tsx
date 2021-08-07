@@ -5,6 +5,7 @@ import { GET_GAMES } from 'src/graphql/queries';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
 import { GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { getMultipleGenreNames } from '@game-store-monorepo/util';
+import PlatformLogos from 'src/components/PlatformLogos';
 
 const FeaturedGames: React.FC = () => {
   const { push } = useHistory();
@@ -25,7 +26,12 @@ const FeaturedGames: React.FC = () => {
         id: item.id,
         headerImageUrl: item.backgroundImage,
         title: item.name,
-        subTitle: `Genres: ${getMultipleGenreNames(item.genres, 3)}`,
+        content: (
+          <div>
+            <PlatformLogos data={item.parentPlatforms} className="mt-1" />
+            <p className="mt-2 text-sm truncate">{`${getMultipleGenreNames(item.genres, 3)}`}</p>
+          </div>
+        ),
       };
     });
   }, [data]);

@@ -15,6 +15,7 @@ export type CarouselItem = {
   headerImageUrl?: string;
   title?: string;
   subTitle?: string;
+  content?: React.ReactNode;
 };
 
 const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isCompact, onItemClick }) => {
@@ -39,7 +40,7 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
 
   const renderCarouselItem = () => {
     return data.map((item) => {
-      const { id, title, subTitle, headerImageUrl } = item;
+      const { id, title, subTitle, content, headerImageUrl } = item;
       return (
         <Card
           key={id}
@@ -50,6 +51,7 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
         >
           {title && <p className="font-semibold truncate  mb-1">{title}</p>}
           {subTitle && <p className="text-xs">{subTitle}</p>}
+          {content}
         </Card>
       );
     });
