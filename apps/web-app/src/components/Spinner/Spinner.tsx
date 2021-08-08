@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RingLoader from 'react-spinners/RingLoader';
+import PacmanLoader from 'react-spinners/PacmanLoader';
 
 type SpinnerProps = {
   isLoading?: boolean;
@@ -12,9 +12,9 @@ const Spinner: React.FC<SpinnerProps> = ({ isLoading, children }) => {
 
   return (
     <div className="relative w-full h-full">
-      <div className="absolute w-full h-full z-10" />
-      <div className="absolute left-0 top-0 w-6 h-6 z-20 centered-axis-xy">
-        <RingLoader color="white" />
+      <div className="absolute z-10" />
+      <div className="absolute w-6 h-6 z-20 centered-axis-xy">
+        <PacmanLoader color="white" />
       </div>
       {children}
     </div>
