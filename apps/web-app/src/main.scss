@@ -40,6 +40,17 @@
   scrollbar-width: 7px;
 }
 
+.centered-axis-xy {
+  position: absolute;
+  left: 45%;
+  top: 45%;
+  transform: translate(-50%,-50%);
+}
+
+.h-vp {
+  height: 100vw
+}
+
 .text-base-content-secondary {
   @apply text-base-content text-opacity-60;
 }

@@ -49,12 +49,16 @@ const BestGames: React.FC = () => {
     push(`${ROUTES.GAMES}/${value.id}`);
   };
 
+  const onSeeAllButtonClick = () => {
+    push(`${ROUTES.GAMES}`);
+  };
+
   return (
     <Section
       titleText="Best Of All Time"
       className="mb-6"
       rightElement={
-        <Button variant="primary" size="extra-small" isLink>
+        <Button variant="primary" size="extra-small" isLink onClick={onSeeAllButtonClick}>
           See all
         </Button>
       }
