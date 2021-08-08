@@ -3,14 +3,15 @@ import cn from 'classnames';
 
 type ListProps = {
   data?: ListItem[];
-  onItemClick?: (id: string) => void;
+  onItemClick?: (value: ListItem) => void;
 };
 
 export type ListItem = {
-  id: string;
-  title: string;
+  id: string | number;
+  title?: string;
   avatarUrl?: string;
-  subTitle: string;
+  subTitle?: string;
+  content?: React.ReactElement;
 };
 
 const List: React.FC<ListProps> = ({ data, onItemClick }) => {
@@ -18,16 +19,16 @@ const List: React.FC<ListProps> = ({ data, onItemClick }) => {
     return null;
   }
 
-  const handleOnItemClick = (id: string) => {
+  const handleOnItemClick = (value: ListItem) => {
     return () => {
-      onItemClick && onItemClick(id);
+      onItemClick && onItemClick(value);
     };
   };
 
   return (
     <div>
       {data.map((item, index) => {
-        const { id, title, subTitle, avatarUrl } = item;
+        const { id, title, subTitle, avatarUrl, content } = item;
         const isLastItem = index === data.length - 1;
         const itemClass = cn({
           'grid grid-cols-5 gap-2 rounded-lg cursor-pointer': true,
@@ -36,7 +37,7 @@ const List: React.FC<ListProps> = ({ data, onItemClick }) => {
           'hover:bg-base-200 transition duration-300 ease-in-out': true,
         });
         return (
-          <div key={id} className={itemClass} onClick={handleOnItemClick(id)}>
+          <div key={id} className={itemClass} onClick={handleOnItemClick(item)}>
             <div className="flex justify-center items-center">
               <div className="avatar">
                 <div className="rounded-full w-10 h-10">
@@ -47,6 +48,7 @@ const List: React.FC<ListProps> = ({ data, onItemClick }) => {
             <div className="flex col-span-4 flex-col justify-center">
               {title && <p className="font-semibold mb-1">{title}</p>}
               {subTitle && <p className="text-xs text-base-content-secondary">{subTitle}</p>}
+              {content}
             </div>
           </div>
         );

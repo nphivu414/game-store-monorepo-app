@@ -5,6 +5,11 @@ import { animated, useTransition } from 'react-spring';
 import Home from 'src/pages/Home';
 import GameDetails from 'src/pages/GameDetails';
 
+export const ROUTES = {
+  ROOT: '/',
+  GAMES: '/games',
+};
+
 const Routes: React.FC = () => {
   const location = useLocation();
   const transitions = useTransition(location, {
@@ -17,10 +22,10 @@ const Routes: React.FC = () => {
   return transitions((styles, location) => (
     <animated.div style={styles}>
       <Switch location={location}>
-        <Route path="/games/:id">
+        <Route path={`${ROUTES.GAMES}/:id`}>
           <GameDetails />
         </Route>
-        <Route path="/">
+        <Route path={`${ROUTES.ROOT}`}>
           <Home />
         </Route>
       </Switch>

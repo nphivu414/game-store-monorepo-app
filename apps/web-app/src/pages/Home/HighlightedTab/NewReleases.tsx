@@ -1,35 +1,52 @@
+import { useQuery } from '@apollo/client';
+import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
+import { getMultipleGenreNames } from '@game-store-monorepo/util';
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import List, { ListItem } from 'src/components/List';
+import PlatformLogos from 'src/components/PlatformLogos';
+import { GET_GAMES } from 'src/graphql/queries';
+import { ROUTES } from 'src/routes/routes';
 
-const data: ListItem[] = [
-  {
-    id: '1',
-    avatarUrl: 'https://media.rawg.io/media/crop/600/400/games/1bb/1bb86c35ffa3eb0d299b01a7c65bf908.jpg',
-    title: 'Grand Theft Auto V',
-    subTitle: 'Genre: Action, Adventure, RPG',
+const queryParams: GamesQueryParams = {
+  variables: {
+    pageSize: 5,
+    dates: '2021-01-31,2021-08-01',
+    ordering: '-added',
   },
-  {
-    id: '2',
-    avatarUrl: 'https://media.rawg.io/media/crop/600/400/games/1bb/1bb86c35ffa3eb0d299b01a7c65bf908.jpg',
-    title: 'Grand Theft Auto V',
-    subTitle: 'Genre: Action, Adventure, RPG',
-  },
-  {
-    id: '3',
-    avatarUrl: 'https://media.rawg.io/media/crop/600/400/games/1bb/1bb86c35ffa3eb0d299b01a7c65bf908.jpg',
-    title: 'Grand Theft Auto V',
-    subTitle: 'Genre: Action, Adventure, RPG',
-  },
-  {
-    id: '4',
-    avatarUrl: 'https://media.rawg.io/media/crop/600/400/games/1bb/1bb86c35ffa3eb0d299b01a7c65bf908.jpg',
-    title: 'Grand Theft Auto V',
-    subTitle: 'Genre: Action, Adventure, RPG',
-  },
-];
+};
 
 const NewReleases: React.FC = () => {
-  return <List data={data} />;
+  const { push } = useHistory();
+  const { data } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
+
+  const listData: ListItem[] = React.useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    return data.allGames.map((item): ListItem => {
+      return {
+        id: item.id,
+        avatarUrl: item.backgroundImage,
+        title: item.name,
+        content: (
+          <div>
+            <PlatformLogos data={item.parentPlatforms} className="mt-1" />
+            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleGenreNames(
+              item.genres,
+              3,
+            )}`}</p>
+          </div>
+        ),
+      };
+    });
+  }, [data]);
+
+  const onItemClick = (value: ListItem) => {
+    push(`${ROUTES.GAMES}/${value.id}`);
+  };
+
+  return <List data={listData} onItemClick={onItemClick} />;
 };
 
 export default NewReleases;
