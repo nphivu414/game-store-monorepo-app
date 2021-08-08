@@ -1,12 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
 import Card from '../Card';
+import Skeleton from '../Skeleton';
 
 type CarouselProps = {
   className?: string;
   itemClassName?: string;
   data?: CarouselItem[];
   isCompact?: boolean;
+  isLoading?: boolean;
   onItemClick?: (value: CarouselItem) => void;
 };
 
@@ -18,11 +20,7 @@ export type CarouselItem = {
   content?: React.ReactNode;
 };
 
-const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isCompact, onItemClick }) => {
-  if (!data) {
-    return null;
-  }
-
+const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isCompact, isLoading, onItemClick }) => {
   const carouselClass = cn({
     'carousel pb-2 overflow-x-auto': true,
   });
@@ -39,6 +37,10 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
   };
 
   const renderCarouselItem = () => {
+    if (!data) {
+      return null;
+    }
+
     return data.map((item) => {
       const { id, title, subTitle, content, headerImageUrl } = item;
       return (
@@ -56,6 +58,21 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
       );
     });
   };
+
+  if (isLoading) {
+    return (
+      <div className={cn(carouselClass, className)}>
+        {Array(3)
+          .fill(0)
+          .map((_) => (
+            <div className="carousel-item mr-4 w-3/4">
+              <Skeleton isLoading={true} theme="GAME_CARD_ITEM" />
+            </div>
+          ))}
+      </div>
+    );
+  }
+
   return <div className={cn(carouselClass, className)}>{renderCarouselItem()}</div>;
 };
 

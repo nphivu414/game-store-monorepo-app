@@ -18,7 +18,7 @@ const queryParams: GamesQueryParams = {
 
 const UpcomingGames: React.FC = () => {
   const { push } = useHistory();
-  const { data } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
+  const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const listData: ListItem[] = React.useMemo(() => {
     if (!data) {
@@ -46,7 +46,7 @@ const UpcomingGames: React.FC = () => {
     push(`${ROUTES.GAMES}/${value.id}`);
   };
 
-  return <List data={listData} onItemClick={onItemClick} />;
+  return <List data={listData} onItemClick={onItemClick} isLoading={loading} />;
 };
 
 export default UpcomingGames;

@@ -20,12 +20,13 @@ const queryParams: GamesQueryParams = {
 
 const BestGames: React.FC = () => {
   const { push } = useHistory();
-  const { data } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
+  const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const carouselData: CarouselItem[] = React.useMemo(() => {
     if (!data) {
       return [];
     }
+
     return data.allGames.map((item): CarouselItem => {
       return {
         id: item.id,
@@ -58,7 +59,7 @@ const BestGames: React.FC = () => {
         </Button>
       }
     >
-      <Carousel isCompact data={carouselData} itemClassName="w-2/3" onItemClick={onItemClick} />
+      <Carousel isCompact isLoading={loading} data={carouselData} itemClassName="w-2/3" onItemClick={onItemClick} />
     </Section>
   );
 };

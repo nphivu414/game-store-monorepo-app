@@ -18,7 +18,7 @@ const queryParams: GamesQueryParams = {
 
 const FeaturedGames: React.FC = () => {
   const { push } = useHistory();
-  const { data } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
+  const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const carouselData: CarouselItem[] = React.useMemo(() => {
     if (!data) {
@@ -47,7 +47,13 @@ const FeaturedGames: React.FC = () => {
   };
 
   return (
-    <Carousel data={carouselData} className="carousel-center mb-6" itemClassName="w-4/5" onItemClick={onItemClick} />
+    <Carousel
+      data={carouselData}
+      isLoading={loading}
+      className="carousel-center mb-6"
+      itemClassName="w-4/5"
+      onItemClick={onItemClick}
+    />
   );
 };
 
