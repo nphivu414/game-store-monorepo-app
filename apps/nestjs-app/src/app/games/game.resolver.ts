@@ -43,4 +43,19 @@ export class GameResolver {
     const rawgResponse = plainToClass(RawgGameResponse, res.data);
     return rawgResponse;
   }
+
+  @Query(() => Game, {
+    name: 'gameDetails',
+  })
+  async getGameDetails(@Args('id', { type: () => Int }) id?: number): Promise<Game> {
+    const params = {
+      key: this.apiKey,
+    };
+    this.logger.debug('getGameDetails called with params', params);
+    const res = await this.httpService
+      .get<Game>(`${this.host}/games/${id}?${stringifyQueryObject(params)}`)
+      .toPromise();
+    const rawgResponse = plainToClass(Game, res.data);
+    return rawgResponse;
+  }
 }

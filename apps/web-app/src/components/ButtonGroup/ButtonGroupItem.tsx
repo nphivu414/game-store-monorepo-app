@@ -3,16 +3,16 @@ import Button, { ButtonProps } from 'src/components/Button';
 import ButtonGroupContext from './context';
 
 type ButtonGroupItemProps = {
-  selectedValue: string;
+  value: string;
 } & ButtonProps;
 
-export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({ selectedValue, children, ...rest }) => {
-  const { value, change, onChange } = React.useContext(ButtonGroupContext);
-  const isActive = value === selectedValue;
+export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({ value, children, ...rest }) => {
+  const { value: selectedValue, change, onChange } = React.useContext(ButtonGroupContext);
+  const isActive = selectedValue === value;
 
   const handleOnClick = () => {
-    change(selectedValue);
-    onChange(selectedValue);
+    change(value);
+    onChange(value);
   };
 
   return (

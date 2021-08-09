@@ -21,21 +21,23 @@ const GameList: React.FC = () => {
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { push } = useHistory();
   const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
   const { setTitle } = React.useContext(NavigationContext);
   const gridClass = cn({
     'grid-cols-2 gap-2': viewType === 'Grid',
     'grid-cols-1 gap-4': viewType === 'List',
   });
 
-  const queryParams: GamesQueryParams = {
-    variables: {
-      page: 1,
-      pageSize: 10,
-      dates: searchParams.get('dates') || undefined,
-      ordering: searchParams.get('ordering') || undefined,
-    },
-  };
+  const queryParams: GamesQueryParams = React.useMemo(() => {
+    const searchParams = new URLSearchParams(search);
+    return {
+      variables: {
+        page: 1,
+        pageSize: 10,
+        dates: searchParams.get('dates') || undefined,
+        ordering: searchParams.get('ordering') || undefined,
+      },
+    };
+  }, [search]);
 
   const { data, loading, fetchMore } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
   const gameResults = data?.allGames.results;
@@ -70,10 +72,10 @@ const GameList: React.FC = () => {
         <div>Display options:</div>
         <div>
           <ButtonGroup isFullWidth value={viewType} onChange={onViewTypeChange}>
-            <ButtonGroup.Item selectedValue="Grid" className="w-1/2" size="small">
+            <ButtonGroup.Item value="Grid" className="w-1/2" size="small">
               <FiGrid size={16} />
             </ButtonGroup.Item>
-            <ButtonGroup.Item selectedValue="List" className="w-1/2" size="small">
+            <ButtonGroup.Item value="List" className="w-1/2" size="small">
               <BsViewList size={16} />
             </ButtonGroup.Item>
           </ButtonGroup>

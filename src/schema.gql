@@ -45,4 +45,5 @@ type RawgGameResponse {
 
 type Query {
   allGames(ordering: String, dates: String, tags: String, genres: String, search: String, pageSize: Int, page: Int): RawgGameResponse!
+  gameDetails(id: Int!): Game!
 }
