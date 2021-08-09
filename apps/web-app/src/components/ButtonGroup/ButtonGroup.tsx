@@ -3,7 +3,7 @@ import cn from 'classnames';
 import ButtonGroupContext from './context';
 
 export type ButtonGroupProps = {
-  value: string;
+  value?: string;
   isFullWidth?: boolean;
   className?: string;
   onChange?: (value) => void;

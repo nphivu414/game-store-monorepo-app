@@ -62,13 +62,13 @@ type Game {
   backgroundImageAdditional: String
   thumbnailImage: String
   metacritic: Int!
-  esrbRating: EsrbRating!
-  rating: Float!
-  platforms: [Platform!]!
-  parentPlatforms: [Platform!]!
-  genres: [Genre!]!
-  publishers: [Publisher!]!
-  stores: [Store!]!
+  esrbRating: EsrbRating
+  rating: Float
+  platforms: [Platform!]
+  parentPlatforms: [Platform!]
+  genres: [Genre!]
+  publishers: [Publisher!]
+  stores: [Store!]
 }
 
 type RawgGameResponse {

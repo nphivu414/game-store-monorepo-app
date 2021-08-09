@@ -3,7 +3,7 @@ import Button, { ButtonProps } from 'src/components/Button';
 import ButtonGroupContext from './context';
 
 type ButtonGroupItemProps = {
-  value: string;
+  value?: string;
 } & ButtonProps;
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({ value, children, ...rest }) => {

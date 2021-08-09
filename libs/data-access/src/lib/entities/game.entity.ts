@@ -32,32 +32,32 @@ export class Game {
   metacritic: number;
 
   @Expose({ name: 'esrb_rating' })
-  @Field((type) => EsrbRating)
+  @Field((type) => EsrbRating, { nullable: true })
   esrbRating: EsrbRating;
 
-  @Field((type) => Float)
+  @Field((type) => Float, { nullable: true })
   rating?: number;
 
   @Type(() => Platform)
-  @Field((type) => [Platform])
+  @Field((type) => [Platform], { nullable: true })
   platforms?: Platform[];
 
   @Expose({ name: 'parent_platforms' })
   @Type(() => Platform)
-  @Field((type) => [Platform])
+  @Field((type) => [Platform], { nullable: true })
   parentPlatforms?: Platform[];
 
   @Expose({ name: 'genres' })
   @Type(() => Genre)
-  @Field((type) => [Genre])
+  @Field((type) => [Genre], { nullable: true })
   genres?: Genre[];
 
   @Type(() => Publisher)
-  @Field((type) => [Publisher])
+  @Field((type) => [Publisher], { nullable: true })
   publishers?: Publisher[];
 
   @Type(() => Store)
-  @Field((type) => [Store])
+  @Field((type) => [Store], { nullable: true })
   stores?: Store[];
 }
 
