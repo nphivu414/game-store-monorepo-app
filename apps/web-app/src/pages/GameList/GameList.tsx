@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { FiGrid } from 'react-icons/fi';
+import { BsViewList } from 'react-icons/bs';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from 'src/graphql/queries';
 import PlatformLogos from 'src/components/PlatformLogos';
@@ -10,12 +13,20 @@ import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
+import ButtonGroup from 'src/components/ButtonGroup';
+
+type ViewType = 'Grid' | 'List';
 
 const GameList: React.FC = () => {
+  const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { push } = useHistory();
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const { setTitle } = React.useContext(NavigationContext);
+  const gridClass = cn({
+    'grid-cols-2 gap-2': viewType === 'Grid',
+    'grid-cols-1 gap-4': viewType === 'List',
+  });
 
   const queryParams: GamesQueryParams = {
     variables: {
@@ -49,10 +60,27 @@ const GameList: React.FC = () => {
     };
   };
 
+  const onViewTypeChange = (type: ViewType) => {
+    setViewType(type);
+  };
+
   return (
     <Spinner isLoading={loading}>
+      <div className="grid grid-cols-2 gap-2 items-center mb-5">
+        <div>Display options:</div>
+        <div>
+          <ButtonGroup isFullWidth value={viewType} onChange={onViewTypeChange}>
+            <ButtonGroup.Item selectedValue="Grid" className="w-1/2" size="small">
+              <FiGrid size={16} />
+            </ButtonGroup.Item>
+            <ButtonGroup.Item selectedValue="List" className="w-1/2" size="small">
+              <BsViewList size={16} />
+            </ButtonGroup.Item>
+          </ButtonGroup>
+        </div>
+      </div>
       <InfiniteScroll
-        className="grid grid-flow-row grid-cols-2 gap-2 overflow-hidden pb-12 relative"
+        className={cn(gridClass, 'grid grid-flow-row overflow-hidden pb-12 relative')}
         dataLength={gameResults?.length || 0}
         scrollableTarget="main-layout-content"
         scrollThreshold="50px"

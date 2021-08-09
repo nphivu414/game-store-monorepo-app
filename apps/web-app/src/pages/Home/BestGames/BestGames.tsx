@@ -44,7 +44,7 @@ const BestGames: React.FC = () => {
         ),
       };
     });
-  }, [data]);
+  }, [data, pageSize]);
 
   const onItemClick = (value: CarouselItem) => {
     push(`${ROUTES.GAMES}/${value.id}`);

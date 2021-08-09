@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { FiMenu, FiChevronDown, FiAperture, FiArrowLeft } from 'react-icons/fi';
+import { FiMenu, FiChevronDown, FiArrowLeft } from 'react-icons/fi';
+import { CgDarkMode } from 'react-icons/cg';
+
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
@@ -62,7 +64,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
       <Dropdown items={themeDropdownItems} trigger="hover" className="max-h-96">
         <Button isRounded isGhost className="px-0">
           <div className="flex items-center">
-            <FiAperture size={22} className="mx-1" />
+            <CgDarkMode size={22} className="mx-1" />
             <div className="hidden rounded-full m-1">Change Theme</div>
           </div>
           <div className="flex items-center">
