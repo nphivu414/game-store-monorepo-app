@@ -56,7 +56,7 @@ const GeneralInformation: React.FC<GeneralInformationProps> = ({ data }) => {
         />
       </div>
       <div className="flex flex-col items-center pt-12">
-        <p className="text-lg font-bold">{name}</p>
+        <p className="text-lg font-bold text-center">{name}</p>
         <PlatformLogos data={parentPlatforms} className="mt-1" />
         {renderStores()}
       </div>
