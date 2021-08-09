@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { getMultipleGenreNames } from '@game-store-monorepo/util';
-import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'src/components/Button';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
@@ -12,7 +12,7 @@ import { ROUTES } from 'src/routes/routes';
 
 const queryParams: GamesQueryParams = {
   variables: {
-    pageSize: 5,
+    pageSize: 6,
     dates: '1990-01-01,2020-12-31',
     ordering: '-added',
   },
@@ -21,16 +21,17 @@ const queryParams: GamesQueryParams = {
 const BestGames: React.FC = () => {
   const { push } = useHistory();
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
+  const pageSize = queryParams.variables.pageSize;
 
   const carouselData: CarouselItem[] = React.useMemo(() => {
     if (!data) {
       return [];
     }
 
-    return data.allGames.map((item): CarouselItem => {
+    return data.allGames.results.slice(0, pageSize).map((item): CarouselItem => {
       return {
         id: item.id,
-        headerImageUrl: item.backgroundImage,
+        headerImageUrl: item.thumbnailImage,
         title: item.name,
         content: (
           <div>
@@ -50,7 +51,11 @@ const BestGames: React.FC = () => {
   };
 
   const onSeeAllButtonClick = () => {
-    push(`${ROUTES.GAMES}`);
+    const queryString = new URLSearchParams({
+      dates: '1990-01-01,2020-12-31',
+      ordering: '-added',
+    }).toString();
+    push(`${ROUTES.GAMES}?${queryString}`);
   };
 
   return (

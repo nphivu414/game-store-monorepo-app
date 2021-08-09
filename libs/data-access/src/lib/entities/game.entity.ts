@@ -15,6 +15,12 @@ export class Game {
   @Field({ nullable: true })
   backgroundImage?: string;
 
+  @Field({ nullable: true })
+  get thumbnailImage(): string {
+    const thumbnailImageUrl = this.backgroundImage?.replace('/media/', '/media/crop/600/400/') || '';
+    return thumbnailImageUrl;
+  }
+
   @Field((type) => Float)
   rating?: number;
 
@@ -33,15 +39,21 @@ export class Game {
   genres?: Genre[];
 }
 
+@ObjectType()
 export class RawgGameResponse {
   @Field((type) => Int)
   count: number;
 
-  @Field({ nullable: true })
-  next: string;
+  private next?: string;
 
-  @Field({ nullable: true })
-  previous: string;
+  @Field((type) => Int, { nullable: true })
+  @Expose()
+  get nextPage(): number | undefined {
+    const urlSearchParams = new URLSearchParams(this.next);
+    const pageParam = urlSearchParams.get('page');
+    const page = pageParam ? parseInt(pageParam) : undefined;
+    return page;
+  }
 
   @Type(() => Game)
   @Field((type) => [Game])

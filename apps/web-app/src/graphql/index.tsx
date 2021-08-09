@@ -1,5 +1,6 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { RawgGameResponse } from '@game-store-monorepo/data-access';
 import { toastError } from 'src/components/Toast';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -22,6 +23,30 @@ const httpLink = new HttpLink({
 });
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          allGames: {
+            read(existing) {
+              return existing;
+            },
+            keyArgs: ['dates'],
+            merge(existing: RawgGameResponse, incoming: RawgGameResponse, { args }): RawgGameResponse {
+              if (!existing) {
+                return incoming;
+              }
+
+              return {
+                ...existing,
+                nextPage: incoming.nextPage,
+                results: [...existing.results, ...incoming.results],
+              };
+            },
+          },
+        },
+      },
+    },
+  }),
   link: from([errorLink, httpLink]),
 });

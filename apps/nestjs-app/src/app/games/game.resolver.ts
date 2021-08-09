@@ -14,7 +14,7 @@ export class GameResolver {
   host = this.configService.get<string>('RAWG_API_HOST');
   apiKey = this.configService.get<string>('RAWG_PUBLIC_API_KEY');
 
-  @Query(() => [Game], {
+  @Query(() => RawgGameResponse, {
     name: 'allGames',
   })
   async getAllGames(
@@ -25,7 +25,7 @@ export class GameResolver {
     @Args('tags', { nullable: true }) tags?: string,
     @Args('dates', { nullable: true }) dates?: string,
     @Args('ordering', { nullable: true }) ordering?: string,
-  ): Promise<Game[]> {
+  ): Promise<RawgGameResponse> {
     const params = {
       key: this.apiKey,
       page,
@@ -41,6 +41,6 @@ export class GameResolver {
       .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
       .toPromise();
     const rawgResponse = plainToClass(RawgGameResponse, res.data);
-    return rawgResponse.results;
+    return rawgResponse;
   }
 }

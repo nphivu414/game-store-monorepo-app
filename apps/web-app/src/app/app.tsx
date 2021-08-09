@@ -6,6 +6,7 @@ import Routes from 'src/routes';
 import { client } from 'src/graphql';
 import ToastifyContainer from 'src/components/Toast';
 import MockupPhone from 'src/components/MockupPhone';
+import { NavigationProvider } from 'src/context/navigation/navigation-provider';
 
 export function App() {
   return (
@@ -14,9 +15,11 @@ export function App() {
         <div className="flex justify-center pt-4">
           <BrowserRouter>
             <MockupPhone>
-              <MainLayout>
-                <Routes />
-              </MainLayout>
+              <NavigationProvider>
+                <MainLayout>
+                  <Routes />
+                </MainLayout>
+              </NavigationProvider>
             </MockupPhone>
           </BrowserRouter>
         </div>

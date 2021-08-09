@@ -24,10 +24,10 @@ const FeaturedGames: React.FC = () => {
     if (!data) {
       return [];
     }
-    return data.allGames.map((item): CarouselItem => {
+    return data.allGames.results.map((item): CarouselItem => {
       return {
         id: item.id,
-        headerImageUrl: item.backgroundImage,
+        headerImageUrl: item.thumbnailImage,
         title: item.name,
         content: (
           <div>

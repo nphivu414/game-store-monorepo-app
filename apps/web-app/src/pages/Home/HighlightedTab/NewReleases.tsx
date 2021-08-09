@@ -24,10 +24,10 @@ const NewReleases: React.FC = () => {
     if (!data) {
       return [];
     }
-    return data.allGames.map((item): ListItem => {
+    return data.allGames.results.map((item): ListItem => {
       return {
         id: item.id,
-        avatarUrl: item.backgroundImage,
+        avatarUrl: item.thumbnailImage,
         title: item.name,
         content: (
           <div>

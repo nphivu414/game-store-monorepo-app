@@ -30,12 +30,19 @@ type Game {
   id: Int!
   name: String
   backgroundImage: String
+  thumbnailImage: String
   rating: Float!
   platforms: [Platform!]!
   parentPlatforms: [Platform!]!
   genres: [Genre!]!
 }
 
+type RawgGameResponse {
+  count: Int!
+  nextPage: Int
+  results: [Game!]!
+}
+
 type Query {
-  allGames(ordering: String, dates: String, tags: String, genres: String, search: String, pageSize: Int, page: Int): [Game!]!
+  allGames(ordering: String, dates: String, tags: String, genres: String, search: String, pageSize: Int, page: Int): RawgGameResponse!
 }

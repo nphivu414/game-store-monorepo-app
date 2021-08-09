@@ -5,6 +5,7 @@ import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
+import { NavigationContext } from 'src/context/navigation';
 
 type NavigationBarProps = {
   handleToggleDrawer: () => void;
@@ -14,6 +15,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   const { goBack } = useHistory();
   const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
+  const { title } = React.useContext(NavigationContext);
 
   const isRoot = pathname === '/';
 
@@ -85,7 +87,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
         )}
       </div>
       <div className="flex-none">
-        <span className="text-lg font-bold">Game Store</span>
+        <span className="text-lg font-bold">{title}</span>
       </div>
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden">

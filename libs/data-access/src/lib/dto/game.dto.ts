@@ -1,11 +1,12 @@
-import { Game } from '../entities';
+import { RawgGameResponse } from '../entities';
 
 export type GamesQueryResponse = {
-  allGames: Game[];
+  allGames: RawgGameResponse;
 };
 
 export type GamesQueryParams = {
   variables: {
+    page?: number;
     pageSize?: number;
     dates?: string;
     ordering?: string;
