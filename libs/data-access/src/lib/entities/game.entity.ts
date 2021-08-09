@@ -1,7 +1,10 @@
 import { Field, ObjectType, Float, Int } from '@nestjs/graphql';
 import { Expose, Type } from 'class-transformer';
+import { EsrbRating } from './esrb-rating.entity';
 import { Genre } from './genre.entity';
 import { Platform } from './platform.entity';
+import { Publisher } from './publisher.entity';
+import { Store } from './store.entity';
 
 @ObjectType()
 export class Game {
@@ -15,11 +18,22 @@ export class Game {
   @Field({ nullable: true })
   backgroundImage?: string;
 
+  @Expose({ name: 'background_image_additional' })
+  @Field({ nullable: true })
+  backgroundImageAdditional?: string;
+
   @Field({ nullable: true })
   get thumbnailImage(): string {
     const thumbnailImageUrl = this.backgroundImage?.replace('/media/', '/media/crop/600/400/') || '';
     return thumbnailImageUrl;
   }
+
+  @Field((type) => Int)
+  metacritic: number;
+
+  @Expose({ name: 'esrb_rating' })
+  @Field((type) => EsrbRating)
+  esrbRating: EsrbRating;
 
   @Field((type) => Float)
   rating?: number;
@@ -37,6 +51,14 @@ export class Game {
   @Type(() => Genre)
   @Field((type) => [Genre])
   genres?: Genre[];
+
+  @Type(() => Publisher)
+  @Field((type) => [Publisher])
+  publishers?: Publisher[];
+
+  @Type(() => Store)
+  @Field((type) => [Store])
+  stores?: Store[];
 }
 
 @ObjectType()

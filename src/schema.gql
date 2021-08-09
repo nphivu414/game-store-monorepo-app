@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type EsrbRating {
+  id: Int!
+  name: String
+  slug: String
+}
+
 type Genre {
   id: Int!
   name: String
@@ -26,15 +32,43 @@ type Platform {
   releasedAt: String
 }
 
+type Publisher {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type StoreDetails {
+  id: Int!
+  name: String
+  slug: String
+  domain: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type Store {
+  id: Int!
+  url: String
+  store: StoreDetails!
+}
+
 type Game {
   id: Int!
   name: String
   backgroundImage: String
+  backgroundImageAdditional: String
   thumbnailImage: String
+  metacritic: Int!
+  esrbRating: EsrbRating!
   rating: Float!
   platforms: [Platform!]!
   parentPlatforms: [Platform!]!
   genres: [Genre!]!
+  publishers: [Publisher!]!
+  stores: [Store!]!
 }
 
 type RawgGameResponse {

@@ -3,6 +3,7 @@ import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@game-store-mo
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { GET_GAME_DETAILS } from 'src/graphql/queries';
+import GeneralInformation from './GeneralInformation';
 
 type GameDetailRouteParams = {
   id: string;
@@ -17,11 +18,16 @@ const GameDetails: React.FC = () => {
       },
     };
   }, [id]);
-  const { data, loading } = useQuery<GameDetailsQueryResponse>(GET_GAME_DETAILS, queryParams);
+  const { data } = useQuery<GameDetailsQueryResponse>(GET_GAME_DETAILS, queryParams);
+  if (!data) {
+    return null;
+  }
+
+  const gameDetails = data.gameDetails;
 
   return (
-    <div className="flex">
-      <h1>Game Details</h1>
+    <div className="flex flex-col">
+      <GeneralInformation data={gameDetails} />
     </div>
   );
 };

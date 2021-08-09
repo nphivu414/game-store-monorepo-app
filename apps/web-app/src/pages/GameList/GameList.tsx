@@ -67,7 +67,7 @@ const GameList: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading}>
+    <Spinner isLoading={loading} className="p-4">
       <div className="grid grid-cols-2 gap-2 items-center mb-5">
         <div>Display options:</div>
         <div>

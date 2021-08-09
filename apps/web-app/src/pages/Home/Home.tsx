@@ -12,11 +12,11 @@ const Home: React.FC = () => {
   }, [setTitle]);
 
   return (
-    <>
+    <div className="p-4">
       <FeaturedGames />
       <BestGames />
       <HighlightedTab />
-    </>
+    </div>
   );
 };
 
