@@ -32,13 +32,13 @@ const Card: React.FC<CardProps> = ({
   ...rest
 }) => {
   const cardClass = cn({
-    card: true,
-    'bg-base-100': true,
+    'card bg-base-100 transition-all duration-200 ': true,
     glass: glass,
     bordered: isBordered,
     compact: isCompact,
     'card-side': cardSideLayout,
     'image-full': isHeaderImageFull,
+    'cursor-pointer hover:opacity-80': rest.onClick,
   });
 
   const renderCardTitle = () => {

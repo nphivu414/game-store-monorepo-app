@@ -26,8 +26,6 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
   });
   const carouselItemClass = cn({
     'carousel-item mr-4 w-1/2 last:mr-0': true,
-    'cursor-pointer': true,
-    'transition duration-200 ease-in-out transform hover:-translate-y-1 hover:-translate-y-1': true,
   });
 
   const handleOnItemClick = (value: CarouselItem) => {
