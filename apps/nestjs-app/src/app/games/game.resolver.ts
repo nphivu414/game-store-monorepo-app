@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
-import { Game, RawgGameResponse } from '@game-store-monorepo/data-access';
+import { Game, RawgGameResponse, RawgScreenshotResponse, RawgTrailerResponse } from '@game-store-monorepo/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 
@@ -52,10 +52,25 @@ export class GameResolver {
       key: this.apiKey,
     };
     this.logger.debug('getGameDetails called with params', params);
-    const res = await this.httpService
+    const detailRes = await this.httpService
       .get<Game>(`${this.host}/games/${id}?${stringifyQueryObject(params)}`)
       .toPromise();
-    const rawgResponse = plainToClass(Game, res.data);
-    return rawgResponse;
+
+    const mediaParams = {
+      key: this.apiKey,
+      pageSize: 5,
+    };
+    const screenshotRes = await this.httpService
+      .get<RawgScreenshotResponse>(`${this.host}/games/${id}/screenshots?${stringifyQueryObject(mediaParams)}`)
+      .toPromise();
+    const trailerRes = await this.httpService
+      .get<RawgTrailerResponse>(`${this.host}/games/${id}/movies?${stringifyQueryObject(mediaParams)}`)
+      .toPromise();
+
+    detailRes.data.screenshots = screenshotRes.data.results;
+    detailRes.data.trailers = trailerRes.data.results;
+
+    const gameDetailResponse = plainToClass(Game, detailRes.data);
+    return gameDetailResponse;
   }
 }

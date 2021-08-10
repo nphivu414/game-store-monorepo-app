@@ -10,14 +10,22 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
 
 const NavigationBar: React.FC = () => {
-  const { goBack } = useHistory();
+  const { goBack, replace, length } = useHistory();
+  console.log(useHistory());
+  console.log(useLocation());
   const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
 
   const isRoot = pathname === '/';
+  const canGoBack = length > 2;
 
   const onBackButtonClick = () => {
+    if (!canGoBack) {
+      replace('/');
+      return;
+    }
+
     goBack();
   };
 

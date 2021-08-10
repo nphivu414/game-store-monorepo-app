@@ -9,6 +9,7 @@ type CarouselProps = {
   data?: CarouselItem[];
   isCompact?: boolean;
   isLoading?: boolean;
+  noPadding?: boolean;
   onItemClick?: (value: CarouselItem) => void;
 };
 
@@ -20,12 +21,23 @@ export type CarouselItem = {
   content?: React.ReactNode;
 };
 
-const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isCompact, isLoading, onItemClick }) => {
+const Carousel: React.FC<CarouselProps> = ({
+  className,
+  itemClassName,
+  data,
+  isCompact,
+  isLoading,
+  noPadding,
+  onItemClick,
+}) => {
   const carouselClass = cn({
     'carousel pb-2 overflow-x-auto': true,
   });
   const carouselItemClass = cn({
     'carousel-item mr-4 w-1/2 last:mr-0': true,
+  });
+  const carouselItemBodyClass = cn({
+    '!p-0': noPadding,
   });
 
   const handleOnItemClick = (value: CarouselItem) => {
@@ -35,11 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
   };
 
   const renderCarouselItem = () => {
-    if (!data) {
-      return null;
-    }
-
-    return data.map((item) => {
+    return data?.map((item) => {
       const { id, title, subTitle, content, headerImageUrl } = item;
       return (
         <Card
@@ -47,6 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
           headerImageUrl={headerImageUrl}
           isCompact={isCompact}
           className={cn(carouselItemClass, itemClassName)}
+          bodyClassName={carouselItemBodyClass}
           onClick={handleOnItemClick(item)}
         >
           {title && <p className="font-semibold truncate  mb-1">{title}</p>}
@@ -69,6 +78,10 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
           ))}
       </div>
     );
+  }
+
+  if (!data?.length) {
+    return <p className="text-center text-base-content-secondary">No data</p>;
   }
 
   return <div className={cn(carouselClass, className)}>{renderCarouselItem()}</div>;

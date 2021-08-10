@@ -6,6 +6,7 @@ import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
 import { GET_GAME_DETAILS } from 'src/graphql/queries';
 import GeneralInformation from './GeneralInformation';
+import MediaPreviewTab from './MediaPreviewTab';
 
 type GameDetailRouteParams = {
   id: string;
@@ -33,6 +34,7 @@ const GameDetails: React.FC = () => {
   return (
     <Spinner isFullScreen isLoading={loading} size={30} className="flex flex-col">
       <GeneralInformation data={gameDetails} />
+      <MediaPreviewTab data={gameDetails} />
     </Spinner>
   );
 };

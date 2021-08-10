@@ -40,6 +40,14 @@ type Publisher {
   imageBackground: String
 }
 
+type Screenshot {
+  id: Int!
+  image: String
+  width: Int
+  height: Int
+  isDeleted: Boolean!
+}
+
 type StoreDetails {
   id: Int!
   name: String
@@ -53,6 +61,18 @@ type Store {
   id: Int!
   url: String
   store: StoreDetails!
+}
+
+type TrailerDetails {
+  thumbnail: String
+  max: String
+}
+
+type Trailer {
+  id: Int!
+  name: String
+  preview: String
+  data: TrailerDetails!
 }
 
 type Game {
@@ -69,6 +89,8 @@ type Game {
   genres: [Genre!]
   publishers: [Publisher!]
   stores: [Store!]
+  screenshots: [Screenshot!]
+  trailers: [Trailer!]
 }
 
 type RawgGameResponse {

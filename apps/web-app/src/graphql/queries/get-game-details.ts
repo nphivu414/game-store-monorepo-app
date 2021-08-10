@@ -45,6 +45,19 @@ export const GET_GAME_DETAILS = gql`
           imageBackground
         }
       }
+      screenshots {
+        id
+        image
+      }
+      trailers {
+        id
+        name
+        preview
+        data {
+          thumbnail
+          max
+        }
+      }
     }
   }
 `;

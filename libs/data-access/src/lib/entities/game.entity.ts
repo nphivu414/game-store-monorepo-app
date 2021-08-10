@@ -4,7 +4,9 @@ import { EsrbRating } from './esrb-rating.entity';
 import { Genre } from './genre.entity';
 import { Platform } from './platform.entity';
 import { Publisher } from './publisher.entity';
+import { Screenshot } from './screenshot.entity';
 import { Store } from './store.entity';
+import { Trailer } from './trailer.entity';
 
 @ObjectType()
 export class Game {
@@ -59,6 +61,14 @@ export class Game {
   @Type(() => Store)
   @Field((type) => [Store], { nullable: true })
   stores?: Store[];
+
+  @Type(() => Screenshot)
+  @Field((type) => [Screenshot], { nullable: true })
+  screenshots?: Screenshot[];
+
+  @Type(() => Trailer)
+  @Field((type) => [Trailer], { nullable: true })
+  trailers?: Trailer[];
 }
 
 @ObjectType()
