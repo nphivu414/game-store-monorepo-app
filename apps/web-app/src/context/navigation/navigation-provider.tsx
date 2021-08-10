@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContext } from './navigation';
 
 export const NavigationProvider: React.FC = ({ children }) => {
-  const [title, setTitle] = React.useState<string>('Game Store');
+  const [title, setTitle] = React.useState<string>();
 
   const handleSetTitle = React.useCallback((value: string) => {
     setTitle(value);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FiMenu, FiChevronDown, FiArrowLeft } from 'react-icons/fi';
+import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
 import { CgDarkMode } from 'react-icons/cg';
 
 import Button from 'src/components//Button';
@@ -9,11 +9,7 @@ import cn from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
 
-type NavigationBarProps = {
-  handleToggleDrawer: () => void;
-};
-
-const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => {
+const NavigationBar: React.FC = () => {
   const { goBack } = useHistory();
   const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
@@ -65,7 +61,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
         <Button isRounded isGhost className="px-0">
           <div className="flex items-center">
             <CgDarkMode size={22} className="mx-1" />
-            <div className="hidden rounded-full m-1">Change Theme</div>
           </div>
           <div className="flex items-center">
             <FiChevronDown size="22" />
@@ -76,29 +71,20 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   };
 
   return (
-    <div className="navbar w-full pt-6 bg-neutral text-neutral-content">
-      <div className="flex-none mr-3">
-        {isRoot ? (
-          <Button isSquare isGhost size="small" onClick={handleToggleDrawer}>
-            <FiMenu size={24} />
-          </Button>
-        ) : (
-          <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
-            <FiArrowLeft size={24} />
-          </Button>
-        )}
-      </div>
-      <div className="flex-none">
-        <span className="text-lg font-bold">{title}</span>
-      </div>
-      <div className="flex-1 px-2 mx-2">
-        <div className="items-stretch hidden">
-          <Button isGhost isRounded className="text-base mr-2">
-            Home
-          </Button>
+    <div className="navbar w-full bg-neutral text-neutral-content justify-between">
+      <div>
+        <div className="mr-3">
+          {isRoot ? null : (
+            <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
+              <FiArrowLeft size={24} />
+            </Button>
+          )}
+        </div>
+        <div>
+          <p className="text-lg font-bold truncate">{title}</p>
         </div>
       </div>
-      <div className="flex-none align-middle">{renderThemeDropDown()}</div>
+      <div>{renderThemeDropDown()}</div>
     </div>
   );
 };

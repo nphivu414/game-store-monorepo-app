@@ -14,9 +14,8 @@ export const ROUTES = {
 const Routes: React.FC = () => {
   const location = useLocation();
   const transitions = useTransition(location, {
-    initial: () => ({ height: '100%' }),
     from: () => ({ opacity: 0 }),
-    enter: () => ({ opacity: 1, height: '100%' }),
+    enter: () => ({ opacity: 1 }),
     leave: () => ({ opacity: 0, position: 'absolute', display: 'none' }),
     trail: 200,
   });

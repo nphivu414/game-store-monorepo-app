@@ -67,8 +67,8 @@ const GameList: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} className="px-4 pt-4">
-      <div className="grid grid-cols-2 gap-2 items-center mb-5">
+    <Spinner isLoading={loading} isFullScreen className="px-4 pt-4">
+      <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
         <div>Display options:</div>
         <div>
           <ButtonGroup isFullWidth value={viewType} onChange={onViewTypeChange}>
@@ -82,14 +82,13 @@ const GameList: React.FC = () => {
         </div>
       </div>
       <InfiniteScroll
-        className={cn(gridClass, 'grid grid-flow-row overflow-hidden pb-12 relative')}
+        className={cn(gridClass, 'grid grid-flow-row !overflow-y-hidden')}
         dataLength={gameResults?.length || 0}
-        scrollableTarget="main-layout-content"
-        scrollThreshold="50px"
+        scrollThreshold="100px"
         next={handleFetchMore}
         hasMore={hasMore}
         loader={
-          <div className="w-full h-10 absolute bottom-2 ml-2">
+          <div className="sticky bottom-0 left-1/2 translate-x-[-50%] text-center h-12">
             <Spinner isLoading={true} theme="ClipLoader" />
           </div>
         }

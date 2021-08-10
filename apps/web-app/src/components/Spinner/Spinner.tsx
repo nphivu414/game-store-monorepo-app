@@ -7,21 +7,24 @@ import { ThemeContext } from 'src/context/theme';
 
 type SpinnerProps = {
   isLoading?: boolean;
+  isFullScreen?: boolean;
   theme?: 'Pacman' | 'ClipLoader' | 'ScaleLoader';
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const Spinner: React.FC<SpinnerProps> = ({ isLoading, theme = 'Pacman', children, className, ...rest }) => {
+const Spinner: React.FC<SpinnerProps> = ({
+  isLoading = true,
+  isFullScreen,
+  theme = 'Pacman',
+  children,
+  className,
+  ...rest
+}) => {
   const { theme: appTheme } = React.useContext(ThemeContext);
-
   const spinnerColor = appTheme === 'light' ? 'gray' : 'white';
-
-  if (!isLoading) {
-    return (
-      <div className={className} {...rest}>
-        {children}
-      </div>
-    );
-  }
+  const spinnerContainerClass = cn({
+    'relative w-full h-full': true,
+    'min-h-screen': isFullScreen,
+  });
 
   const renderSpinner = () => {
     switch (theme) {
@@ -36,8 +39,20 @@ const Spinner: React.FC<SpinnerProps> = ({ isLoading, theme = 'Pacman', children
     }
   };
 
+  if (!isLoading) {
+    return (
+      <div className={className} {...rest}>
+        {children}
+      </div>
+    );
+  }
+
+  if (!children) {
+    return renderSpinner();
+  }
+
   return (
-    <div className={cn('relative w-full h-full', className)} {...rest}>
+    <div className={cn(spinnerContainerClass, className)} {...rest}>
       <div className="absolute z-10" />
       <div className="absolute w-6 h-6 z-20 centered-axis-xy">{renderSpinner()}</div>
       {children}

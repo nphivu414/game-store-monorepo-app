@@ -24,7 +24,7 @@ const GameDetails: React.FC = () => {
   const { data } = useQuery<GameDetailsQueryResponse>(GET_GAME_DETAILS, queryParams);
 
   React.useEffect(() => {
-    setTitle(data?.gameDetails.name || '');
+    setTitle(data?.gameDetails.name || '...');
   }, [data?.gameDetails.name, setTitle]);
 
   if (!data) {

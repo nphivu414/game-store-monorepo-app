@@ -31,7 +31,7 @@ export const client = new ApolloClient({
             read(existing) {
               return existing;
             },
-            keyArgs: ['dates'],
+            keyArgs: ['dates', 'pageSize'],
             merge(existing: RawgGameResponse, incoming: RawgGameResponse, { args }): RawgGameResponse {
               if (!existing) {
                 return incoming;

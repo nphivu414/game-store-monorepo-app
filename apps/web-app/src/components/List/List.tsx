@@ -28,8 +28,8 @@ const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
       <div>
         {Array(5)
           .fill(0)
-          .map((_) => (
-            <Skeleton isLoading={true} theme="GAME_LIST_ITEM" />
+          .map((_, i) => (
+            <Skeleton key={i} isLoading={true} theme="GAME_LIST_ITEM" />
           ))}
       </div>
     );
