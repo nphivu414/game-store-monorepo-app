@@ -61,7 +61,7 @@ type Game {
   backgroundImage: String
   backgroundImageAdditional: String
   thumbnailImage: String
-  metacritic: Int!
+  metacritic: Int
   esrbRating: EsrbRating
   rating: Float
   platforms: [Platform!]

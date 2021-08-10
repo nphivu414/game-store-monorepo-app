@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { getMultipleGenreNames } from '@game-store-monorepo/util';
+import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { useHistory } from 'react-router-dom';
 import Button from 'src/components/Button';
 import Carousel, { CarouselItem } from 'src/components/Carousel';
@@ -36,7 +36,7 @@ const BestGames: React.FC = () => {
         content: (
           <div>
             <PlatformLogos data={item.parentPlatforms} className="mt-1" />
-            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleGenreNames(
+            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
               item.genres,
               2,
             )}`}</p>

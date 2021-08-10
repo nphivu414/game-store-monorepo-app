@@ -28,12 +28,12 @@ export class Game {
     return thumbnailImageUrl;
   }
 
-  @Field((type) => Int)
+  @Field((type) => Int, { nullable: true })
   metacritic: number;
 
   @Expose({ name: 'esrb_rating' })
   @Field((type) => EsrbRating, { nullable: true })
-  esrbRating: EsrbRating;
+  esrbRating?: EsrbRating;
 
   @Field((type) => Float, { nullable: true })
   rating?: number;

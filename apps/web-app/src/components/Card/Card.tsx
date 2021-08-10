@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({
     <div className={cn(cardClass, className)} {...rest}>
       {headerImageUrl && (
         <figure>
-          <img className="h-[125px] object-cover" src={headerImageUrl} alt="" />
+          <img className="h-full object-cover" src={headerImageUrl} alt="" loading="lazy" />
         </figure>
       )}
       <div className={cn('card-body', bodyClassName)}>

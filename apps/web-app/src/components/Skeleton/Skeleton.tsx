@@ -7,7 +7,7 @@ type SkeletonProps = IContentLoaderProps & {
   theme?: 'FACEBOOK' | 'INSTAGRAM' | 'CODE' | 'LIST' | 'BULLET_LIST' | 'GAME_LIST_ITEM' | 'GAME_CARD_ITEM';
 };
 
-const Skeleton: React.FC<SkeletonProps> = ({ isLoading, theme, children }) => {
+const Skeleton: React.FC<SkeletonProps> = ({ isLoading = true, theme, children }) => {
   const transitions = useTransition(isLoading, {
     from: { opacity: 0 },
     enter: { opacity: 1 },

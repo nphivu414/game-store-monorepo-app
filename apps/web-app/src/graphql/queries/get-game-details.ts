@@ -9,6 +9,7 @@ export const GET_GAME_DETAILS = gql`
       thumbnailImage
       backgroundImageAdditional
       rating
+      metacritic
       platforms {
         platform {
           id

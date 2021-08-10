@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { getMultipleGenreNames } from '@game-store-monorepo/util';
+import { getMultipleItemNames } from '@game-store-monorepo/util';
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import List, { ListItem } from 'src/components/List';
@@ -32,7 +32,7 @@ const NewReleases: React.FC = () => {
         content: (
           <div>
             <PlatformLogos data={item.parentPlatforms} className="mt-1" />
-            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleGenreNames(
+            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
               item.genres,
               3,
             )}`}</p>

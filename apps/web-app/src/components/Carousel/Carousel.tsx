@@ -64,7 +64,7 @@ const Carousel: React.FC<CarouselProps> = ({ className, itemClassName, data, isC
           .fill(0)
           .map((_, i) => (
             <div key={i} className="carousel-item mr-4 w-3/4">
-              <Skeleton isLoading={true} theme="GAME_CARD_ITEM" />
+              <Skeleton theme="GAME_CARD_ITEM" />
             </div>
           ))}
       </div>

@@ -8,7 +8,7 @@ import { BsViewList } from 'react-icons/bs';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from 'src/graphql/queries';
 import PlatformLogos from 'src/components/PlatformLogos';
-import { getMultipleGenreNames } from '@game-store-monorepo/util';
+import { getMultipleItemNames } from '@game-store-monorepo/util';
 import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import Spinner from 'src/components/Spinner';
@@ -23,8 +23,13 @@ const GameList: React.FC = () => {
   const { search } = useLocation();
   const { setTitle } = React.useContext(NavigationContext);
   const gridClass = cn({
-    'grid-cols-2 gap-2': viewType === 'Grid',
-    'grid-cols-1 gap-4': viewType === 'List',
+    'grid grid-flow-row gap-4 !overflow-y-hidden': true,
+    'grid-cols-2': viewType === 'Grid',
+    'grid-cols-1': viewType === 'List',
+  });
+  const loadMoreSpinnerClass = cn({
+    'sticky bottom-0 left-1/2 text-center h-12': true,
+    'translate-x-[-50%]': viewType === 'Grid',
   });
 
   const queryParams: GamesQueryParams = React.useMemo(() => {
@@ -67,7 +72,7 @@ const GameList: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen className="px-4 pt-4">
+    <Spinner isLoading={loading} isFullScreen size={30} className="px-4 pt-4">
       <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
         <div>Display options:</div>
         <div>
@@ -82,14 +87,14 @@ const GameList: React.FC = () => {
         </div>
       </div>
       <InfiniteScroll
-        className={cn(gridClass, 'grid grid-flow-row !overflow-y-hidden')}
+        className={cn(gridClass)}
         dataLength={gameResults?.length || 0}
         scrollThreshold="100px"
         next={handleFetchMore}
         hasMore={hasMore}
         loader={
-          <div className="sticky bottom-0 left-1/2 translate-x-[-50%] text-center h-12">
-            <Spinner isLoading={true} theme="ClipLoader" />
+          <div className={loadMoreSpinnerClass}>
+            <Spinner isLoading={true} size={20} theme="ClipLoader" />
           </div>
         }
       >
@@ -100,7 +105,7 @@ const GameList: React.FC = () => {
               {name && <p className="font-semibold truncate  mb-1">{name}</p>}
               <div>
                 <PlatformLogos data={parentPlatforms} amount={5} className="mt-1" />
-                <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleGenreNames(
+                <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
                   genres,
                   2,
                 )}`}</p>
