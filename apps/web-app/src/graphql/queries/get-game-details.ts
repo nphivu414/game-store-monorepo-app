@@ -1,62 +1,44 @@
 import { gql } from '@apollo/client';
+import {
+  CORE_ESRB_FIELDS,
+  CORE_GAME_FIELDS,
+  CORE_PUBLISHER_FIELDS,
+  CORE_SCREENSHOT_FIELDS,
+  CORE_STORE_FIELDS,
+  CORE_TAG_FIELDS,
+  CORE_TRAILER_FIELDS,
+} from '../fragments';
 
 export const GET_GAME_DETAILS = gql`
+  ${CORE_GAME_FIELDS}
+  ${CORE_ESRB_FIELDS}
+  ${CORE_PUBLISHER_FIELDS}
+  ${CORE_STORE_FIELDS}
+  ${CORE_SCREENSHOT_FIELDS}
+  ${CORE_TRAILER_FIELDS}
+  ${CORE_TAG_FIELDS}
   query GET_GAME_DETAILS($id: Int!) {
     gameDetails(id: $id) {
-      id
-      name
-      backgroundImage
-      thumbnailImage
-      backgroundImageAdditional
-      rating
-      metacritic
-      platforms {
-        platform {
-          id
-          name
-          image
-          imageBackground
-        }
-        releasedAt
-      }
-      parentPlatforms {
-        platform {
-          id
-          name
-        }
-      }
-      genres {
-        id
-        name
-      }
+      ...CoreGameFields
+      thumbnailImageAdditional
+      description
       esrbRating {
-        name
+        ...CoreEsrbFields
       }
       publishers {
-        id
-        name
+        ...CorePublisherFields
       }
       stores {
-        id
-        store {
-          id
-          name
-          domain
-          imageBackground
-        }
+        ...CoreStoreFields
       }
       screenshots {
-        id
-        image
+        ...CoreScreenshotFields
       }
       trailers {
-        id
-        name
-        preview
-        data {
-          thumbnail
-          max
-        }
+        ...CoreTrailerFields
+      }
+      tags {
+        ...CoreTagFields
       }
     }
   }

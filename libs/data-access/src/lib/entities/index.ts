@@ -6,3 +6,4 @@ export * from './screenshot.entity';
 export * from './store.entity';
 export * from './trailer.entity';
 export * from './genre.entity';
+export * from './tag.entity';

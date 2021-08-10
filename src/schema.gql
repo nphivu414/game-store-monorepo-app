@@ -63,6 +63,14 @@ type Store {
   store: StoreDetails!
 }
 
+type Tag {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
 type TrailerDetails {
   thumbnail: String
   max: String
@@ -78,8 +86,10 @@ type Trailer {
 type Game {
   id: Int!
   name: String
+  description: String
   backgroundImage: String
   backgroundImageAdditional: String
+  thumbnailImageAdditional: String
   thumbnailImage: String
   metacritic: Int
   esrbRating: EsrbRating
@@ -91,6 +101,7 @@ type Game {
   stores: [Store!]
   screenshots: [Screenshot!]
   trailers: [Trailer!]
+  tags: [Tag!]
 }
 
 type RawgGameResponse {

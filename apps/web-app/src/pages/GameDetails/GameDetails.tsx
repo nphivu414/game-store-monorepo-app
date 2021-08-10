@@ -1,12 +1,14 @@
+import * as React from 'react';
 import { useQuery } from '@apollo/client';
 import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@game-store-monorepo/data-access';
-import * as React from 'react';
 import { useParams } from 'react-router-dom';
+import Section from 'src/components/Section';
 import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
 import { GET_GAME_DETAILS } from 'src/graphql/queries';
 import GeneralInformation from './GeneralInformation';
 import MediaPreviewTab from './MediaPreviewTab';
+import Badge from 'src/components/Badge';
 
 type GameDetailRouteParams = {
   id: string;
@@ -15,6 +17,11 @@ type GameDetailRouteParams = {
 const GameDetails: React.FC = () => {
   const { setTitle } = React.useContext(NavigationContext);
   const { id } = useParams<GameDetailRouteParams>();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const queryParams: GameDetailsQueryParams = React.useMemo(() => {
     return {
       variables: {
@@ -35,6 +42,22 @@ const GameDetails: React.FC = () => {
     <Spinner isFullScreen isLoading={loading} size={30} className="flex flex-col">
       <GeneralInformation data={gameDetails} />
       <MediaPreviewTab data={gameDetails} />
+      <div className="mt-4 p-4 bg-base-100">
+        <Section titleText="Tags">
+          {gameDetails?.tags?.map((item) => {
+            return (
+              <Badge variant="info" className="mr-2 mb-2">
+                {item.name}
+              </Badge>
+            );
+          })}
+        </Section>
+      </div>
+      <div className="mt-4 p-4 bg-base-100">
+        <Section titleText="Description">
+          <p className="text-sm" dangerouslySetInnerHTML={{ __html: gameDetails?.description || '' }}></p>
+        </Section>
+      </div>
     </Spinner>
   );
 };

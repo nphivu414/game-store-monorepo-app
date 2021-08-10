@@ -15,7 +15,7 @@ const GeneralInformation: React.FC<GeneralInformationProps> = ({ data }) => {
 
   const {
     thumbnailImage,
-    backgroundImageAdditional,
+    thumbnailImageAdditional,
     name,
     parentPlatforms,
     stores,
@@ -59,7 +59,7 @@ const GeneralInformation: React.FC<GeneralInformationProps> = ({ data }) => {
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <img src={backgroundImageAdditional} alt="" className="w-full h-[200px] object-cover" />
+        <img src={thumbnailImageAdditional} alt="" className="w-full h-[200px] object-cover" />
         <img
           src={thumbnailImage}
           alt=""

@@ -20,7 +20,7 @@ const tabData: TabViewItem[] = [
 const HighlightedTab: React.FC = () => {
   return (
     <Card isCompact className="mt-4">
-      <TabView data={tabData} />
+      <TabView data={tabData} isFullWidth />
     </Card>
   );
 };

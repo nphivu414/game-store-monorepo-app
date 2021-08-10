@@ -55,6 +55,7 @@ const TabView: React.FC<TabViewProps> = ({ selectedIndex = 0, data, onTabIndexCh
             'tab-active': index === selectedSceneIndex,
             'border-t-0 border-l-0 border-r-0 rounded-none': true,
             'flex-none': true,
+            [`w-1/${data.length}`]: isFullWidth,
           });
           return (
             <Button isLink key={tab.id} className={tabClass} onClick={handleOnTabChange(index)}>

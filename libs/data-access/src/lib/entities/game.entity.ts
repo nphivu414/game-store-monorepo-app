@@ -6,6 +6,7 @@ import { Platform } from './platform.entity';
 import { Publisher } from './publisher.entity';
 import { Screenshot } from './screenshot.entity';
 import { Store } from './store.entity';
+import { Tag } from './tag.entity';
 import { Trailer } from './trailer.entity';
 
 @ObjectType()
@@ -16,6 +17,9 @@ export class Game {
   @Field({ nullable: true })
   name?: string;
 
+  @Field({ nullable: true })
+  description?: string;
+
   @Expose({ name: 'background_image' })
   @Field({ nullable: true })
   backgroundImage?: string;
@@ -23,6 +27,12 @@ export class Game {
   @Expose({ name: 'background_image_additional' })
   @Field({ nullable: true })
   backgroundImageAdditional?: string;
+
+  @Field({ nullable: true })
+  get thumbnailImageAdditional(): string {
+    const thumbnailImageUrl = this.backgroundImageAdditional?.replace('/media/', '/media/crop/600/400/') || '';
+    return thumbnailImageUrl;
+  }
 
   @Field({ nullable: true })
   get thumbnailImage(): string {
@@ -69,6 +79,10 @@ export class Game {
   @Type(() => Trailer)
   @Field((type) => [Trailer], { nullable: true })
   trailers?: Trailer[];
+
+  @Type(() => Tag)
+  @Field((type) => [Tag], { nullable: true })
+  tags?: Tag[];
 }
 
 @ObjectType()
