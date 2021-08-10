@@ -22,3 +22,15 @@ export type GameDetailsQueryParams = {
     id: number;
   };
 };
+
+export type GameSeriesQueryParams = {
+  variables: {
+    id: number;
+    page?: number;
+    pageSize?: number;
+  };
+};
+
+export type GameSeriesQueryResponse = {
+  gameSeries: RawgGameResponse;
+};

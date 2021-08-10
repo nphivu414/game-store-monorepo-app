@@ -22,31 +22,37 @@ const httpLink = new HttpLink({
   uri: process.env.NX_API_URL,
 });
 
+const handleQueryMergeResult = (existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse => {
+  if (!existing) {
+    return incoming;
+  }
+  return {
+    ...existing,
+    nextPage: incoming.nextPage,
+    results: [...existing.results, ...incoming.results],
+  };
+};
+
 export const client = new ApolloClient({
+  link: from([errorLink, httpLink]),
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
           allGames: {
-            read(existing) {
-              return existing;
-            },
             keyArgs: ['dates', 'pageSize'],
-            merge(existing: RawgGameResponse, incoming: RawgGameResponse, { args }): RawgGameResponse {
-              if (!existing) {
-                return incoming;
-              }
-
-              return {
-                ...existing,
-                nextPage: incoming.nextPage,
-                results: [...existing.results, ...incoming.results],
-              };
+            merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
+              return handleQueryMergeResult(existing, incoming);
+            },
+          },
+          gameSeries: {
+            keyArgs: ['id'],
+            merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
+              return handleQueryMergeResult(existing, incoming);
             },
           },
         },
       },
     },
   }),
-  link: from([errorLink, httpLink]),
 });

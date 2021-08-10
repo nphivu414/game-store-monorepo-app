@@ -80,7 +80,7 @@ const NavigationBar: React.FC = () => {
 
   return (
     <div className="navbar w-full bg-neutral text-neutral-content justify-between">
-      <div>
+      <div className="w-[80%]">
         <div className="mr-3">
           {isRoot ? null : (
             <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
@@ -88,9 +88,7 @@ const NavigationBar: React.FC = () => {
             </Button>
           )}
         </div>
-        <div>
-          <p className="text-lg font-bold truncate">{title}</p>
-        </div>
+        <p className="text-lg font-bold truncate">{title}</p>
       </div>
       <div>{renderThemeDropDown()}</div>
     </div>
