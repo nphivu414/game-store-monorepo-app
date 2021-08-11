@@ -4,9 +4,10 @@ import { Screenshot } from '@game-store-monorepo/data-access';
 
 type ScreenshotsProps = {
   data?: Screenshot[];
+  isLoading?: boolean;
 };
 
-const Screenshots: React.FC<ScreenshotsProps> = ({ data }) => {
+const Screenshots: React.FC<ScreenshotsProps> = ({ data, isLoading }) => {
   const carouselData: CarouselItem[] = React.useMemo(() => {
     if (!data) {
       return [];
@@ -24,6 +25,7 @@ const Screenshots: React.FC<ScreenshotsProps> = ({ data }) => {
     <div>
       <Carousel
         isCompact
+        isLoading={isLoading}
         noPadding
         data={carouselData}
         className="carousel-center"

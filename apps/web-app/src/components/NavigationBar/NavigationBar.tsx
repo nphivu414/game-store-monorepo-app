@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
 import { CgDarkMode } from 'react-icons/cg';
-
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
@@ -9,13 +8,18 @@ import cn from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
 
-const NavigationBar: React.FC = () => {
+type NavigationBarProps = {
+  isSticky?: boolean;
+};
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
   const { goBack, replace, length } = useHistory();
-  console.log(useHistory());
-  console.log(useLocation());
   const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
+  const navbarClass = cn({
+    sticky: isSticky,
+  });
 
   const isRoot = pathname === '/';
   const canGoBack = length > 2;
@@ -79,7 +83,7 @@ const NavigationBar: React.FC = () => {
   };
 
   return (
-    <div className="navbar w-full bg-neutral text-neutral-content justify-between">
+    <div className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10', navbarClass)}>
       <div className="w-[80%]">
         <div className="mr-3">
           {isRoot ? null : (

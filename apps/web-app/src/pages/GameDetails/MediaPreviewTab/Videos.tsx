@@ -4,9 +4,10 @@ import Carousel, { CarouselItem } from 'src/components/Carousel';
 
 type VideosProps = {
   data?: Trailer[];
+  isLoading?: boolean;
 };
 
-const Videos: React.FC<VideosProps> = ({ data }) => {
+const Videos: React.FC<VideosProps> = ({ data, isLoading }) => {
   const carouselData: CarouselItem[] = React.useMemo(() => {
     if (!data) {
       return [];
@@ -28,6 +29,7 @@ const Videos: React.FC<VideosProps> = ({ data }) => {
     <div>
       <Carousel
         isCompact
+        isLoading={isLoading}
         noPadding
         data={carouselData}
         className="carousel-center"

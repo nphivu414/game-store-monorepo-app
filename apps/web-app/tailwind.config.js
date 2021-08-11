@@ -7,7 +7,7 @@ module.exports = {
     './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
     createGlobPatternsForDependencies(__dirname)
   ],
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('@tailwindcss/line-clamp'),],
     variants: {
     extend: {
       padding: ['first', 'last'],
@@ -25,6 +25,9 @@ module.exports = {
     extend: {
       maxHeight: {
         initial: 'initial',
+      },
+      lineClamp: {
+        10: '10',
       },
     },
   },

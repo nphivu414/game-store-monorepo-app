@@ -14,6 +14,7 @@ import { ROUTES } from 'src/routes/routes';
 import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
 import ButtonGroup from 'src/components/ButtonGroup';
+import ScrollToTop from 'src/components/ScrollToTop';
 
 type ViewType = 'Grid' | 'List';
 
@@ -40,6 +41,9 @@ const GameList: React.FC = () => {
         pageSize: 10,
         dates: searchParams.get('dates') || undefined,
         ordering: searchParams.get('ordering') || undefined,
+        genres: searchParams.get('genres') || undefined,
+        tags: searchParams.get('tags') || undefined,
+        search: searchParams.get('search') || undefined,
       },
     };
   }, [search]);
@@ -52,6 +56,10 @@ const GameList: React.FC = () => {
   React.useEffect(() => {
     setTitle('Games');
   }, [setTitle]);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
@@ -114,6 +122,7 @@ const GameList: React.FC = () => {
           );
         })}
       </InfiniteScroll>
+      <ScrollToTop />
     </Spinner>
   );
 };

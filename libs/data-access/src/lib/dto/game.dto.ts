@@ -10,6 +10,8 @@ export type GamesQueryParams = {
     pageSize?: number;
     dates?: string;
     ordering?: string;
+    tags?: string;
+    genres?: string;
   };
 };
 

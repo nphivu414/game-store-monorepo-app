@@ -20,11 +20,11 @@ export class GameResolver {
   async getAllGames(
     @Args('page', { nullable: true, type: () => Int }) page?: number,
     @Args('pageSize', { nullable: true, type: () => Int }) pageSize?: number,
-    @Args('search', { nullable: true }) search?: string,
-    @Args('genres', { nullable: true }) genres?: string,
-    @Args('tags', { nullable: true }) tags?: string,
     @Args('dates', { nullable: true }) dates?: string,
     @Args('ordering', { nullable: true }) ordering?: string,
+    @Args('tags', { nullable: true }) tags?: string,
+    @Args('genres', { nullable: true }) genres?: string,
+    @Args('search', { nullable: true }) search?: string,
   ): Promise<RawgGameResponse> {
     const params = {
       key: this.apiKey,

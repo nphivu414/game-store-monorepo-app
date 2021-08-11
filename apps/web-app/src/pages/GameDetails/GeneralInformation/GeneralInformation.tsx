@@ -3,12 +3,18 @@ import { getMultipleItemNames } from '@game-store-monorepo/util';
 import * as React from 'react';
 import Button from 'src/components/Button';
 import PlatformLogos from 'src/components/PlatformLogos';
+import Skeleton from 'src/components/Skeleton';
 
 type GeneralInformationProps = {
   data?: Game;
+  isLoading?: boolean;
 };
 
-const GeneralInformation: React.FC<GeneralInformationProps> = ({ data }) => {
+const GeneralInformation: React.FC<GeneralInformationProps> = ({ data, isLoading }) => {
+  if (isLoading) {
+    return <Skeleton theme="PROFILE_INFO_CARD" />;
+  }
+
   if (!data) {
     return null;
   }

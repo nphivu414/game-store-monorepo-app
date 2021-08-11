@@ -72,7 +72,7 @@ const Carousel: React.FC<CarouselProps> = ({
         {Array(3)
           .fill(0)
           .map((_, i) => (
-            <div key={i} className="carousel-item mr-4 w-3/4">
+            <div key={i} className="carousel-item ml-4 w-3/4">
               <Skeleton theme="GAME_CARD_ITEM" />
             </div>
           ))}

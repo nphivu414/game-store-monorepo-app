@@ -7,9 +7,10 @@ import Videos from './Videos';
 
 type MediaPreviewTabProps = {
   data?: Game;
+  isLoading?: boolean;
 };
 
-const MediaPreviewTab: React.FC<MediaPreviewTabProps> = ({ data }) => {
+const MediaPreviewTab: React.FC<MediaPreviewTabProps> = ({ data, isLoading }) => {
   const screenshots = data?.screenshots;
   const trailers = data?.trailers;
   const tabData: TabViewItem[] = React.useMemo(() => {
@@ -17,19 +18,15 @@ const MediaPreviewTab: React.FC<MediaPreviewTabProps> = ({ data }) => {
       {
         id: '1',
         title: 'Screenshots',
-        content: <Screenshots data={screenshots} />,
+        content: <Screenshots data={screenshots} isLoading={isLoading} />,
       },
       {
         id: '2',
         title: 'Trailers & Videos',
-        content: <Videos data={trailers} />,
+        content: <Videos data={trailers} isLoading={isLoading} />,
       },
     ];
-  }, [screenshots, trailers]);
-
-  if (!data) {
-    return null;
-  }
+  }, [isLoading, screenshots, trailers]);
 
   return (
     <div className="w-full mt-4">
