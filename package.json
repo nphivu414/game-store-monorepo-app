@@ -49,6 +49,7 @@
     "react": "17.0.2",
     "react-content-loader": "^6.0.3",
     "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-native": "0.65.0-rc.2",
