@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
 import { CgDarkMode } from 'react-icons/cg';
+import Helmet from 'react-helmet';
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
@@ -95,6 +96,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
         <p className="text-lg font-bold truncate">{title}</p>
       </div>
       <div>{renderThemeDropDown()}</div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
     </div>
   );
 };

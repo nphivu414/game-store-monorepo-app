@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { useQuery } from '@apollo/client';
-import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { GamesQueryParams } from '@game-store-monorepo/data-access';
 import { useHistory } from 'react-router-dom';
 import Button from 'src/components/Button';
-import Carousel, { CarouselItem } from 'src/components/Carousel';
-import PlatformLogos from 'src/components/PlatformLogos';
 import Section from 'src/components/Section';
-import { GET_GAMES } from 'src/graphql/queries';
 import { ROUTES } from 'src/routes/routes';
+import GameCarousel from 'src/components/common/GameCarousel';
 
 const queryParams: GamesQueryParams = {
   variables: {
@@ -20,36 +16,6 @@ const queryParams: GamesQueryParams = {
 
 const BestGames: React.FC = () => {
   const { push } = useHistory();
-  const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
-  const pageSize = queryParams.variables.pageSize;
-
-  const carouselData: CarouselItem[] = React.useMemo(() => {
-    if (!data) {
-      return [];
-    }
-
-    return data.allGames.results.slice(0, pageSize).map((item): CarouselItem => {
-      return {
-        id: item.id,
-        headerImageUrl: item.thumbnailImage,
-        title: item.name,
-        content: (
-          <div>
-            <PlatformLogos data={item.parentPlatforms} className="mt-1" />
-            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
-              item.genres,
-              2,
-            )}`}</p>
-          </div>
-        ),
-      };
-    });
-  }, [data, pageSize]);
-
-  const onItemClick = (value: CarouselItem) => {
-    push(`${ROUTES.GAMES}/${value.id}`);
-  };
-
   const onSeeAllButtonClick = () => {
     const queryString = new URLSearchParams({
       dates: '1990-01-01,2020-12-31',
@@ -68,7 +34,7 @@ const BestGames: React.FC = () => {
         </Button>
       }
     >
-      <Carousel isCompact isLoading={loading} data={carouselData} itemClassName="w-2/3" onItemClick={onItemClick} />
+      <GameCarousel queryParams={queryParams} isCompact itemClassName="w-2/3" />
     </Section>
   );
 };

@@ -3,7 +3,7 @@ import cn from 'classnames';
 import Card from '../Card';
 import Skeleton from '../Skeleton';
 
-type CarouselProps = {
+export type CarouselProps = {
   className?: string;
   itemClassName?: string;
   data?: CarouselItem[];

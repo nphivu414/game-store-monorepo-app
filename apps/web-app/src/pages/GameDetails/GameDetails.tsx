@@ -11,6 +11,7 @@ import Tags from './Tags';
 import Description from './Description';
 import GameSeries from './GameSeries/GameSeries';
 import Genres from './Genres';
+import GamesInGenres from './GamesInGenres';
 
 type GameDetailRouteParams = {
   id: string;
@@ -40,7 +41,7 @@ const GameDetails: React.FC = () => {
       <GeneralInformation data={gameDetails} isLoading={loading} />
       <MediaPreviewTab data={gameDetails} isLoading={loading} />
       <Description data={gameDetails?.description} isLoading={loading} />
-      <Genres data={gameDetails?.genres} isLoading={loading} />
+      <GamesInGenres data={gameDetails?.genres} />
       <Tags data={gameDetails?.tags} isLoading={loading} />
       {gameDetails?.id && <GameSeries gameId={gameDetails.id} />}
       <ScrollToTop />

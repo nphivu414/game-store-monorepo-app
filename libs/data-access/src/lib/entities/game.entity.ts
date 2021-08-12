@@ -17,6 +17,7 @@ export class Game {
   @Field({ nullable: true })
   name?: string;
 
+  @Expose({ name: 'description_raw' })
   @Field({ nullable: true })
   description?: string;
 

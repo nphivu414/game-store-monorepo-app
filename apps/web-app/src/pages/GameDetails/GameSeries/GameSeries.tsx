@@ -61,34 +61,36 @@ const GameSeries: React.FC<GameSeriesProps> = ({ gameId }) => {
 
   return (
     <Section titleText="Other games in the series" titleClassName="ml-4" className="mt-4 mb-4">
-      <InfiniteScroll
-        className="grid grid-cols-2 grid-flow-row gap-4 !overflow-y-hidden"
-        dataLength={gameResults?.length || 0}
-        scrollThreshold="100px"
-        next={handleFetchMore}
-        hasMore={hasMore}
-        loader={
-          <div className="sticky bottom-0 left-1/2 text-center h-12 translate-x-[-50%]">
-            <Spinner isLoading={true} size={20} theme="ClipLoader" />
-          </div>
-        }
-      >
-        {gameResults?.map((item) => {
-          const { id, name, thumbnailImage, parentPlatforms, genres } = item;
-          return (
-            <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
-              {name && <p className="font-semibold truncate  mb-1">{name}</p>}
-              <div>
-                <PlatformLogos data={parentPlatforms} amount={5} className="mt-1" />
-                <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
-                  genres,
-                  2,
-                )}`}</p>
-              </div>
-            </Card>
-          );
-        })}
-      </InfiniteScroll>
+      <div className="px-4">
+        <InfiniteScroll
+          className="grid grid-cols-2 grid-flow-row gap-4 !overflow-y-hidden"
+          dataLength={gameResults?.length || 0}
+          scrollThreshold="100px"
+          next={handleFetchMore}
+          hasMore={hasMore}
+          loader={
+            <div className="sticky bottom-0 left-1/2 text-center h-12 translate-x-[-50%]">
+              <Spinner isLoading={true} size={20} theme="ClipLoader" />
+            </div>
+          }
+        >
+          {gameResults?.map((item) => {
+            const { id, name, thumbnailImage, parentPlatforms, genres } = item;
+            return (
+              <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
+                {name && <p className="font-semibold truncate  mb-1">{name}</p>}
+                <div>
+                  <PlatformLogos data={parentPlatforms} amount={5} className="mt-1" />
+                  <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
+                    genres,
+                    2,
+                  )}`}</p>
+                </div>
+              </Card>
+            );
+          })}
+        </InfiniteScroll>
+      </div>
     </Section>
   );
 };
