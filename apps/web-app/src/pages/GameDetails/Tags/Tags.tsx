@@ -24,8 +24,8 @@ const Tags: React.FC<TagsProps> = ({ data, isLoading }) => {
   };
 
   const renderTags = () => {
-    if (!data) {
-      return null;
+    if (!data?.length) {
+      return <p className="text-base-content-secondary">N/A</p>;
     }
 
     return data.map((item) => {
