@@ -1,0 +1,117 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type EsrbRating {
+  id: Int!
+  name: String
+  slug: String
+}
+
+type Genre {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type PlatformDetails {
+  id: Int!
+  name: String
+  slug: String
+  image: String
+  yearEnd: Int!
+  yearStart: Int!
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type Platform {
+  platform: PlatformDetails!
+  releasedAt: String
+}
+
+type Publisher {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type Screenshot {
+  id: Int!
+  image: String
+  width: Int
+  height: Int
+  isDeleted: Boolean!
+}
+
+type StoreDetails {
+  id: Int!
+  name: String
+  slug: String
+  domain: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type Store {
+  id: Int!
+  url: String
+  store: StoreDetails!
+}
+
+type Tag {
+  id: Int!
+  name: String
+  slug: String
+  gamesCount: Int!
+  imageBackground: String
+}
+
+type TrailerDetails {
+  thumbnail: String
+  max: String
+}
+
+type Trailer {
+  id: Int!
+  name: String
+  preview: String
+  data: TrailerDetails!
+}
+
+type Game {
+  id: Int!
+  name: String
+  description: String
+  backgroundImage: String
+  backgroundImageAdditional: String
+  thumbnailImageAdditional: String
+  thumbnailImage: String
+  metacritic: Int
+  esrbRating: EsrbRating
+  rating: Float
+  platforms: [Platform!]
+  parentPlatforms: [Platform!]
+  genres: [Genre!]
+  publishers: [Publisher!]
+  stores: [Store!]
+  screenshots: [Screenshot!]
+  trailers: [Trailer!]
+  tags: [Tag!]
+}
+
+type RawgGameResponse {
+  count: Int!
+  nextPage: Int
+  results: [Game!]!
+}
+
+type Query {
+  allGames(search: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
+  gameDetails(id: Int!): Game!
+  gameSeries(pageSize: Int, page: Int, id: Int!): RawgGameResponse!
+}

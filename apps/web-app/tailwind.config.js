@@ -1,9 +1,13 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
 
 module.exports = {
-  purge: createGlobPatternsForDependencies(__dirname),
-  darkMode: 'media', // or 'media' or 'class'
-  plugins: [require('daisyui')],
+  mode: 'jit',
+  purge: [
+    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
+    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
+    createGlobPatternsForDependencies(__dirname)
+  ],
+  plugins: [require('daisyui'), require('@tailwindcss/line-clamp'),],
     variants: {
     extend: {
       padding: ['first', 'last'],
@@ -22,32 +26,9 @@ module.exports = {
       maxHeight: {
         initial: 'initial',
       },
+      lineClamp: {
+        10: '10',
+      },
     },
   },
 };
-
-// module.exports = {
-//   plugins: [require('daisyui')],
-//   mode: 'jit',
-//   purge: ['/src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-//   variants: {
-//     extend: {
-//       padding: ['first', 'last'],
-//     },
-//   },
-//   daisyui: {
-//     styled: true,
-//     themes: true,
-//     base: true,
-//     utils: true,
-//     logs: true,
-//     rtl: false,
-//   },
-//   theme: {
-//     extend: {
-//       maxHeight: {
-//         initial: 'initial',
-//       },
-//     },
-//   },
-// };

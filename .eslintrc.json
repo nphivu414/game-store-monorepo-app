@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "react-hooks"],
+  "plugins": ["@nrwl/nx", "react-hooks", "prettier"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -23,10 +23,16 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "extends": ["plugin:@nrwl/nx/typescript", "prettier"],
       "rules": {
         "no-unused-vars": ["warn", { "vars": "all", "args": "none" }],
         "max-len": ["warn", { "code": 200, "ignoreUrls": true }],
+        "prettier/prettier": [
+          "warn",
+          {
+            "endOfLine": "auto"
+          }
+        ],
         "no-confusing-arrow": ["warn", { "allowParens": false }],
         "no-mixed-operators": "warn",
         "no-tabs": ["warn", { "allowIndentationTabs": true }],
@@ -34,8 +40,7 @@
         "react/display-name": "off",
         "react/prop-types": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "indent": ["error", 2]
+        "react-hooks/exhaustive-deps": "warn"
       }
     },
     {

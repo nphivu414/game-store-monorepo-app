@@ -9,12 +9,11 @@ type CardProps = {
   isCompact?: boolean;
   cardSideLayout?: boolean;
   glass?: boolean;
-  className?: string;
   titleClassName?: string;
   bodyClassName?: string;
   footerClassName?: string;
   isHeaderImageFull?: boolean;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const Card: React.FC<CardProps> = ({
   headerImageUrl,
@@ -30,15 +29,16 @@ const Card: React.FC<CardProps> = ({
   bodyClassName,
   footerClassName,
   children,
+  ...rest
 }) => {
   const cardClass = cn({
-    card: true,
-    'bg-base-100': true,
+    'card bg-base-100 transition-all duration-200 ': true,
     glass: glass,
     bordered: isBordered,
     compact: isCompact,
     'card-side': cardSideLayout,
     'image-full': isHeaderImageFull,
+    'cursor-pointer hover:opacity-80': rest.onClick,
   });
 
   const renderCardTitle = () => {
@@ -47,17 +47,17 @@ const Card: React.FC<CardProps> = ({
     }
 
     if (typeof title === 'string') {
-      return <h2 className={cn('card-title', titleClassName)}>{title}</h2>;
+      return <h2 className={cn('card-title truncate', titleClassName)}>{title}</h2>;
     }
 
     return <div className={className}>{title}</div>;
   };
 
   return (
-    <div className={cn(cardClass, className)}>
+    <div className={cn(cardClass, className)} {...rest}>
       {headerImageUrl && (
         <figure>
-          <img src={headerImageUrl} alt=""/>
+          <img className="h-full object-cover" src={headerImageUrl} alt="" loading="lazy" />
         </figure>
       )}
       <div className={cn('card-body', bodyClassName)}>

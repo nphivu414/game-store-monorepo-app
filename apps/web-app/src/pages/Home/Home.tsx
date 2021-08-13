@@ -1,11 +1,23 @@
 import * as React from 'react';
+import { NavigationContext } from 'src/context/navigation';
+import BestGames from './BestGames';
+import FeaturedGames from './FeaturedGames';
+import HighlightedTab from './HighlightedTab';
 
 const Home: React.FC = () => {
-  return (
-    <div>
-      <h1>Home page</h1>
-    </div>
-  )
-}
+  const { setTitle } = React.useContext(NavigationContext);
 
-export default Home
+  React.useEffect(() => {
+    setTitle('Game Store Monorepo');
+  }, [setTitle]);
+
+  return (
+    <div className="p-4">
+      <FeaturedGames />
+      <BestGames />
+      <HighlightedTab />
+    </div>
+  );
+};
+
+export default Home;

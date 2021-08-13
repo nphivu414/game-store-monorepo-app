@@ -23,7 +23,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items, children, position = 'end', 
     'dropdown-left': position === 'left',
     'dropdown-right': position === 'right',
     'dropdown-hover': trigger === 'hover',
-    'dropdown-open': trigger === isOpened,
+    'dropdown-open': isOpened,
   });
 
   const renderDropdownItems = () => {
@@ -39,7 +39,12 @@ const Dropdown: React.FC<DropdownProps> = ({ items, children, position = 'end', 
   return (
     <div className={dropdownClass}>
       {children}
-      <ul className={cn('shadow menu dropdown-content bg-base-100 rounded-box w-52 overflow-y-auto', className)}>
+      <ul
+        className={cn(
+          'shadow menu dropdown-content bg-base-100 text-base-content rounded-box w-52 overflow-y-auto',
+          className,
+        )}
+      >
         {renderDropdownItems()}
       </ul>
     </div>

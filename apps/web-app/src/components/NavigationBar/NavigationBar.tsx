@@ -1,17 +1,38 @@
 import * as React from 'react';
-import { Bell, ChevronDown, Aperture } from 'react-feather';
+import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
+import { CgDarkMode } from 'react-icons/cg';
+import Helmet from 'react-helmet';
 import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
-import { Menu } from 'react-feather';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
+import { useHistory, useLocation } from 'react-router-dom';
+import { NavigationContext } from 'src/context/navigation';
 
 type NavigationBarProps = {
-  handleToggleDrawer: () => void;
+  isSticky?: boolean;
 };
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
+  const { goBack, replace, length } = useHistory();
+  const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
+  const { title } = React.useContext(NavigationContext);
+  const navbarClass = cn({
+    sticky: isSticky,
+  });
+
+  const isRoot = pathname === '/';
+  const canGoBack = length > 2;
+
+  const onBackButtonClick = () => {
+    if (!canGoBack) {
+      replace('/');
+      return;
+    }
+
+    goBack();
+  };
 
   const onThemeChange = React.useCallback(
     (theme: ThemeValue) => {
@@ -50,13 +71,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
 
     return (
       <Dropdown items={themeDropdownItems} trigger="hover" className="max-h-96">
-        <Button isRounded isGhost className="px-0">
+        <Button isRounded isGhost className="px-0" size="small">
           <div className="flex items-center">
-            <Aperture size={22} className="mx-1" />
-            <div className="hidden lg:block rounded-full m-1">Change Theme</div>
+            <CgDarkMode size={22} className="mx-1" />
           </div>
-          <div className="flex items-center pl-2">
-            <ChevronDown size="22" />
+          <div className="flex items-center">
+            <FiChevronDown size="22" />
           </div>
         </Button>
       </Dropdown>
@@ -64,29 +84,21 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ handleToggleDrawer }) => 
   };
 
   return (
-    <div className="navbar mb-6 px-0 md:px-2 md:mb-11">
-      <div className="flex-none mr-3 lg:hidden">
-        <Button isLink isSquare isGhost size="extra-small" onClick={handleToggleDrawer}>
-          <Menu size={24} />
-        </Button>
-      </div>
-      <div className="flex-none xl:mr-10 md:mr-0">
-        <span className="text-lg font-bold">Cryptonic</span>
-      </div>
-      <div className="flex-1 px-2 mx-2">
-        <div className="items-stretch hidden lg:flex">
-          <Button isGhost isRounded className="text-base mr-2">
-              Home
-          </Button>
+    <div className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10', navbarClass)}>
+      <div className="w-[80%]">
+        <div className="mr-3">
+          {isRoot ? null : (
+            <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
+              <FiArrowLeft size={24} />
+            </Button>
+          )}
         </div>
+        <p className="text-lg font-bold truncate">{title}</p>
       </div>
-
-      <div className="flex-none">
-        <Button isCircle isGhost>
-          <Bell size={22} />
-        </Button>
-      </div>
-      <div className="flex-none align-middle mx-2">{renderThemeDropDown()}</div>
+      <div>{renderThemeDropDown()}</div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
     </div>
   );
 };
