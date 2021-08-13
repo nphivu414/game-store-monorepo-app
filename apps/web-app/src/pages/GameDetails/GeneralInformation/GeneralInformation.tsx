@@ -65,7 +65,7 @@ const GeneralInformation: React.FC<GeneralInformationProps> = ({ data, isLoading
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <img src={thumbnailImageAdditional} alt="" className="w-full h-[200px] object-cover" />
+        <img src={thumbnailImageAdditional || thumbnailImage} alt="" className="w-full h-[200px] object-cover" />
         <img
           src={thumbnailImage}
           alt=""
