@@ -22,7 +22,7 @@ const GamesInGenres: React.FC<GamesInGenresProps> = ({ data }) => {
       variables: {
         pageSize: 6,
         genres: genreIds,
-        ordering: '-rating',
+        ordering: 'rating',
       },
     };
   }, [genreIds]);
@@ -30,10 +30,14 @@ const GamesInGenres: React.FC<GamesInGenresProps> = ({ data }) => {
   const onSeeAllButtonClick = () => {
     const queryString = new URLSearchParams({
       genres: genreIds || '',
-      ordering: '-rating',
+      ordering: 'rating',
     }).toString();
     push(`${ROUTES.GAMES}?${queryString}`);
   };
+
+  if (!genreIds?.length) {
+    return null;
+  }
 
   return (
     <Section
