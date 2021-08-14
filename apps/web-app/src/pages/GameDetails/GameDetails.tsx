@@ -10,7 +10,6 @@ import ScrollToTop from 'src/components/ScrollToTop';
 import Tags from './Tags';
 import Description from './Description';
 import GameSeries from './GameSeries/GameSeries';
-import Genres from './Genres';
 import GamesInGenres from './GamesInGenres';
 
 type GameDetailRouteParams = {

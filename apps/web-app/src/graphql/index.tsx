@@ -1,6 +1,6 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { RawgGameResponse } from '@game-store-monorepo/data-access';
+import { RawgGameResponse, RawgGenreResponse, RawgTagResponse } from '@game-store-monorepo/data-access';
 import { toastError } from 'src/components/Toast';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -22,14 +22,14 @@ const httpLink = new HttpLink({
   uri: process.env.NX_API_URL,
 });
 
-const handleQueryMergeResult = (existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse => {
+const handleQueryMergeResult = <T1,>(existing: T1, incoming: T1): T1 => {
   if (!existing) {
     return incoming;
   }
   return {
     ...existing,
-    nextPage: incoming.nextPage,
-    results: [...existing.results, ...incoming.results],
+    nextPage: incoming['nextPage'],
+    results: [...existing['results'], ...incoming['results']],
   };
 };
 
@@ -42,13 +42,25 @@ export const client = new ApolloClient({
           allGames: {
             keyArgs: ['dates', 'pageSize', 'tags', 'genres', 'ordering'],
             merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
-              return handleQueryMergeResult(existing, incoming);
+              return handleQueryMergeResult<RawgGameResponse>(existing, incoming);
             },
           },
           gameSeries: {
             keyArgs: ['id'],
             merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
-              return handleQueryMergeResult(existing, incoming);
+              return handleQueryMergeResult<RawgGameResponse>(existing, incoming);
+            },
+          },
+          allGenres: {
+            keyArgs: ['pageSize', 'ordering'],
+            merge(existing: RawgGenreResponse, incoming: RawgGenreResponse): RawgGenreResponse {
+              return handleQueryMergeResult<RawgGenreResponse>(existing, incoming);
+            },
+          },
+          allTags: {
+            keyArgs: ['pageSize', 'ordering'],
+            merge(existing: RawgTagResponse, incoming: RawgTagResponse): RawgTagResponse {
+              return handleQueryMergeResult<RawgTagResponse>(existing, incoming);
             },
           },
         },

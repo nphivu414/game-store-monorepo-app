@@ -2,7 +2,6 @@ import * as React from 'react';
 import cn from 'classnames';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { ThemeContext } from 'src/context/theme';
 
 type SpinnerProps = {
   isLoading?: boolean;
@@ -20,8 +19,6 @@ const Spinner: React.FC<SpinnerProps> = ({
   className,
   ...rest
 }) => {
-  const { theme: appTheme } = React.useContext(ThemeContext);
-  const spinnerColor = appTheme === 'light' ? 'gray' : 'white';
   const spinnerContainerClass = cn({
     'relative w-full h-full': true,
     'min-h-screen': isLoading && isFullScreen,
@@ -36,9 +33,9 @@ const Spinner: React.FC<SpinnerProps> = ({
   const renderSpinner = () => {
     switch (theme) {
       case 'Pacman':
-        return <PacmanLoader color={spinnerColor} size={size} />;
+        return <PacmanLoader color="white" size={size} />;
       case 'ClipLoader':
-        return <ClipLoader color={spinnerColor} size={size} />;
+        return <ClipLoader color="white" size={size} />;
       default:
         return null;
     }
@@ -50,8 +47,14 @@ const Spinner: React.FC<SpinnerProps> = ({
 
   return (
     <div className={cn(spinnerContainerClass, className)} {...rest}>
-      {isLoading && <div className={overlayClass} />}
-      {isLoading && <div className="absolute w-6 h-6 z-20 centered-axis-xy">{renderSpinner()}</div>}
+      {isLoading && (
+        <>
+          <div className={overlayClass} />
+          <div className="absolute left-[45%] top-[45%] -translate-x-1/2 -translate-y-1/2 w-6 h-6 z-20">
+            {renderSpinner()}
+          </div>
+        </>
+      )}
       {children}
     </div>
   );
