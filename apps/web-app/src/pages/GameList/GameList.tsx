@@ -23,11 +23,13 @@ const GameList: React.FC = () => {
   const { push } = useHistory();
   const { search } = useLocation();
   const { setTitle } = React.useContext(NavigationContext);
+
   const gridClass = cn({
     'grid grid-flow-row gap-4 !overflow-y-hidden': true,
     'grid-cols-2': viewType === 'Grid',
     'grid-cols-1': viewType === 'List',
   });
+
   const loadMoreSpinnerClass = cn({
     'sticky bottom-0 left-1/2 text-center h-12': true,
     'translate-x-[-50%]': viewType === 'Grid',
@@ -80,7 +82,7 @@ const GameList: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="px-4 pt-4">
+    <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
       <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
         <div>Display options:</div>
         <div>

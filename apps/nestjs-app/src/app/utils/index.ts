@@ -5,6 +5,6 @@ export const stringifyQueryObject = (obj): string => {
 
 const removeEmpty = (obj) => {
   return Object.entries(obj)
-    .filter(([_, v]) => v != null)
+    .filter(([, v]) => v != null)
     .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
 };

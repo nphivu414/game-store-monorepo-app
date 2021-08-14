@@ -40,25 +40,6 @@
   scrollbar-width: 7px;
 }
 
-.centered-axis-xy {
-  position: absolute;
-  left: 45%;
-  top: 45%;
-  transform: translate(-50%,-50%);
-}
-
-.bottom-tab:after{
- content: '';
- height: 100%;
- position: absolute;
- left: -25px;
- top: -50px;  
- right: 0;
- bottom: 0;
- box-shadow: inset 0 0 0 200px #{theme('colors[base-200]')};
- filter: blur(10px);
-}
-
 .text-base-content-secondary {
   @apply text-base-content text-opacity-60;
 }

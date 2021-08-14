@@ -1,10 +1,10 @@
-export const getMultipleItemNames = (genres?: any[], amount?: number, nameKey?: string): string => {
-  if (!genres) {
+export const getMultipleItemNames = (items?: any[], amount?: number, nameKey?: string): string => {
+  if (!items) {
     return '';
   }
-  const genreNames = genres.map((genre) => genre[nameKey || 'name']);
+  const itemNames = items.map((item) => item[nameKey || 'name']);
   if (!amount) {
-    return genreNames.join(', ');
+    return itemNames.join(', ');
   }
-  return genreNames.splice(0, amount).join(', ');
+  return itemNames.splice(0, amount).join(', ');
 };

@@ -16,13 +16,14 @@ type NavigationBarProps = {
 const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
   const { goBack, replace, length } = useHistory();
   const { pathname } = useLocation();
+  console.log('🚀 ~ file: NavigationBar.tsx ~ line 19 ~ pathname', pathname);
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
   const navbarClass = cn({
     sticky: isSticky,
   });
 
-  const isRoot = pathname === '/';
+  const isRoot = pathname === '/' || pathname === '/genres';
   const canGoBack = length > 2;
 
   const onBackButtonClick = () => {

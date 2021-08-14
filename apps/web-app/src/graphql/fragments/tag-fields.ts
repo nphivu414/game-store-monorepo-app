@@ -5,7 +5,5 @@ export const CORE_TAG_FIELDS = gql`
     id
     name
     slug
-    gamesCount
-    imageBackground
   }
 `;

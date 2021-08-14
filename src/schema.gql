@@ -14,6 +14,19 @@ type Genre {
   slug: String
   gamesCount: Int!
   imageBackground: String
+  thumbnailImage: String
+  games: [GenreGame!]!
+}
+
+type GenreGame {
+  id: Int!
+  name: String
+}
+
+type RawgGenreResponse {
+  count: Int!
+  nextPage: Int
+  results: [Genre!]!
 }
 
 type PlatformDetails {
@@ -69,6 +82,19 @@ type Tag {
   slug: String
   gamesCount: Int!
   imageBackground: String
+  thumbnailImage: String
+  games: [TagGame!]!
+}
+
+type TagGame {
+  id: Int!
+  name: String
+}
+
+type RawgTagResponse {
+  count: Int!
+  nextPage: Int
+  results: [Tag!]!
 }
 
 type TrailerDetails {
@@ -114,4 +140,6 @@ type Query {
   allGames(search: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
   gameDetails(id: Int!): Game!
   gameSeries(pageSize: Int, page: Int, id: Int!): RawgGameResponse!
+  allGenres(ordering: String, pageSize: Int, page: Int): RawgGenreResponse!
+  allTags(ordering: String, pageSize: Int, page: Int): RawgTagResponse!
 }
