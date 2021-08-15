@@ -24,6 +24,7 @@ export class GameResolver {
     @Args('ordering', { nullable: true }) ordering?: string,
     @Args('tags', { nullable: true }) tags?: string,
     @Args('genres', { nullable: true }) genres?: string,
+    @Args('publishers', { nullable: true }) publishers?: string,
     @Args('search', { nullable: true }) search?: string,
   ): Promise<RawgGameResponse> {
     const params = {
@@ -33,6 +34,7 @@ export class GameResolver {
       search,
       genres,
       tags,
+      publishers,
       dates,
       ordering,
     };

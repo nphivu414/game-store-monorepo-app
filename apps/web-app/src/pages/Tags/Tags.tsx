@@ -54,10 +54,6 @@ const Tags: React.FC = () => {
     setTitle('Tags');
   }, [setTitle]);
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
       variables: {

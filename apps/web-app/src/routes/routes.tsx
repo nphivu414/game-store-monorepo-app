@@ -5,12 +5,14 @@ import GameDetails from 'src/pages/GameDetails';
 import GameList from 'src/pages/GameList';
 import Genres from 'src/pages/Genres';
 import Tags from 'src/pages/Tags';
+import Publishers from 'src/pages/Publishers';
 
 export const ROUTES = {
   ROOT: '/',
   GAMES: '/games',
   GENRES: '/genres',
   TAGS: '/tags',
+  PUBLISHERS: '/publishers',
 };
 
 const Routes: React.FC = () => {
@@ -28,6 +30,9 @@ const Routes: React.FC = () => {
       </Route>
       <Route path={`${ROUTES.TAGS}`}>
         <Tags />
+      </Route>
+      <Route path={`${ROUTES.PUBLISHERS}`}>
+        <Publishers />
       </Route>
       <Route path={`${ROUTES.ROOT}`}>
         <Home />

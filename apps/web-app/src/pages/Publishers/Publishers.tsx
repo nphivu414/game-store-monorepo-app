@@ -6,8 +6,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import ButtonGroup from 'src/components/ButtonGroup';
 import ScrollToTop from 'src/components/ScrollToTop';
 import Spinner from 'src/components/Spinner';
-import { Genre, GenresQueryParams, GenresQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_GENRES } from 'src/graphql/queries';
+import { Genre, PublishersQueryParams, PublishersQueryResponse } from '@game-store-monorepo/data-access';
+import { GET_PUBLISHERS } from 'src/graphql/queries';
 import { useQuery } from '@apollo/client';
 import { NavigationContext } from 'src/context/navigation';
 import Card from 'src/components/Card';
@@ -17,14 +17,14 @@ import { getMultipleItemNames } from '@game-store-monorepo/util';
 
 type ViewType = 'Grid' | 'List';
 
-const queryParams: GenresQueryParams = {
+const queryParams: PublishersQueryParams = {
   variables: {
     page: 1,
     pageSize: 10,
   },
 };
 
-const Genres: React.FC = () => {
+const Publishers: React.FC = () => {
   const { push } = useHistory();
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { setTitle } = React.useContext(NavigationContext);
@@ -45,13 +45,13 @@ const Genres: React.FC = () => {
     'line-clamp-2': viewType === 'Grid',
   });
 
-  const { data, loading, fetchMore } = useQuery<GenresQueryResponse>(GET_GENRES, queryParams);
-  const genreResults = data?.allGenres.results;
-  const nextPage = data?.allGenres.nextPage;
+  const { data, loading, fetchMore } = useQuery<PublishersQueryResponse>(GET_PUBLISHERS, queryParams);
+  const publisherResults = data?.allPublishers.results;
+  const nextPage = data?.allPublishers.nextPage;
   const hasMore = nextPage ? true : false;
 
   React.useEffect(() => {
-    setTitle('Genres');
+    setTitle('Publishers');
   }, [setTitle]);
 
   const handleFetchMore = React.useCallback(() => {
@@ -68,7 +68,7 @@ const Genres: React.FC = () => {
 
   const onItemClick = (value: Genre) => {
     return () => {
-      push(`${ROUTES.GAMES}?genres=${value.id}`);
+      push(`${ROUTES.GAMES}?publishers=${value.id}`);
     };
   };
 
@@ -89,7 +89,7 @@ const Genres: React.FC = () => {
       </div>
       <InfiniteScroll
         className={cn(gridClass)}
-        dataLength={genreResults?.length || 0}
+        dataLength={publisherResults?.length || 0}
         scrollThreshold="100px"
         next={handleFetchMore}
         hasMore={hasMore}
@@ -99,7 +99,7 @@ const Genres: React.FC = () => {
           </div>
         }
       >
-        {genreResults?.map((item) => {
+        {publisherResults?.map((item) => {
           const { id, name, thumbnailImage, games } = item;
           return (
             <Card key={id} title={name} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -113,4 +113,4 @@ const Genres: React.FC = () => {
   );
 };
 
-export default Genres;
+export default Publishers;

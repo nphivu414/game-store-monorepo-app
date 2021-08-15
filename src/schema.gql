@@ -51,6 +51,19 @@ type Publisher {
   slug: String
   gamesCount: Int!
   imageBackground: String
+  thumbnailImage: String
+  games: [PublisherGame!]!
+}
+
+type PublisherGame {
+  id: Int!
+  name: String
+}
+
+type RawgPublisherResponse {
+  count: Int!
+  nextPage: Int
+  results: [Publisher!]!
 }
 
 type Screenshot {
@@ -137,9 +150,10 @@ type RawgGameResponse {
 }
 
 type Query {
-  allGames(search: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
+  allGames(search: String, publishers: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
   gameDetails(id: Int!): Game!
   gameSeries(pageSize: Int, page: Int, id: Int!): RawgGameResponse!
   allGenres(ordering: String, pageSize: Int, page: Int): RawgGenreResponse!
   allTags(ordering: String, pageSize: Int, page: Int): RawgTagResponse!
+  allPublishers(ordering: String, pageSize: Int, page: Int): RawgPublisherResponse!
 }

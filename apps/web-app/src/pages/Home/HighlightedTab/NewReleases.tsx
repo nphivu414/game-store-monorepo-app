@@ -3,6 +3,7 @@ import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
+import Button from 'src/components/Button';
 import List, { ListItem } from 'src/components/List';
 import PlatformLogos from 'src/components/PlatformLogos';
 import { GET_GAMES } from 'src/graphql/queries';
@@ -46,7 +47,22 @@ const NewReleases: React.FC = () => {
     push(`${ROUTES.GAMES}/${value.id}`);
   };
 
-  return <List data={listData} onItemClick={onItemClick} isLoading={loading} />;
+  const onSeeAllButtonClick = () => {
+    const queryString = new URLSearchParams({
+      dates: queryParams.variables.dates || '',
+      ordering: queryParams.variables.ordering || '',
+    }).toString();
+    push(`${ROUTES.GAMES}?${queryString}`);
+  };
+
+  return (
+    <>
+      <List data={listData} onItemClick={onItemClick} isLoading={loading} />
+      <Button isBlock variant="primary" className="mt-2" onClick={onSeeAllButtonClick}>
+        See all
+      </Button>
+    </>
+  );
 };
 
 export default NewReleases;
