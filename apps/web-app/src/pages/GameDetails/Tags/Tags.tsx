@@ -39,10 +39,7 @@ const Tags: React.FC<TagsProps> = ({ data, isLoading }) => {
 
   return (
     <Section titleText="Tags" titleClassName="ml-4" className="mt-4">
-      <div className="bg-base-100 p-4">
-        {isLoading && <Skeleton theme="TEXT" />}
-        {renderTags()}
-      </div>
+      <div className="bg-base-100 p-4">{isLoading ? <Skeleton theme="TEXT" /> : renderTags()}</div>
     </Section>
   );
 };

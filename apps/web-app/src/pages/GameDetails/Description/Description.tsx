@@ -22,8 +22,9 @@ const Description: React.FC<DescriptionProps> = ({ data, isLoading }) => {
   return (
     <Section titleText="Description" titleClassName="ml-4" className="mt-4">
       <div className="bg-base-100 p-4 cursor-pointer" onClick={onDescriptionClick}>
-        {isLoading && <Skeleton theme="TEXT" />}
-        {data ? (
+        {isLoading ? (
+          <Skeleton theme="TEXT" />
+        ) : data ? (
           <p className={cn('text-sm', textClass)} dangerouslySetInnerHTML={{ __html: data }} />
         ) : (
           <p className="text-base-content-secondary">N/A</p>
