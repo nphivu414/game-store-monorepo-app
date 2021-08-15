@@ -12,6 +12,7 @@ export type GamesQueryParams = {
     ordering?: string;
     tags?: string;
     genres?: string;
+    publishers?: string;
   };
 };
 

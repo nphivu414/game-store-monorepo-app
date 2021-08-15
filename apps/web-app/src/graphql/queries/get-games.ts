@@ -11,6 +11,7 @@ export const GET_GAMES = gql`
     $ordering: String
     $tags: String
     $genres: String
+    $publishers: String
     $search: String
   ) {
     allGames(
@@ -20,6 +21,7 @@ export const GET_GAMES = gql`
       ordering: $ordering
       tags: $tags
       genres: $genres
+      publishers: $publishers
       search: $search
     ) {
       count

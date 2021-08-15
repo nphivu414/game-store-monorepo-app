@@ -8,22 +8,35 @@ import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
 import { useHistory, useLocation } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
+import { ROUTES } from 'src/routes/routes';
 
 type NavigationBarProps = {
   isSticky?: boolean;
 };
 
+const checkIsMainPage = (path: string) => {
+  switch (path) {
+    case ROUTES.ROOT:
+      return true;
+    case ROUTES.GENRES:
+      return true;
+    case ROUTES.TAGS:
+      return true;
+    default:
+      return false;
+  }
+};
+
 const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
   const { goBack, replace, length } = useHistory();
   const { pathname } = useLocation();
-  console.log('🚀 ~ file: NavigationBar.tsx ~ line 19 ~ pathname', pathname);
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
   const navbarClass = cn({
     sticky: isSticky,
   });
 
-  const isRoot = pathname === '/' || pathname === '/genres';
+  const isMainPage = checkIsMainPage(pathname);
   const canGoBack = length > 2;
 
   const onBackButtonClick = () => {
@@ -88,7 +101,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
     <div className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10', navbarClass)}>
       <div className="w-[80%]">
         <div className="mr-3">
-          {isRoot ? null : (
+          {isMainPage ? null : (
             <Button isSquare isGhost size="small" onClick={onBackButtonClick}>
               <FiArrowLeft size={24} />
             </Button>

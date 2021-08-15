@@ -1,6 +1,11 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { RawgGameResponse, RawgGenreResponse, RawgTagResponse } from '@game-store-monorepo/data-access';
+import {
+  RawgGameResponse,
+  RawgGenreResponse,
+  RawgPublisherResponse,
+  RawgTagResponse,
+} from '@game-store-monorepo/data-access';
 import { toastError } from 'src/components/Toast';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -22,7 +27,7 @@ const httpLink = new HttpLink({
   uri: process.env.NX_API_URL,
 });
 
-const handleQueryMergeResult = <T1,>(existing: T1, incoming: T1): T1 => {
+const handleQueryMergeResult = <T,>(existing: T, incoming: T): T => {
   if (!existing) {
     return incoming;
   }
@@ -40,7 +45,7 @@ export const client = new ApolloClient({
       Query: {
         fields: {
           allGames: {
-            keyArgs: ['dates', 'pageSize', 'tags', 'genres', 'ordering'],
+            keyArgs: ['dates', 'pageSize', 'tags', 'genres', 'publishers', 'ordering'],
             merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
               return handleQueryMergeResult<RawgGameResponse>(existing, incoming);
             },
@@ -61,6 +66,12 @@ export const client = new ApolloClient({
             keyArgs: ['pageSize', 'ordering'],
             merge(existing: RawgTagResponse, incoming: RawgTagResponse): RawgTagResponse {
               return handleQueryMergeResult<RawgTagResponse>(existing, incoming);
+            },
+          },
+          allPublishers: {
+            keyArgs: ['pageSize', 'ordering'],
+            merge(existing: RawgPublisherResponse, incoming: RawgPublisherResponse): RawgPublisherResponse {
+              return handleQueryMergeResult<RawgPublisherResponse>(existing, incoming);
             },
           },
         },

@@ -45,6 +45,7 @@ const GameList: React.FC = () => {
         ordering: searchParams.get('ordering') || undefined,
         genres: searchParams.get('genres') || undefined,
         tags: searchParams.get('tags') || undefined,
+        publishers: searchParams.get('publishers') || undefined,
         search: searchParams.get('search') || undefined,
       },
     };
@@ -58,10 +59,6 @@ const GameList: React.FC = () => {
   React.useEffect(() => {
     setTitle('Games');
   }, [setTitle]);
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
@@ -82,7 +79,7 @@ const GameList: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
+    <Spinner isLoading={loading} isFullScreen size={30} className="px-4 pt-4">
       <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
         <div>Display options:</div>
         <div>
