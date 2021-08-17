@@ -1,9 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { BsViewList } from 'react-icons/bs';
-import { FiGrid } from 'react-icons/fi';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ButtonGroup from 'src/components/ButtonGroup';
 import ScrollToTop from 'src/components/ScrollToTop';
 import Spinner from 'src/components/Spinner';
 import { Genre, PublishersQueryParams, PublishersQueryResponse } from '@game-store-monorepo/data-access';
@@ -14,6 +11,7 @@ import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import { useHistory } from 'react-router-dom';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
+import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
 
 type ViewType = 'Grid' | 'List';
 
@@ -74,19 +72,7 @@ const Publishers: React.FC = () => {
 
   return (
     <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
-      <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
-        <div>Display options:</div>
-        <div>
-          <ButtonGroup isFullWidth value={viewType} onChange={onViewTypeChange}>
-            <ButtonGroup.Item value="Grid" className="w-1/2" size="small">
-              <FiGrid size={16} />
-            </ButtonGroup.Item>
-            <ButtonGroup.Item value="List" className="w-1/2" size="small">
-              <BsViewList size={16} />
-            </ButtonGroup.Item>
-          </ButtonGroup>
-        </div>
-      </div>
+      <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       <InfiniteScroll
         className={cn(gridClass)}
         dataLength={publisherResults?.length || 0}

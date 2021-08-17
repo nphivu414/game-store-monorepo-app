@@ -98,7 +98,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
   };
 
   return (
-    <div className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10', navbarClass)}>
+    <div
+      className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10 shadow-lg', navbarClass)}
+    >
       <div className="w-[80%]">
         <div className="mr-3">
           {isMainPage ? null : (

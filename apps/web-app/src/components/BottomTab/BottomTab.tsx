@@ -3,7 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { AiTwotoneAppstore, AiFillTags } from 'react-icons/ai';
 import { RiGameFill, RiShieldUserFill } from 'react-icons/ri';
+import { IoGameController } from 'react-icons/io5';
 import { ROUTES } from 'src/routes/routes';
+
+const routeKeys = Object.keys(ROUTES);
 
 const BottomTab: React.FC = () => {
   const { pathname } = useLocation();
@@ -12,6 +15,8 @@ const BottomTab: React.FC = () => {
     switch (path) {
       case ROUTES.ROOT:
         return <RiGameFill size={20} />;
+      case ROUTES.GAMES:
+        return <IoGameController size={20} />;
       case ROUTES.GENRES:
         return <AiTwotoneAppstore size={20} />;
       case ROUTES.TAGS:
@@ -24,18 +29,15 @@ const BottomTab: React.FC = () => {
   };
 
   const renderTabItem = () => {
-    return Object.keys(ROUTES).map((key) => {
+    return routeKeys.map((key) => {
       const path: string = ROUTES[key];
-      if (path === ROUTES.GAMES) {
-        return null;
-      }
       const name = path.replace('/', '') || 'explore';
       const linkClass = cn({
-        'flex flex-col justify-center': true,
+        'flex flex-col justify-center w-full': true,
         active: pathname === path,
       });
       return (
-        <li>
+        <li key={key} className="w-1/5">
           <Link to={path} className={linkClass}>
             {renderTabIcon(path)}
             <p className="text-2xs capitalize">{name}</p>
@@ -46,8 +48,8 @@ const BottomTab: React.FC = () => {
   };
 
   return (
-    <div className="sticky bottom-0 overflow-hidden z-10">
-      <ul className="menu compact justify-center flex-none w-full px-3 horizontal bg-base-100">{renderTabItem()}</ul>
+    <div className="sticky bottom-0 overflow-hidden z-10 shadow">
+      <ul className="menu compact w-full horizontal bg-neutral text-neutral-content">{renderTabItem()}</ul>
     </div>
   );
 };

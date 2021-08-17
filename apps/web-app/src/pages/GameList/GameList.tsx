@@ -3,8 +3,6 @@ import { useQuery } from '@apollo/client';
 import { useHistory, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { FiGrid } from 'react-icons/fi';
-import { BsViewList } from 'react-icons/bs';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from 'src/graphql/queries';
 import PlatformLogos from 'src/components/PlatformLogos';
@@ -13,8 +11,8 @@ import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
-import ButtonGroup from 'src/components/ButtonGroup';
 import ScrollToTop from 'src/components/ScrollToTop';
+import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
 
 type ViewType = 'Grid' | 'List';
 
@@ -41,12 +39,12 @@ const GameList: React.FC = () => {
       variables: {
         page: 1,
         pageSize: 10,
-        dates: searchParams.get('dates') || undefined,
-        ordering: searchParams.get('ordering') || undefined,
-        genres: searchParams.get('genres') || undefined,
-        tags: searchParams.get('tags') || undefined,
-        publishers: searchParams.get('publishers') || undefined,
-        search: searchParams.get('search') || undefined,
+        dates: searchParams.get('dates'),
+        ordering: searchParams.get('ordering'),
+        genres: searchParams.get('genres'),
+        tags: searchParams.get('tags'),
+        publishers: searchParams.get('publishers'),
+        search: searchParams.get('search'),
       },
     };
   }, [search]);
@@ -80,19 +78,7 @@ const GameList: React.FC = () => {
 
   return (
     <Spinner isLoading={loading} isFullScreen size={30} className="px-4 pt-4">
-      <div className="grid grid-cols-2 gap-2 items-center mb-5 overflow-y-hidden">
-        <div>Display options:</div>
-        <div>
-          <ButtonGroup isFullWidth value={viewType} onChange={onViewTypeChange}>
-            <ButtonGroup.Item value="Grid" className="w-1/2" size="small">
-              <FiGrid size={16} />
-            </ButtonGroup.Item>
-            <ButtonGroup.Item value="List" className="w-1/2" size="small">
-              <BsViewList size={16} />
-            </ButtonGroup.Item>
-          </ButtonGroup>
-        </div>
-      </div>
+      <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       <InfiniteScroll
         className={cn(gridClass)}
         dataLength={gameResults?.length || 0}

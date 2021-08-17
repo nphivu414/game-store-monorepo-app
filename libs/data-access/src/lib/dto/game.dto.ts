@@ -6,13 +6,13 @@ export type GamesQueryResponse = {
 
 export type GamesQueryParams = {
   variables: {
-    page?: number;
-    pageSize?: number;
-    dates?: string;
-    ordering?: string;
-    tags?: string;
-    genres?: string;
-    publishers?: string;
+    page?: number | null;
+    pageSize?: number | null;
+    dates?: string | null;
+    ordering?: string | null;
+    tags?: string | null;
+    genres?: string | null;
+    publishers?: string | null;
   };
 };
 

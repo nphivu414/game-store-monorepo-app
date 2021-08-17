@@ -6,8 +6,8 @@ export type TagsQueryResponse = {
 
 export type TagsQueryParams = {
   variables: {
-    page?: number;
-    pageSize?: number;
-    ordering?: string;
+    page?: number | null;
+    pageSize?: number | null;
+    ordering?: string | null;
   };
 };

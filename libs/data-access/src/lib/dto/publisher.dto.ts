@@ -6,8 +6,8 @@ export type PublishersQueryResponse = {
 
 export type PublishersQueryParams = {
   variables: {
-    page?: number;
-    pageSize?: number;
-    ordering?: string;
+    page?: number | null;
+    pageSize?: number | null;
+    ordering?: string | null;
   };
 };
