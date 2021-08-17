@@ -94,5 +94,3 @@ buck-out/
 ## Nested node_modules
 
 node_modules/
-
-apps/react-native-app-e2e/artifacts

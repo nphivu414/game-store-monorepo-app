@@ -33,13 +33,6 @@
     "nestjs-app": {
       "tags": []
     },
-    "react-native-app": {
-      "tags": []
-    },
-    "react-native-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["react-native-app"]
-    },
     "utils": {
       "tags": []
     },
