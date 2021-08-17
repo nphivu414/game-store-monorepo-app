@@ -13,6 +13,7 @@ export type GamesQueryParams = {
     tags?: string | null;
     genres?: string | null;
     publishers?: string | null;
+    search?: string | null;
   };
 };
 

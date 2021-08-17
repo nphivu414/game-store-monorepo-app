@@ -36,8 +36,8 @@ const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
   }
 
   const renderListItems = () => {
-    if (!data) {
-      return null;
+    if (!data?.length) {
+      return <p className="text-center text-base-content-secondary">No data</p>;
     }
 
     return data.map((item, index) => {

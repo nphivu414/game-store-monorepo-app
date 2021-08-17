@@ -45,7 +45,7 @@ export const client = new ApolloClient({
       Query: {
         fields: {
           allGames: {
-            keyArgs: ['dates', 'pageSize', 'tags', 'genres', 'publishers', 'ordering'],
+            keyArgs: ['dates', 'pageSize', 'tags', 'genres', 'publishers', 'ordering', 'search'],
             merge(existing: RawgGameResponse, incoming: RawgGameResponse): RawgGameResponse {
               return handleQueryMergeResult<RawgGameResponse>(existing, incoming);
             },

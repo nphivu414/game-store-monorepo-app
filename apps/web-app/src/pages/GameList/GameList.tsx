@@ -13,11 +13,13 @@ import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
 import ScrollToTop from 'src/components/ScrollToTop';
 import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
+import SearchForm from './SearchForm';
 
 type ViewType = 'Grid' | 'List';
 
 const GameList: React.FC = () => {
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
+  const [searchTerm, setSearchTerm] = React.useState('');
   const { push } = useHistory();
   const { search } = useLocation();
   const { setTitle } = React.useContext(NavigationContext);
@@ -44,10 +46,10 @@ const GameList: React.FC = () => {
         genres: searchParams.get('genres'),
         tags: searchParams.get('tags'),
         publishers: searchParams.get('publishers'),
-        search: searchParams.get('search'),
+        search: searchTerm,
       },
     };
-  }, [search]);
+  }, [search, searchTerm]);
 
   const { data, loading, fetchMore } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
   const gameResults = data?.allGames.results;
@@ -76,39 +78,52 @@ const GameList: React.FC = () => {
     setViewType(type);
   };
 
-  return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="px-4 pt-4">
-      <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
-      <InfiniteScroll
-        className={cn(gridClass)}
-        dataLength={gameResults?.length || 0}
-        scrollThreshold="100px"
-        next={handleFetchMore}
-        hasMore={hasMore}
-        loader={
-          <div className={loadMoreSpinnerClass}>
-            <Spinner isLoading={true} size={20} theme="ClipLoader" />
+  const handleOnSearch = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const renderGames = () => {
+    if (!gameResults?.length) {
+      return null;
+    }
+    return gameResults.map((item) => {
+      const { id, name, thumbnailImage, parentPlatforms, genres } = item;
+      return (
+        <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
+          {name && <p className="font-semibold truncate  mb-1">{name}</p>}
+          <div>
+            <PlatformLogos data={parentPlatforms} amount={5} className="mt-1" />
+            <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(genres, 2)}`}</p>
           </div>
-        }
-      >
-        {gameResults?.map((item) => {
-          const { id, name, thumbnailImage, parentPlatforms, genres } = item;
-          return (
-            <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
-              {name && <p className="font-semibold truncate  mb-1">{name}</p>}
-              <div>
-                <PlatformLogos data={parentPlatforms} amount={5} className="mt-1" />
-                <p className="mt-2 text-sm text-base-content-secondary truncate">{`${getMultipleItemNames(
-                  genres,
-                  2,
-                )}`}</p>
-              </div>
-            </Card>
-          );
-        })}
-      </InfiniteScroll>
-      <ScrollToTop />
-    </Spinner>
+        </Card>
+      );
+    });
+  };
+
+  return (
+    <div>
+      <div className="px-4 pt-4">
+        <SearchForm onSearch={handleOnSearch} className="mb-4 sticky top-0" />
+        <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
+      </div>
+      <Spinner isLoading={loading} isFullScreen size={30} className="px-4">
+        <InfiniteScroll
+          className={cn(gridClass)}
+          dataLength={gameResults?.length || 0}
+          scrollThreshold="100px"
+          next={handleFetchMore}
+          hasMore={hasMore}
+          loader={
+            <div className={loadMoreSpinnerClass}>
+              <Spinner isLoading={true} size={20} theme="ClipLoader" />
+            </div>
+          }
+        >
+          {renderGames()}
+        </InfiniteScroll>
+        <ScrollToTop />
+      </Spinner>
+    </div>
   );
 };
 

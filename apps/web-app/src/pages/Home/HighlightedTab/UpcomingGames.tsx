@@ -58,9 +58,11 @@ const UpcomingGames: React.FC = () => {
   return (
     <>
       <List data={listData} onItemClick={onItemClick} isLoading={loading} />
-      <Button isBlock variant="primary" className="mt-2" onClick={onSeeAllButtonClick}>
-        See all
-      </Button>
+      {listData.length > 0 && (
+        <Button isBlock variant="primary" className="mt-2" onClick={onSeeAllButtonClick}>
+          See all
+        </Button>
+      )}
     </>
   );
 };

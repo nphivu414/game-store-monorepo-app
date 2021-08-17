@@ -37,7 +37,7 @@ const FormInput: React.FC<FormInputProps> = ({
     'input-xs': size === 'extra-small',
     'input-ghost': isGhost,
     'input-bordered': isBordered,
-    'w-full': addonElement !== undefined,
+    'w-full pr-16': addonElement !== undefined,
   });
 
   const renderInput = () => {
