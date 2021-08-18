@@ -1,5 +1,5 @@
 
-![Logo](https://drive.google.com/file/d/1Z6fYyyIcGQzqNlpEsGXhTW5WD1IRhpX8/view?usp=sharing)
+![Logo](https://raw.githubusercontent.com/nphivu414/game-store-monorepo-app/master/game-store-logo.jpg)
 
     
 # Game Store Monorepo
