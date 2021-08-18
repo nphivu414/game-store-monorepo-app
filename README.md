@@ -15,6 +15,14 @@ A full-stack web app built with NestJS and ReactJS that help you find and discov
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
+
+
+## Screenshots
+
+|  |  |  |  |
+| :-------- | :------- | :------------------------- | :------------------------- |
+| ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
+
   
 ## Demo
 
