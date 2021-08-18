@@ -6,7 +6,7 @@ type ListProps = {
   data?: ListItem[];
   onItemClick?: (value: ListItem) => void;
   isLoading?: boolean;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export type ListItem = {
   id: string | number;
@@ -16,7 +16,7 @@ export type ListItem = {
   content?: React.ReactElement;
 };
 
-const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
+const List: React.FC<ListProps> = ({ data, onItemClick, isLoading, ...rest }) => {
   const handleOnItemClick = (value: ListItem) => {
     return () => {
       onItemClick && onItemClick(value);
@@ -25,7 +25,7 @@ const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
 
   if (isLoading) {
     return (
-      <div>
+      <div className={cn('pt-4', rest.className)}>
         {Array(5)
           .fill(0)
           .map((_, i) => (
@@ -37,7 +37,11 @@ const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
 
   const renderListItems = () => {
     if (!data?.length) {
-      return <p className="text-center text-base-content-secondary">No data</p>;
+      return (
+        <div {...rest}>
+          <p className="text-center text-base-content-secondary">No data</p>
+        </div>
+      );
     }
 
     return data.map((item, index) => {
@@ -65,7 +69,7 @@ const List: React.FC<ListProps> = ({ data, onItemClick, isLoading }) => {
     });
   };
 
-  return <div>{renderListItems()}</div>;
+  return <div {...rest}>{renderListItems()}</div>;
 };
 
 export default List;

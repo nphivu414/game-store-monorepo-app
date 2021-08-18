@@ -14,17 +14,10 @@ type NavigationBarProps = {
   isSticky?: boolean;
 };
 
+const routeKeys = Object.keys(ROUTES);
+
 const checkIsMainPage = (path: string) => {
-  switch (path) {
-    case ROUTES.ROOT:
-      return true;
-    case ROUTES.GENRES:
-      return true;
-    case ROUTES.TAGS:
-      return true;
-    default:
-      return false;
-  }
+  return routeKeys.find((key) => ROUTES[key] === path);
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
@@ -99,7 +92,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
 
   return (
     <div
-      className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-10 shadow-lg', navbarClass)}
+      className={cn('navbar w-full bg-neutral text-neutral-content justify-between top-0 z-20 shadow-lg', navbarClass)}
     >
       <div className="w-[80%]">
         <div className="mr-3">

@@ -46,6 +46,28 @@ export class GameResolver {
     return rawgResponse;
   }
 
+  @Query(() => RawgGameResponse, {
+    name: 'searchGames',
+  })
+  async searchGames(
+    @Args('page', { nullable: true, type: () => Int }) page?: number,
+    @Args('pageSize', { nullable: true, type: () => Int }) pageSize?: number,
+    @Args('search', { nullable: true }) search?: string,
+  ): Promise<RawgGameResponse> {
+    const params = {
+      key: this.apiKey,
+      page,
+      page_size: pageSize || 10,
+      search,
+    };
+    this.logger.debug('searchGames called with params', params);
+    const res = await this.httpService
+      .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
+      .toPromise();
+    const rawgResponse = plainToClass(RawgGameResponse, res.data);
+    return rawgResponse;
+  }
+
   @Query(() => Game, {
     name: 'gameDetails',
   })

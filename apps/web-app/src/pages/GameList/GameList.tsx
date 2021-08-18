@@ -19,7 +19,6 @@ type ViewType = 'Grid' | 'List';
 
 const GameList: React.FC = () => {
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
-  const [searchTerm, setSearchTerm] = React.useState('');
   const { push } = useHistory();
   const { search } = useLocation();
   const { setTitle } = React.useContext(NavigationContext);
@@ -46,10 +45,10 @@ const GameList: React.FC = () => {
         genres: searchParams.get('genres'),
         tags: searchParams.get('tags'),
         publishers: searchParams.get('publishers'),
-        search: searchTerm,
+        search: searchParams.get('search'),
       },
     };
-  }, [search, searchTerm]);
+  }, [search]);
 
   const { data, loading, fetchMore } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
   const gameResults = data?.allGames.results;
@@ -78,10 +77,6 @@ const GameList: React.FC = () => {
     setViewType(type);
   };
 
-  const handleOnSearch = (value: string) => {
-    setSearchTerm(value);
-  };
-
   const renderGames = () => {
     if (!gameResults?.length) {
       return null;
@@ -102,8 +97,8 @@ const GameList: React.FC = () => {
 
   return (
     <div>
-      <div className="px-4 pt-4">
-        <SearchForm onSearch={handleOnSearch} className="mb-4 sticky top-0" />
+      <div className="px-4 pt-4 relative z-10">
+        <SearchForm className="mb-4 sticky top-0" />
         <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       </div>
       <Spinner isLoading={loading} isFullScreen size={30} className="px-4">

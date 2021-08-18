@@ -151,6 +151,7 @@ type RawgGameResponse {
 
 type Query {
   allGames(search: String, publishers: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
+  searchGames(search: String, pageSize: Int, page: Int): RawgGameResponse!
   gameDetails(id: Int!): Game!
   gameSeries(pageSize: Int, page: Int, id: Int!): RawgGameResponse!
   allGenres(ordering: String, pageSize: Int, page: Int): RawgGenreResponse!

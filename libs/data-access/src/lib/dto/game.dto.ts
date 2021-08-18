@@ -4,6 +4,10 @@ export type GamesQueryResponse = {
   allGames: RawgGameResponse;
 };
 
+export type SearchGamesQueryResponse = {
+  searchGames: RawgGameResponse;
+};
+
 export type GamesQueryParams = {
   variables: {
     page?: number | null;
