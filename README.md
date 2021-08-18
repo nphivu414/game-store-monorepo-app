@@ -7,7 +7,7 @@
 A full-stack web app built with NestJS and ReactJS that help you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
-## Built Width
+## Built With
 
  - [Nx](https://nx.dev/)
  - [NestJS](https://nestjs.com/)
