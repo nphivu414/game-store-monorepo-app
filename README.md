@@ -1,94 +1,205 @@
 
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
-# GameStoreMonorepo
+    
+# Game Store Monorepo
 
-This project was generated using [Nx](https://nx.dev).
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Smart, Extensible Build Framework**
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@game-store-monorepo/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+A full-stack web app built with NestJS and ReactJS that help you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
+## Built Width
 
-## ☁ Nx Cloud
+ - [Nx](https://nx.dev/)
+ - [NestJS](https://nestjs.com/)
+ - [ReactJS](https://reactjs.org/)
+ - [Apollo GraphQL](https://www.apollographql.com/)
+ - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
-### Distributed Computation Caching & Distributed Task Execution
+  
+## Demo
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+Insert gif or link to demo
 
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
+  
+## Installation
 
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/nphivu414/game-store-monorepo-app.git
+   ```
+2. Install dependencies
+   ```sh
+   yarn install
+   ```
+    
+## Run Locally
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+1. Go to the project directory
+
+```bash
+  cd game-store-monorepo-app
+```
+
+2. Start the NodeJS server
+
+```bash
+  yarn nx serve nestjs-app
+```
+
+3. Start the ReactJS web app
+
+```bash
+  yarn nx serve web-app
+```
+
+4. Start exploring GraphQL Playground at http://localhost:3333/graphql and Game Store Web App at http://localhost:4200/
+## GRAPHQL API Reference
+
+#### Get a list of games
+
+
+```http
+query allGames {
+    allGames(page: 1, pageSize: 5) {
+        nextPage
+        results {
+            id
+            name
+            backgroundImage
+            rating
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `number` | A page number within the paginated result set. |
+| `pageSize` | `number` | Number of results to return per page. |
+| `date` | `string` | Filter by a release date, for example: `2010-01-01,2018-12-31`. |
+| `genres` | `string` | Filter by genres, for example: `4,51` or `action,indie`. |
+| `tags` | `string` | Filter by tags, for example: `31,7` or `singleplayer,multiplayer`. |
+| `publishers` | `string` | Filter by publishers, for example: `354,20987` or `electronic-arts,microsoft-studios`. |
+| `search` | `string` | Search by names |
+
+#### Get a list of games that are part of the same series.
+
+```http
+query gameSeries {
+    gameSeries(page: 1, pageSize: 5) {
+        nextPage
+        results {
+            id
+            name
+            backgroundImage
+            rating
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `number` | A page number within the paginated result set. |
+| `pageSize` | `number` | Number of results to return per page. |
+| `id` | `number` | Game ID. |
+
+#### Get details of the game.
+
+```http
+query gameDetails {
+    gameDetails(id: 3498) {
+        id
+        name
+        backgroundImage
+        rating
+        platforms {
+            platform {
+            id
+            name
+            image
+            imageBackground
+            }
+            releasedAt
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `number` | Game ID. |
+
+#### Get a list of video game genres.
+
+```http
+query allGenres {
+    allGenres(page: 1, pageSize: 10) {
+        nextPage
+        results {
+            id
+            name
+            thumbnailImage
+            games {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `number` | A page number within the paginated result set. |
+| `pageSize` | `number` | Number of results to return per page. |
+
+#### Get a list of video game tags.
+
+```http
+query allTags {
+    allTags(page: 1, pageSize: 10) {
+        nextPage
+        results {
+            id
+            name
+            thumbnailImage
+            games {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `number` | A page number within the paginated result set. |
+| `pageSize` | `number` | Number of results to return per page. |
+
+#### Get a list of video game publishers.
+
+```http
+query allPublishers {
+    allPublishers(page: 1, pageSize: 10) {
+        nextPage
+        results {
+            id
+            name
+            thumbnailImage
+            games {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `number` | A page number within the paginated result set. |
+| `pageSize` | `number` | Number of results to return per page. |
+
+  
