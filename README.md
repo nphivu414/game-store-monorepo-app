@@ -7,6 +7,13 @@
 A full-stack web app built with NestJS and ReactJS that help you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
+## Authors
+
+- [@nphivu414](https://github.com/nphivu414)
+<p>
+    <a href="https://www.buymeacoffee.com/nphivu414" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+</p>
+
 ## Built With
 
  - [Nx](https://nx.dev/)
