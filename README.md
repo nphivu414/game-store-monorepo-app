@@ -1,5 +1,5 @@
 
-![Logo](https://raw.githubusercontent.com/nphivu414/game-store-monorepo-app/master/game-store-logo.jpg)
+![Logo](https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg)
 
     
 # Game Store Monorepo
