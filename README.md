@@ -18,7 +18,7 @@ A full-stack web app built with NestJS and ReactJS that help you find and discov
   
 ## Demo
 
-Insert gif or link to demo
+[Game store on Netlify](https://mono-game-store.netlify.app/)
 
   
 ## Installation
