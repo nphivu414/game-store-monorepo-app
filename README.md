@@ -58,7 +58,7 @@ Insert gif or link to demo
 #### Get a list of games
 
 
-```http
+```
 query allGames {
     allGames(page: 1, pageSize: 5) {
         nextPage
@@ -84,7 +84,7 @@ query allGames {
 
 #### Get a list of games that are part of the same series.
 
-```http
+```
 query gameSeries {
     gameSeries(page: 1, pageSize: 5) {
         nextPage
@@ -106,7 +106,7 @@ query gameSeries {
 
 #### Get details of the game.
 
-```http
+```
 query gameDetails {
     gameDetails(id: 3498) {
         id
@@ -132,7 +132,7 @@ query gameDetails {
 
 #### Get a list of video game genres.
 
-```http
+```
 query allGenres {
     allGenres(page: 1, pageSize: 10) {
         nextPage
@@ -156,7 +156,7 @@ query allGenres {
 
 #### Get a list of video game tags.
 
-```http
+```
 query allTags {
     allTags(page: 1, pageSize: 10) {
         nextPage
@@ -180,7 +180,7 @@ query allTags {
 
 #### Get a list of video game publishers.
 
-```http
+```
 query allPublishers {
     allPublishers(page: 1, pageSize: 10) {
         nextPage
