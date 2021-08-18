@@ -97,11 +97,11 @@ const GameList: React.FC = () => {
 
   return (
     <div>
-      <div className="px-4 pt-4 relative z-10">
-        <SearchForm className="mb-4 sticky top-0" />
-        <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
-      </div>
       <Spinner isLoading={loading} isFullScreen size={30} className="px-4">
+        <div className="pt-4 relative z-10">
+          <SearchForm className="mb-4 sticky top-0" />
+          <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
+        </div>
         <InfiniteScroll
           className={cn(gridClass)}
           dataLength={gameResults?.length || 0}
