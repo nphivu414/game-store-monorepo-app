@@ -1,14 +1,12 @@
-const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
-
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
-    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
-    createGlobPatternsForDependencies(__dirname)
   ],
-  plugins: [require('daisyui'), require('@tailwindcss/line-clamp'),],
-    variants: {
+  plugins: [
+    require('daisyui'),
+    require('@tailwindcss/line-clamp'),
+  ],
+  variants: {
     extend: {
       padding: ['first', 'last'],
     },
