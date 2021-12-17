@@ -30,7 +30,7 @@ const Tags: React.FC<TagsProps> = ({ data, isLoading }) => {
 
     return data.map((item) => {
       return (
-        <Badge variant="info" className="mr-2 mb-2 cursor-pointer" onClick={onTagClick(item.slug)}>
+        <Badge key={item.id} variant="info" className="mr-2 mb-2 cursor-pointer" onClick={onTagClick(item.slug)}>
           {item.slug}
         </Badge>
       );
