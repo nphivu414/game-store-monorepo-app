@@ -14,7 +14,8 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "parallel": 1
       }
     }
   },
@@ -26,22 +27,24 @@
       }
     ]
   },
-  "projects": {
-    "data-access": {
-      "tags": []
-    },
-    "nestjs-app": {
-      "tags": []
-    },
-    "utils": {
-      "tags": []
-    },
-    "web-app": {
-      "tags": []
-    },
-    "web-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web-app"]
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "none",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "none"
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint"
+      }
     }
-  }
+  },
+  "defaultProject": "web-app"
 }
