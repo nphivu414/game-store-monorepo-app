@@ -1,11 +1,6 @@
 module.exports = {
-  content: [
-    './apps/web-app/src/**/*.{js,ts,jsx,tsx}',
-  ],
-  plugins: [
-    require('daisyui'),
-    require('@tailwindcss/line-clamp'),
-  ],
+  content: ['./apps/web-app/src/**/*.{js,ts,jsx,tsx}'],
+  plugins: [require('daisyui'), require('@tailwindcss/line-clamp')],
   variants: {
     extend: {
       padding: ['first', 'last'],
