@@ -8,7 +8,7 @@
     "start-frontend": "nx serve web-app",
     "start-mobile-bundler": "nx start mobile-app",
     "start-android": "nx run-android mobile-app",
-    "start-ios": "nx run-ios mobile-app",
+    "start-ios": "nx run-ios mobile-app --install",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
