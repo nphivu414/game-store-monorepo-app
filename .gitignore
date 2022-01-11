@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 
+
 # IDEs and editors
 /.idea
 .project
@@ -94,8 +95,7 @@ buck-out/
 ## Nested node_modules
 
 node_modules/
-## Nested node_modules
 
-node_modules/
+apps/node_modules
 
 apps/mobile-app-e2e/artifacts
