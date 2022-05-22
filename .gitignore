@@ -94,3 +94,8 @@ buck-out/
 ## Nested node_modules
 
 node_modules/
+## Nested node_modules
+
+node_modules/
+
+apps/native-app-e2e/artifacts
