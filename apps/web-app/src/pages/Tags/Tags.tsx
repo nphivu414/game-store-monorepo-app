@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/client';
 import { NavigationContext } from 'src/context/navigation';
 import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
 
@@ -23,7 +23,7 @@ const queryParams: TagsQueryParams = {
 };
 
 const Tags: React.FC = () => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { setTitle } = React.useContext(NavigationContext);
 
@@ -66,7 +66,7 @@ const Tags: React.FC = () => {
 
   const onItemClick = (value: Genre) => {
     return () => {
-      push(`${ROUTES.GAMES}?tags=${value.id}`);
+      navigate(`${ROUTES.GAMES}?tags=${value.id}`);
     };
   };
 

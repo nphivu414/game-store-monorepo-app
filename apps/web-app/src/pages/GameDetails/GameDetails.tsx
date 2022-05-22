@@ -23,7 +23,7 @@ const GameDetails: React.FC = () => {
   const queryParams: GameDetailsQueryParams = React.useMemo(() => {
     return {
       variables: {
-        id: parseInt(id),
+        id: id ? parseInt(id) : 0,
       },
     };
   }, [id]);

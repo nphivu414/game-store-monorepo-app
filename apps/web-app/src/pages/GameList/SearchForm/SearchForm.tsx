@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { GamesQueryParams, SearchGamesQueryResponse } from '@game-store-monorepo/data-access';
 import * as React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/Button';
 import FormInput from 'src/components/FormInput';
 import List, { ListItem } from 'src/components/List';
@@ -16,7 +16,7 @@ import { getMultipleItemNames } from '@game-store-monorepo/util';
 type SearchFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const SearchForm: React.FC<SearchFormProps> = ({ className, ...rest }) => {
-  const { push, replace } = useHistory();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchVisible, setSearchVisible] = React.useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm);
@@ -91,11 +91,11 @@ const SearchForm: React.FC<SearchFormProps> = ({ className, ...rest }) => {
   };
 
   const onItemClick = (value: ListItem) => {
-    push(`${ROUTES.GAMES}/${value.id}`);
+    navigate(`${ROUTES.GAMES}/${value.id}`);
   };
 
   const onSearchButtonClick = () => {
-    replace(`${ROUTES.GAMES}?search=${searchTerm}`);
+    navigate(`${ROUTES.GAMES}?search=${searchTerm}`);
   };
 
   return (

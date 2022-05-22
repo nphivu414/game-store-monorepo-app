@@ -6,7 +6,7 @@ import Button from 'src/components//Button';
 import Dropdown, { DropdownItem } from 'src/components//Dropdown';
 import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
 import { ROUTES } from 'src/routes/routes';
 
@@ -21,7 +21,7 @@ const checkIsMainPage = (path: string) => {
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
-  const { goBack, replace, length } = useHistory();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
@@ -30,15 +30,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
   });
 
   const isMainPage = checkIsMainPage(pathname);
-  const canGoBack = length > 2;
 
   const onBackButtonClick = () => {
-    if (!canGoBack) {
-      replace('/');
-      return;
-    }
-
-    goBack();
+    navigate(-1);
   };
 
   const onThemeChange = React.useCallback(

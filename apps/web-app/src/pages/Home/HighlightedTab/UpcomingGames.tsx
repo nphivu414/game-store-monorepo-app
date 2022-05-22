@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/Button';
 import List, { ListItem } from 'src/components/List';
 import PlatformLogos from 'src/components/PlatformLogos';
@@ -18,7 +18,7 @@ const queryParams: GamesQueryParams = {
 };
 
 const UpcomingGames: React.FC = () => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const listData: ListItem[] = React.useMemo(() => {
@@ -44,7 +44,7 @@ const UpcomingGames: React.FC = () => {
   }, [data]);
 
   const onItemClick = (value: ListItem) => {
-    push(`${ROUTES.GAMES}/${value.id}`);
+    navigate(`${ROUTES.GAMES}/${value.id}`);
   };
 
   const onSeeAllButtonClick = () => {
@@ -52,7 +52,7 @@ const UpcomingGames: React.FC = () => {
       dates: queryParams.variables.dates || '',
       ordering: queryParams.variables.ordering || '',
     }).toString();
-    push(`${ROUTES.GAMES}?${queryString}`);
+    navigate(`${ROUTES.GAMES}?${queryString}`);
   };
 
   return (

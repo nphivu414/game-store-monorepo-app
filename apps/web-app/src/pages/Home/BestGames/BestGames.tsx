@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GamesQueryParams } from '@game-store-monorepo/data-access';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/Button';
 import Section from 'src/components/Section';
 import { ROUTES } from 'src/routes/routes';
@@ -15,13 +15,13 @@ const queryParams: GamesQueryParams = {
 };
 
 const BestGames: React.FC = () => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const onSeeAllButtonClick = () => {
     const queryString = new URLSearchParams({
       dates: '1990-01-01,2020-12-31',
       ordering: '-added',
     }).toString();
-    push(`${ROUTES.GAMES}?${queryString}`);
+    navigate(`${ROUTES.GAMES}?${queryString}`);
   };
 
   return (

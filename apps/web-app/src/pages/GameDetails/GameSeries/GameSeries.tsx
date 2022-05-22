@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GameSeriesQueryParams, GameSeriesQueryResponse } from '@game-store-monorepo/data-access';
 import PlatformLogos from 'src/components/PlatformLogos';
@@ -17,7 +17,7 @@ type GameSeriesProps = {
 };
 
 const GameSeries: React.FC<GameSeriesProps> = ({ gameId }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const queryParams: GameSeriesQueryParams = React.useMemo(() => {
     return {
       variables: {
@@ -43,7 +43,7 @@ const GameSeries: React.FC<GameSeriesProps> = ({ gameId }) => {
 
   const onItemClick = (value: Game) => {
     return () => {
-      push(`${ROUTES.GAMES}/${value.id}`);
+      navigate(`${ROUTES.GAMES}/${value.id}`);
     };
   };
 

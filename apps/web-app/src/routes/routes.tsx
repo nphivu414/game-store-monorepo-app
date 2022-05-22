@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from 'src/pages/Home';
 import GameDetails from 'src/pages/GameDetails';
 import GameList from 'src/pages/GameList';
@@ -15,30 +15,18 @@ export const ROUTES = {
   PUBLISHERS: '/publishers',
 };
 
-const Routes: React.FC = () => {
+const Routers: React.FC = () => {
   const location = useLocation();
   return (
-    <Switch location={location}>
-      <Route path={`${ROUTES.GAMES}/:id`}>
-        <GameDetails />
-      </Route>
-      <Route path={`${ROUTES.GAMES}`}>
-        <GameList />
-      </Route>
-      <Route path={`${ROUTES.GENRES}`}>
-        <Genres />
-      </Route>
-      <Route path={`${ROUTES.TAGS}`}>
-        <Tags />
-      </Route>
-      <Route path={`${ROUTES.PUBLISHERS}`}>
-        <Publishers />
-      </Route>
-      <Route path={`${ROUTES.ROOT}`}>
-        <Home />
-      </Route>
-    </Switch>
+    <Routes location={location}>
+      <Route path={`${ROUTES.GAMES}/:id`} element={<GameDetails />} />
+      <Route path={`${ROUTES.GAMES}`} element={<GameList />} />
+      <Route path={`${ROUTES.GENRES}`} element={<Genres />} />
+      <Route path={`${ROUTES.TAGS}`} element={<Tags />} />
+      <Route path={`${ROUTES.PUBLISHERS}`} element={<Publishers />} />
+      <Route path={`${ROUTES.ROOT}`} element={<Home />} />
+    </Routes>
   );
 };
 
-export default Routes;
+export default Routers;

@@ -12,6 +12,7 @@ type SectionProps = {
   className?: string;
   bordered?: boolean;
   hasPadding?: boolean;
+  children?: React.ReactNode;
 };
 
 const Section: React.FC<SectionProps> = ({

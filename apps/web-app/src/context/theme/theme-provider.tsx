@@ -109,7 +109,11 @@ export const themeList: ThemeItem[] = [
   },
 ];
 
-export const ThemeProvider: React.FC = ({ children }) => {
+type ThemeProviderProps = {
+  children?: React.ReactNode;
+};
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const defaultTheme = localStorage.getItem('theme') as ThemeValue;
   const [theme, setTheme] = React.useState<ThemeValue>(defaultTheme || 'dracula');
 

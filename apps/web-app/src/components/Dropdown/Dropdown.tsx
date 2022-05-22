@@ -13,6 +13,7 @@ type DropdownProps = {
   trigger?: 'click' | 'hover';
   isOpened?: boolean;
   className?: string;
+  children?: React.ReactNode;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({ items, children, position = 'end', trigger, isOpened, className }) => {

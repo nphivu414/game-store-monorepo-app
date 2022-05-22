@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'nestjs-app',
   preset: '../../jest.preset.js',
   globals: {

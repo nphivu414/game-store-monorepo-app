@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ContentLoader, { Facebook, Instagram, Code, List, BulletList, IContentLoaderProps } from 'react-content-loader';
+import { Facebook, Instagram, Code, List, BulletList, IContentLoaderProps } from 'react-content-loader';
 import { useTransition, animated } from 'react-spring';
 import GameCardItemSkeleton from './GameCardItemSkeleton';
 import GameListItemSkeleton from './GameListItemSkeleton';
