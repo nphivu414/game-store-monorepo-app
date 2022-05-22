@@ -1,9 +1,9 @@
-module.exports = {
-  displayName: 'data-access',
+export default {
+  displayName: 'utils',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/data-access',
+  coverageDirectory: '../../coverage/libs/utils',
 };

@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-const MockupPhone: React.FC = ({ children }) => {
+type MockupPhoneProps = {
+  children?: React.ReactNode;
+};
+
+const MockupPhone: React.FC<MockupPhoneProps> = ({ children }) => {
   return (
     <div className="mockup-phone">
       <div className="camera"></div>

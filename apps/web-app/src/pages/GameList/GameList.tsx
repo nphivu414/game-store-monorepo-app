@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
@@ -19,7 +19,7 @@ type ViewType = 'Grid' | 'List';
 
 const GameList: React.FC = () => {
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { search } = useLocation();
   const { setTitle } = React.useContext(NavigationContext);
 
@@ -69,7 +69,7 @@ const GameList: React.FC = () => {
 
   const onItemClick = (value: Game) => {
     return () => {
-      push(`${ROUTES.GAMES}/${value.id}`);
+      navigate(`${ROUTES.GAMES}/${value.id}`);
     };
   };
 

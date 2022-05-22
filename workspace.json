@@ -29,7 +29,7 @@
       "projectType": "application",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/nestjs-app",
@@ -52,7 +52,7 @@
           }
         },
         "serve": {
-          "executor": "@nrwl/node:execute",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "nestjs-app:build"
           }
@@ -113,7 +113,8 @@
             "assets": ["apps/web-app/src/favicon.ico", "apps/web-app/src/assets"],
             "styles": [],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "@nrwl/react/plugins/webpack",
+            "postcssConfig": "apps/web-app/postcss.config.js"
           },
           "configurations": {
             "production": {
@@ -137,8 +138,15 @@
                   "maximumError": "1mb"
                 }
               ]
+            },
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
@@ -150,8 +158,12 @@
             "production": {
               "buildTarget": "web-app:build:production",
               "hmr": false
+            },
+            "development": {
+              "buildTarget": "web-app:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",

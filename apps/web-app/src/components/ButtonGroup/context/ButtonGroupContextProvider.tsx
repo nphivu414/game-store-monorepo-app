@@ -2,7 +2,11 @@ import * as React from 'react';
 
 import ButtonGroupContext from '.';
 
-const ButtonGroupProvider: React.FC = ({ children }) => {
+type ButtonGroupProviderProps = {
+  children?: React.ReactNode;
+};
+
+const ButtonGroupProvider: React.FC<ButtonGroupProviderProps> = ({ children }) => {
   const [value, setValue] = React.useState(null);
 
   const change = React.useCallback((value) => {

@@ -1,6 +1,6 @@
 import { Tag } from '@game-store-monorepo/data-access';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Badge from 'src/components/Badge';
 import Section from 'src/components/Section';
 import Skeleton from 'src/components/Skeleton';
@@ -12,14 +12,14 @@ type TagsProps = {
 };
 
 const Tags: React.FC<TagsProps> = ({ data, isLoading }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
 
   const onTagClick = (tag?: string) => {
     return () => {
       if (!tag) {
         return;
       }
-      push(`${ROUTES.GAMES}/?tags=${tag}`);
+      navigate(`${ROUTES.GAMES}/?tags=${tag}`);
     };
   };
 

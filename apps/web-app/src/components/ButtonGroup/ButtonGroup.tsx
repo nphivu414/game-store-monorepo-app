@@ -7,6 +7,7 @@ export type ButtonGroupProps = {
   isFullWidth?: boolean;
   className?: string;
   onChange?: (value) => void;
+  children?: React.ReactNode;
 };
 
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ value, onChange, isFullWidth, className, children }) => {

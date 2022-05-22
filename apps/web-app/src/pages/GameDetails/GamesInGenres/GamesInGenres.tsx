@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GamesQueryParams, Genre } from '@game-store-monorepo/data-access';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/Button';
 import Section from 'src/components/Section';
 import { ROUTES } from 'src/routes/routes';
@@ -11,7 +11,7 @@ type GamesInGenresProps = {
 };
 
 const GamesInGenres: React.FC<GamesInGenresProps> = ({ data }) => {
-  const { push } = useHistory();
+  const navigate = useNavigate();
 
   const genreIds = React.useMemo(() => {
     return data?.map((genre) => genre.id).join(',');
@@ -32,7 +32,7 @@ const GamesInGenres: React.FC<GamesInGenresProps> = ({ data }) => {
       genres: genreIds || '',
       ordering: '-metacritic',
     }).toString();
-    push(`${ROUTES.GAMES}?${queryString}`);
+    navigate(`${ROUTES.GAMES}?${queryString}`);
   };
 
   if (!genreIds?.length) {

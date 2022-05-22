@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { NavigationContext } from './navigation';
 
-export const NavigationProvider: React.FC = ({ children }) => {
+type NavigationProviderProps = {
+  children?: React.ReactNode;
+};
+
+export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
   const [title, setTitle] = React.useState<string>();
 
   const handleSetTitle = React.useCallback((value: string) => {
