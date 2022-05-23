@@ -42,7 +42,11 @@
         },
         "run-ios": {
           "executor": "@nrwl/react-native:run-ios",
-          "options": {}
+          "options": {
+            "sync": true,
+            "install": false,
+            "simulator": "iPhone 13 Pro"
+          }
         },
         "bundle-ios": {
           "executor": "@nrwl/react-native:bundle",
