@@ -16,7 +16,8 @@
     "@react-navigation/bottom-tabs": "*",
     "react-native-screens": "*",
     "react-native-safe-area-context": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "@rneui/themed": "*"
   },
   "resolutions": {
     "@types/react": "17.0.2",
