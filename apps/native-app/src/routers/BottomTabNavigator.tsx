@@ -1,8 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../pages/Home';
-import GameListScreen from '../pages/GameList';
+import { HomeStack, GameListStack } from './stacks';
 import useThemeColors from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -15,10 +14,10 @@ export const BottomTabNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           switch (route.name) {
-            case 'Home':
+            case 'HomeTab':
               iconName = focused ? 'home' : 'home-outline';
               break;
-            case 'GameList':
+            case 'GameListTab':
               iconName = focused ? 'game-controller' : 'game-controller-outline';
               break;
             default:
@@ -29,10 +28,23 @@ export const BottomTabNavigator = () => {
         },
         tabBarActiveTintColor: primary,
         tabBarInactiveTintColor: grey0,
+        headerShown: false,
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="GameList" component={GameListScreen} />
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeStack}
+        options={{
+          title: 'Home',
+        }}
+      />
+      <Tab.Screen
+        name="GameListTab"
+        component={GameListStack}
+        options={{
+          title: 'Games',
+        }}
+      />
     </Tab.Navigator>
   );
 };
