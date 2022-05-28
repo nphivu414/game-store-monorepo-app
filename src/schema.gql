@@ -150,11 +150,11 @@ type RawgGameResponse {
 }
 
 type Query {
-  allGames(search: String, publishers: String, genres: String, tags: String, ordering: String, dates: String, pageSize: Int, page: Int): RawgGameResponse!
-  searchGames(search: String, pageSize: Int, page: Int): RawgGameResponse!
+  allGames(page: Int, pageSize: Int, dates: String, ordering: String, tags: String, genres: String, publishers: String, search: String): RawgGameResponse!
+  searchGames(page: Int, pageSize: Int, search: String): RawgGameResponse!
   gameDetails(id: Int!): Game!
-  gameSeries(pageSize: Int, page: Int, id: Int!): RawgGameResponse!
-  allGenres(ordering: String, pageSize: Int, page: Int): RawgGenreResponse!
-  allTags(ordering: String, pageSize: Int, page: Int): RawgTagResponse!
-  allPublishers(ordering: String, pageSize: Int, page: Int): RawgPublisherResponse!
+  gameSeries(id: Int!, page: Int, pageSize: Int): RawgGameResponse!
+  allGenres(page: Int, pageSize: Int, ordering: String): RawgGenreResponse!
+  allTags(page: Int, pageSize: Int, ordering: String): RawgTagResponse!
+  allPublishers(page: Int, pageSize: Int, ordering: String): RawgPublisherResponse!
 }
