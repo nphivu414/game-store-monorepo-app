@@ -9,10 +9,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: process.env.NX_API_URL,
+  uri: process.env.NX_API_URL || 'http://localhost:3333/graphql',
 });
 
 export const client = getApolloClient({
-  link: null,
-  uri: 'http://localhost:3333/graphql',
+  link: from([errorLink, httpLink]),
 });
