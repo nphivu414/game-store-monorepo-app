@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -10,7 +11,14 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "target": "esnext"
+    "target": "esnext",
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@game-store-monorepo/data-access": ["../../libs/data-access/src/index.ts"],
+      "@game-store-monorepo/graphql-client": ["../../libs/graphql-client/src/index.ts"],
+      "@game-store-monorepo/util": ["../../libs/utils/src/index.ts"],
+    }
   },
   "files": ["../../node_modules/@nrwl/react-native/typings/svg.d.ts"],
   "include": [],

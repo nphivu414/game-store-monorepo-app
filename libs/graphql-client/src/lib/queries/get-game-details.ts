@@ -8,7 +8,7 @@ import {
   CORE_STORE_FIELDS,
   CORE_TAG_FIELDS,
   CORE_TRAILER_FIELDS,
-} from '@game-store-monorepo/graphql-client';
+} from '../fragments';
 
 export const GET_GAME_DETAILS = gql`
   ${CORE_GAME_FIELDS}

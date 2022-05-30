@@ -5,19 +5,23 @@ import { BottomTabNavigator } from '../routers';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from '../theme';
 import { Appearance } from 'react-native';
+import { client } from '../graphql';
+import { ApolloProvider } from '@apollo/client';
 
 export const App = () => {
   const colorScheme = Appearance.getColorScheme();
   const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer theme={theme}>
-        <ThemeProvider>
-          <BottomTabNavigator />
-        </ThemeProvider>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <ApolloProvider client={client}>
+      <SafeAreaProvider>
+        <NavigationContainer theme={theme}>
+          <ThemeProvider>
+            <BottomTabNavigator />
+          </ThemeProvider>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </ApolloProvider>
   );
 };
 
