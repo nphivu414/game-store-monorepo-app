@@ -11,13 +11,13 @@ export const App = () => {
   const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
   return (
-    <NavigationContainer theme={theme}>
-      <ThemeProvider>
-        <SafeAreaProvider>
+    <SafeAreaProvider>
+      <NavigationContainer theme={theme}>
+        <ThemeProvider>
           <BottomTabNavigator />
-        </SafeAreaProvider>
-      </ThemeProvider>
-    </NavigationContainer>
+        </ThemeProvider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

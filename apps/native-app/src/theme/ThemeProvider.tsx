@@ -1,7 +1,7 @@
 import React from 'react';
-import { ThemeProvider as BaseThemeProvider, createTheme, lightColors, darkColors } from '@rneui/themed';
+import { ThemeProvider as RNEThemeProvider, createTheme } from '@rneui/themed';
 import { useTheme } from '@react-navigation/native';
-import { Platform } from 'react-native';
+import { StyledThemeProvider } from './styled-component';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,5 +16,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     });
   }, [dark]);
 
-  return <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>;
+  return (
+    <RNEThemeProvider theme={theme}>
+      <StyledThemeProvider>{children}</StyledThemeProvider>
+    </RNEThemeProvider>
+  );
 };

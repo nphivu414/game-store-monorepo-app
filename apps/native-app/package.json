@@ -17,7 +17,9 @@
     "react-native-screens": "*",
     "react-native-safe-area-context": "*",
     "react-native-vector-icons": "*",
-    "@rneui/themed": "*"
+    "@rneui/themed": "*",
+    "styled-components": "*",
+    "styled-system": "*"
   },
   "resolutions": {
     "@types/react": "17.0.2",
