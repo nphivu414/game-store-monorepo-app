@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_GAMES } from 'src/graphql/queries';
+import { GET_GAMES } from '@game-store-monorepo/graphql-client';
 import PlatformLogos from 'src/components/PlatformLogos';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import Card from 'src/components/Card';

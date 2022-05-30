@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { CORE_GAME_FIELDS, CORE_GENRE_FIELDS } from '../fragments';
+import { CORE_GAME_FIELDS, CORE_GENRE_FIELDS } from '@game-store-monorepo/graphql-client';
 
 export const GET_GAMES = gql`
   ${CORE_GAME_FIELDS}

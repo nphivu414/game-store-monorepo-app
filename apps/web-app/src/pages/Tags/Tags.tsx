@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import ScrollToTop from 'src/components/ScrollToTop';
 import Spinner from 'src/components/Spinner';
 import { Genre, TagsQueryParams, TagsQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_TAGS } from 'src/graphql/queries';
+import { GET_TAGS } from '@game-store-monorepo/graphql-client';
 import { useQuery } from '@apollo/client';
 import { NavigationContext } from 'src/context/navigation';
 import Card from 'src/components/Card';

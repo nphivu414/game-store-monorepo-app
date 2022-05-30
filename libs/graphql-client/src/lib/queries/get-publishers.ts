@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { CORE_PUBLISHER_FIELDS } from '../fragments';
+import { CORE_PUBLISHER_FIELDS } from '@game-store-monorepo/graphql-client';
 
 export const GET_PUBLISHERS = gql`
   ${CORE_PUBLISHER_FIELDS}

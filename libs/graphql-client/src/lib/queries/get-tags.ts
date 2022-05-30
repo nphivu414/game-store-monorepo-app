@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { CORE_TAG_FIELDS } from '../fragments';
+import { CORE_TAG_FIELDS } from '@game-store-monorepo/graphql-client';
 
 export const GET_TAGS = gql`
   ${CORE_TAG_FIELDS}

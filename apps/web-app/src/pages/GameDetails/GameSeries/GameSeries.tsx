@@ -8,7 +8,7 @@ import { getMultipleItemNames } from '@game-store-monorepo/util';
 import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import Spinner from 'src/components/Spinner';
-import { GET_GAME_SERIES } from 'src/graphql/queries/get-game-series';
+import { GET_GAME_SERIES } from '@game-store-monorepo/graphql-client';
 import Section from 'src/components/Section';
 
 type GameSeriesProps = {
