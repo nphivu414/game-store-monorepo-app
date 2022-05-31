@@ -15,21 +15,19 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@game-store-monorepo/data-access": ["../../libs/data-access/src/index.ts"],
-      "@game-store-monorepo/graphql-client": ["../../libs/graphql-client/src/index.ts"],
-      "@game-store-monorepo/util": ["../../libs/utils/src/index.ts"],
-      "@game-store-monorepo/ui-native": ["../../libs/ui-native/src/index.ts"],
+      "@game-store-monorepo/data-access": ["../data-access/src/index.ts"],
+      "@game-store-monorepo/graphql-client": ["../graphql-client/src/index.ts"],
+      "@game-store-monorepo/util": ["../utils/src/index.ts"],
     }
   },
-  "files": ["../../node_modules/@nrwl/react-native/typings/svg.d.ts"],
+  "files": [],
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"
     }
-  ],
-  "exclude": ["node_modules"]
+  ]
 }

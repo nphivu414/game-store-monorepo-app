@@ -241,6 +241,29 @@
         }
       }
     },
+    "ui-native": {
+      "root": "libs/ui-native",
+      "sourceRoot": "libs/ui-native/src",
+      "projectType": "library",
+      "tags": [],
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ui-native/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-native"],
+          "options": {
+            "jestConfig": "libs/ui-native/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
+import { useThemeColors } from '../../theme';
 import {
   alignItems,
   AlignItemsProps,
@@ -20,7 +21,6 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import useThemeColors from '../../theme';
 import styled from '../../theme/styled-component';
 
 type LoadingIndicatorProps = ActivityIndicatorProps;
@@ -51,5 +51,3 @@ export const LoadingIndicator = styled(InnerLoadingIndicator)<LoadingIndicatorSt
   ${alignItems}
   ${minHeight}
 `;
-
-export default LoadingIndicator;

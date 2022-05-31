@@ -1,8 +1,6 @@
-import { Button, Text } from '@rneui/themed';
 import React from 'react';
 import { ScrollView } from 'react-native';
-import GameCarousel from '../../components/GameCarousel';
-import { Box } from '../../components';
+import { GameCarousel } from '@game-store-monorepo/ui-native';
 
 const Home = () => {
   return (

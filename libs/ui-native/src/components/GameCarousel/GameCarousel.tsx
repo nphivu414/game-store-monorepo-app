@@ -5,10 +5,10 @@ import { GET_GAMES } from '@game-store-monorepo/graphql-client';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Dimensions, FlatListProps, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import LoadingIndicator from '../LoadingIndicator';
 import { Card, Text } from '@rneui/themed';
-import useThemeColors from '../../theme';
 import { Box } from '../Box';
+import { LoadingIndicator } from '../LoadingIndicator';
+import { useThemeColors } from '../../theme';
 
 type GameCarouselProps = {
   queryParams?: GamesQueryParams;
@@ -19,7 +19,7 @@ type GameCarouselProps = {
 const ITEM_WIDTH = Dimensions.get('screen').width / 1.5;
 const ITEM_HEIGHT = 250;
 
-const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT }: GameCarouselProps) => {
+export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT }: GameCarouselProps) => {
   const { grey5 } = useThemeColors();
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
   const cardContainerStyle = React.useMemo((): StyleProp<ViewStyle> => {
@@ -33,7 +33,7 @@ const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT }:
     };
   }, [grey5, height, width]);
 
-  const handleRenderItem = React.useCallback(
+  const renderItem = React.useCallback(
     ({ item: { thumbnailImage, name, genres } }: ListRenderItemInfo<Game>) => {
       return (
         <Card containerStyle={cardContainerStyle}>
@@ -72,16 +72,11 @@ const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT }:
 
   return (
     <FlatList<Game>
-      centerContent
-      snapToAlignment="center"
       horizontal
-      pagingEnabled
       data={results}
-      renderItem={handleRenderItem}
+      renderItem={renderItem}
       keyExtractor={({ id }) => id.toString()}
       getItemLayout={(_, index) => ({ length: height, offset: height * index, index })}
     />
   );
 };
-
-export default GameCarousel;
