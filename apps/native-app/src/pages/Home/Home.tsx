@@ -7,10 +7,6 @@ import { Box } from '../../components';
 const Home = () => {
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <Box width={300} height={300} backgroundColor="red">
-        <Text h1>Homepage</Text>
-        <Button title="Solid" />
-      </Box>
       <GameCarousel />
     </ScrollView>
   );
