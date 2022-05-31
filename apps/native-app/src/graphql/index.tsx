@@ -2,6 +2,8 @@ import { from, HttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
 import { getApolloClient } from '@game-store-monorepo/graphql-client';
+import { Platform } from 'react-native';
+import { NX_API_ANDROID_URL, NX_API_IOS_URL } from '../configs';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   console.log('🚀 ~ file: index.tsx ~ line 7 ~ errorLink ~ networkError', networkError);
@@ -9,7 +11,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: process.env.NX_API_URL || 'http://localhost:3333/graphql',
+  uri: Platform.OS === 'android' ? NX_API_ANDROID_URL : NX_API_IOS_URL,
 });
 
 export const client = getApolloClient({
