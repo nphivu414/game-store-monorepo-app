@@ -3,14 +3,19 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "allowJs": true,
+    "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@game-store-monorepo/data-access": ["../../libs/data-access/src/index.ts"],
+      "@game-store-monorepo/util": ["../../libs/utils/src/index.ts"],
+    }
   },
   "files": [],
   "include": [],

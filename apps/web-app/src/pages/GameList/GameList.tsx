@@ -5,15 +5,11 @@ import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import PlatformLogos from 'src/components/PlatformLogos';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
-import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
-import Spinner from 'src/components/Spinner';
 import { NavigationContext } from 'src/context/navigation';
-import ScrollToTop from 'src/components/ScrollToTop';
-import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
 import SearchForm from './SearchForm';
+import { Card, PlatformLogos, ScrollToTop, Spinner, ViewDisplayOptions } from '@game-store-monorepo/ui-web';
 
 type ViewType = 'Grid' | 'List';
 

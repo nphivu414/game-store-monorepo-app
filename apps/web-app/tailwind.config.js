@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./apps/web-app/src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./apps/web-app/src/**/*.{js,ts,jsx,tsx}', './libs/ui-web/src/**/*.{js,ts,jsx,tsx}'],
   plugins: [require('daisyui'), require('@tailwindcss/line-clamp')],
   variants: {
     extend: {

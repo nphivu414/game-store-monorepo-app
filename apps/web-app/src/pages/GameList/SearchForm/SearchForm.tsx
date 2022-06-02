@@ -4,14 +4,11 @@ import { GamesQueryParams, SearchGamesQueryResponse } from '@game-store-monorepo
 import * as React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import Button from 'src/components/Button';
-import FormInput from 'src/components/FormInput';
-import List, { ListItem } from 'src/components/List';
-import PlatformLogos from 'src/components/PlatformLogos';
 import { SEARCH_GAMES } from '@game-store-monorepo/graphql-client';
 import { useDebounce } from 'src/hooks';
 import { ROUTES } from 'src/routes/routes';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { Button, FormInput, List, ListItem, PlatformLogos } from '@game-store-monorepo/ui-web';
 
 type SearchFormProps = React.HTMLAttributes<HTMLDivElement>;
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import Section from 'src/components/Section';
-import Skeleton from 'src/components/Skeleton';
+import { Section, Skeleton } from '@game-store-monorepo/ui-web';
 
 type DescriptionProps = {
   data?: string;

@@ -6,11 +6,11 @@ import { NavigationContext } from 'src/context/navigation';
 import { GET_GAME_DETAILS } from '@game-store-monorepo/graphql-client';
 import GeneralInformation from './GeneralInformation';
 import MediaPreviewTab from './MediaPreviewTab';
-import ScrollToTop from 'src/components/ScrollToTop';
 import Tags from './Tags';
 import Description from './Description';
 import GameSeries from './GameSeries/GameSeries';
 import GamesInGenres from './GamesInGenres';
+import { ScrollToTop } from '@game-store-monorepo/ui-web';
 
 type GameDetailRouteParams = {
   id: string;

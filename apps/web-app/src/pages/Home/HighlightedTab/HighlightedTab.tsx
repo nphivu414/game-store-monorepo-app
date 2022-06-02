@@ -1,6 +1,4 @@
-import Card from 'src/components/Card';
-import TabView from 'src/components/TabView';
-import { TabViewItem } from 'src/components/TabView/TabView';
+import { Card, TabView, TabViewItem } from '@game-store-monorepo/ui-web';
 import NewReleases from './NewReleases';
 import UpcomingGames from './UpcomingGames';
 

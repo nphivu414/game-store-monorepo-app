@@ -2,12 +2,11 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import cn from 'classnames';
-import Carousel, { CarouselItem, CarouselProps } from 'src/components/Carousel';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import PlatformLogos from 'src/components/PlatformLogos';
 import { ROUTES } from 'src/routes/routes';
+import { Carousel, CarouselItem, CarouselProps, PlatformLogos } from '@game-store-monorepo/ui-web';
 
 type GameCarouselProps = {
   queryParams: GamesQueryParams;
