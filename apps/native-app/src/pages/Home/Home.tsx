@@ -1,11 +1,13 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { GameCarousel } from '@game-store-monorepo/ui-native';
+import BestGames from './BestGames';
+import FeaturedGames from './FeaturedGames';
 
 const Home = () => {
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <GameCarousel />
+      <FeaturedGames />
+      <BestGames />
     </ScrollView>
   );
 };

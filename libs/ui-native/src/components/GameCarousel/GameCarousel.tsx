@@ -30,6 +30,8 @@ export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HE
       padding: 0,
       borderWidth: 0,
       borderRadius: 10,
+      marginTop: 0,
+      marginLeft: 0,
     };
   }, [grey5, height, width]);
 
