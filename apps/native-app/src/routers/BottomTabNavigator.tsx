@@ -1,7 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeStack, GameListStack } from './stacks';
+import { HomeStack, GameListStack, GenreStack, TagStack, PublisherStack } from './stacks';
 import { useThemeColors } from '@game-store-monorepo/ui-native';
 
 const Tab = createBottomTabNavigator();
@@ -20,6 +20,15 @@ export const BottomTabNavigator = () => {
             case 'GameListTab':
               iconName = focused ? 'game-controller' : 'game-controller-outline';
               break;
+            case 'GenreTab':
+              iconName = focused ? 'grid' : 'grid-outline';
+              break;
+            case 'TagTab':
+              iconName = focused ? 'pricetags' : 'pricetags-outline';
+              break;
+            case 'PublisherTab':
+              iconName = focused ? 'people-circle' : 'people-circle-outline';
+              break;
             default:
               break;
           }
@@ -35,7 +44,7 @@ export const BottomTabNavigator = () => {
         name="HomeTab"
         component={HomeStack}
         options={{
-          title: 'Home',
+          title: 'Explore',
         }}
       />
       <Tab.Screen
@@ -43,6 +52,27 @@ export const BottomTabNavigator = () => {
         component={GameListStack}
         options={{
           title: 'Games',
+        }}
+      />
+      <Tab.Screen
+        name="GenreTab"
+        component={GenreStack}
+        options={{
+          title: 'Genres',
+        }}
+      />
+      <Tab.Screen
+        name="TagTab"
+        component={TagStack}
+        options={{
+          title: 'Tags',
+        }}
+      />
+      <Tab.Screen
+        name="PublisherTab"
+        component={PublisherStack}
+        options={{
+          title: 'Publishers',
         }}
       />
     </Tab.Navigator>

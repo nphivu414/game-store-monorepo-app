@@ -1,29 +1,26 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../../pages/Home';
-import GameList from '../../pages/GameList';
+import Tags from '../../pages/Tags';
 import { useHeaderBlurEffectOptions } from '../../utils';
 
 const Stack = createNativeStackNavigator();
 
-export const HomeStack = () => {
+export const TagStack = () => {
   const headerBlurEffectOptions = useHeaderBlurEffectOptions();
-
   return (
     <Stack.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="TagScreen"
       screenOptions={{
         ...headerBlurEffectOptions,
       }}
     >
       <Stack.Screen
-        name="HomeScreen"
-        component={Home}
+        name="TagScreen"
+        component={Tags}
         options={{
-          title: 'Explore',
+          title: 'Tags',
         }}
       />
-      <Stack.Screen name="GameListScreen" component={GameList} />
     </Stack.Navigator>
   );
 };

@@ -9,12 +9,18 @@ export const GameListStack = () => {
   const headerBlurEffectOptions = useHeaderBlurEffectOptions();
   return (
     <Stack.Navigator
-      initialRouteName="GameList"
+      initialRouteName="GameListScreen"
       screenOptions={{
         ...headerBlurEffectOptions,
       }}
     >
-      <Stack.Screen name="GameListScreen" component={GameList} />
+      <Stack.Screen
+        name="GameListScreen"
+        component={GameList}
+        options={{
+          title: 'Games',
+        }}
+      />
     </Stack.Navigator>
   );
 };
