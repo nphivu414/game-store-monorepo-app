@@ -1,6 +1,5 @@
-import { BottomTab } from '@game-store-monorepo/ui-web';
+import { BottomTab, ThemeContext } from '@game-store-monorepo/ui-web';
 import * as React from 'react';
-import { ThemeContext } from 'src/context/theme';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 type MainLayoutProps = {

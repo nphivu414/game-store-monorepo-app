@@ -2,7 +2,7 @@ import * as React from 'react';
 import { GamesQueryParams } from '@game-store-monorepo/data-access';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'src/routes/routes';
-import GameCarousel from 'src/components/common/GameCarousel';
+import GameCarousel from 'src/components/GameCarousel/GameCarousel';
 import { Button, Section } from '@game-store-monorepo/ui-web';
 
 const queryParams: GamesQueryParams = {

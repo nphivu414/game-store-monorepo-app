@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { ThemeContext, ThemeItem, ThemeValue } from './theme';
+import { ThemeItem } from '../theme';
 
-export const themeList: ThemeItem[] = [
+export const THEMES: ThemeItem[] = [
   {
     icon: '🌝',
     label: 'Light',
@@ -108,29 +107,3 @@ export const themeList: ThemeItem[] = [
     value: 'luxury',
   },
 ];
-
-type ThemeProviderProps = {
-  children?: React.ReactNode;
-};
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const defaultTheme = localStorage.getItem('theme') as ThemeValue;
-  const [theme, setTheme] = React.useState<ThemeValue>(defaultTheme || 'dracula');
-
-  const changeTheme = React.useCallback((value: ThemeValue) => {
-    setTheme(value);
-    localStorage.setItem('theme', value);
-  }, []);
-
-  return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        themeList,
-        changeTheme,
-      }}
-    >
-      {children}
-    </ThemeContext.Provider>
-  );
-};

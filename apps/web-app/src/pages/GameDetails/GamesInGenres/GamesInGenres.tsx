@@ -3,7 +3,7 @@ import { GamesQueryParams, Genre } from '@game-store-monorepo/data-access';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'src/routes/routes';
 import { Button, Section } from '@game-store-monorepo/ui-web';
-import GameCarousel from 'src/components/common/GameCarousel';
+import GameCarousel from 'src/components/GameCarousel/GameCarousel';
 
 type GamesInGenresProps = {
   data?: Genre[];
