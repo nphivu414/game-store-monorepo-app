@@ -19,7 +19,7 @@ type GameCarouselProps = {
 const ITEM_WIDTH = Dimensions.get('screen').width / 1.5;
 const ITEM_HEIGHT = 250;
 
-export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT }: GameCarouselProps) => {
+export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HEIGHT, ...rest }: GameCarouselProps) => {
   const { grey5 } = useThemeColors();
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
   const cardContainerStyle = React.useMemo((): StyleProp<ViewStyle> => {
@@ -79,6 +79,7 @@ export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HE
       renderItem={renderItem}
       keyExtractor={({ id }) => id.toString()}
       getItemLayout={(_, index) => ({ length: height, offset: height * index, index })}
+      {...rest}
     />
   );
 };
