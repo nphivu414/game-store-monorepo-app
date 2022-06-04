@@ -1,7 +1,7 @@
 import React from 'react';
 import { GamesQueryParams } from '@game-store-monorepo/data-access';
-import { GameCarousel } from '@game-store-monorepo/ui-native';
 import { carouselStyles } from '../styles';
+import { GameCarousel } from 'src/components';
 
 const queryParams: GamesQueryParams = {
   variables: {

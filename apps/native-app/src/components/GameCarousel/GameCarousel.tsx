@@ -6,9 +6,7 @@ import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Dimensions, FlatListProps, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Card, Text } from '@rneui/themed';
-import { Box } from '../Box';
-import { LoadingIndicator } from '../LoadingIndicator';
-import { useThemeColors } from '../../theme';
+import { Box, LoadingIndicator, useThemeColors } from '@game-store-monorepo/ui-native';
 
 type GameCarouselProps = {
   queryParams?: GamesQueryParams;
