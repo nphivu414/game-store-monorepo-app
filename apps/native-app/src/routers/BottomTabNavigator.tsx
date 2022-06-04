@@ -15,7 +15,7 @@ export const BottomTabNavigator = () => {
           let iconName;
           switch (route.name) {
             case 'HomeTab':
-              iconName = focused ? 'home' : 'home-outline';
+              iconName = focused ? 'compass' : 'compass-outline';
               break;
             case 'GameListTab':
               iconName = focused ? 'game-controller' : 'game-controller-outline';
