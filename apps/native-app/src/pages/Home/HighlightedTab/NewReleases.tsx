@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { LoadingIndicator, Text, useThemeColors } from '@game-store-monorepo/ui-native';
+import { Box, Button, LoadingIndicator, Text } from '@game-store-monorepo/ui-native';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Avatar, ListItem } from '@rneui/themed';
 import React from 'react';
@@ -16,7 +16,6 @@ const queryParams: GamesQueryParams = {
 
 const NewReleases = () => {
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
-  const { grey5 } = useThemeColors();
 
   if (!data) {
     return null;
@@ -31,7 +30,7 @@ const NewReleases = () => {
       {data.allGames.results.map((game, index) => {
         return (
           <ListItem key={index} bottomDivider>
-            <Avatar rounded source={{ uri: game.thumbnailImage }} />
+            <Avatar rounded size="medium" source={{ uri: game.thumbnailImage }} />
             <ListItem.Content>
               <ListItem.Title>
                 <Text>{game.name}</Text>
@@ -44,6 +43,11 @@ const NewReleases = () => {
           </ListItem>
         );
       })}
+      <ListItem>
+        <Box width="100%">
+          <Button title="View All" />
+        </Box>
+      </ListItem>
     </>
   );
 };
