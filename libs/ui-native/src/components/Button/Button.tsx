@@ -26,7 +26,7 @@ export type ButtonStyledProps = SpaceProps &
 export type ButtonProps = BaseButtonProps;
 
 const InnerButton = (props: ButtonProps) => {
-  return <BaseButton {...props} />;
+  return <BaseButton radius="md" {...props} />;
 };
 
 export const Button = styled(InnerButton)<ButtonStyledProps>`
