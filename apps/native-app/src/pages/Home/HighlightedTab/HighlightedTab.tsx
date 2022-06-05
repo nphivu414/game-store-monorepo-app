@@ -1,38 +1,49 @@
-import { Box, Text } from '@game-store-monorepo/ui-native';
+import { Box, Text, useThemeColors } from '@game-store-monorepo/ui-native';
 import { Tab, TabView } from '@rneui/themed';
 import React from 'react';
+import NewReleases from './NewReleases';
+import Upcoming from './Upcoming';
 
 const HighlightedTab = () => {
   const [index, setIndex] = React.useState(0);
+  const { background, grey5, primary } = useThemeColors();
   return (
-    <Box backgroundColor="red" height={500}>
+    <Box marginTop={15} height={500} paddingX={15}>
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
-        indicatorStyle={{
-          backgroundColor: 'white',
-          height: 3,
-        }}
         variant="primary"
+        indicatorStyle={{
+          backgroundColor: primary,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+        }}
+        containerStyle={{
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          paddingTop: 10,
+          backgroundColor: grey5,
+        }}
       >
         <Tab.Item
-          title="Recent"
-          titleStyle={{ fontSize: 12 }}
-          icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
+          title="New Releases"
+          containerStyle={{ backgroundColor: background }}
+          buttonStyle={{ backgroundColor: grey5 }}
+          titleStyle={{ fontSize: 16 }}
         />
         <Tab.Item
-          title="favorite"
-          titleStyle={{ fontSize: 12 }}
-          icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
+          title="Upcoming"
+          containerStyle={{ backgroundColor: background }}
+          buttonStyle={{ backgroundColor: grey5 }}
+          titleStyle={{ fontSize: 16 }}
         />
       </Tab>
-
-      <TabView value={index} onChange={setIndex} animationType="spring">
-        <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
-          <Text h1>Recent</Text>
+      <TabView value={index} onChange={setIndex}>
+        <TabView.Item>
+          <NewReleases />
         </TabView.Item>
-        <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
-          <Text h1>Favorite</Text>
+        <TabView.Item>
+          <Upcoming />
         </TabView.Item>
       </TabView>
     </Box>
