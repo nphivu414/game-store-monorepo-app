@@ -26,7 +26,7 @@ const logoMap: LogoMap = {
   14: <StyledIcon name="earth" size={14} />,
 };
 
-export const PlatformLogos: React.FC<PlatformLogosProps> = ({ data, amount, ...rest }) => {
+export const PlatformLogos: React.FC<PlatformLogosProps> = ({ data, amount = 5, ...rest }) => {
   if (!data) {
     return null;
   }

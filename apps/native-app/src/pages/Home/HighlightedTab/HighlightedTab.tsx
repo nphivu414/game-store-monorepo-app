@@ -8,7 +8,7 @@ const HighlightedTab = () => {
   const [index, setIndex] = React.useState(0);
   return (
     <Box paddingBottom={15}>
-      <Box marginTop={20} minHeight={550}>
+      <Box marginTop={20} minHeight={650}>
         <StyledTab value={index} onChange={(e) => setIndex(e)}>
           <StyledTabItem title="New Releases" />
           <StyledTabItem title="Upcoming" />

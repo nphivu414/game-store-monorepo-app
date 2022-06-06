@@ -5,8 +5,8 @@ import { GET_GAMES } from '@game-store-monorepo/graphql-client';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Dimensions, FlatListProps, ListRenderItemInfo } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { Card, Text } from '@rneui/themed';
-import { Box, LoadingIndicator, PlatformLogos } from '@game-store-monorepo/ui-native';
+import { Card } from '@rneui/themed';
+import { Box, Text, LoadingIndicator, PlatformLogos } from '@game-store-monorepo/ui-native';
 import { StyledGameCard } from './styles';
 
 type GameCarouselProps = {
@@ -34,7 +34,7 @@ export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HE
           />
           <Box padding={10}>
             <Card.FeaturedTitle numberOfLines={1}>
-              <Text>{name}</Text>
+              <Text fontSize={16}>{name}</Text>
             </Card.FeaturedTitle>
             <PlatformLogos data={parentPlatforms} marginBottom={10} />
             <Card.FeaturedSubtitle numberOfLines={1}>
