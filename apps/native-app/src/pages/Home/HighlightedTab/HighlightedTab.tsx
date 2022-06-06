@@ -9,7 +9,7 @@ const HighlightedTab = () => {
   const { primary, black } = useThemeColors();
   return (
     <Box paddingBottom={15}>
-      <Box marginTop={15} minHeight={510}>
+      <Box marginTop={15} minHeight={550}>
         <Tab
           value={index}
           onChange={(e) => setIndex(e)}
