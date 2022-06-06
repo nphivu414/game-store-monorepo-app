@@ -65,7 +65,7 @@ const GameList = () => {
         paddingVertical: 10,
       }}
       contentContainerStyle={{
-        paddingHorizontal: 10,
+        padding: 10,
       }}
     />
   );
