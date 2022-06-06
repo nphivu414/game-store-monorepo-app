@@ -2,8 +2,7 @@ import React from 'react';
 import { GamesQueryParams } from '@game-store-monorepo/data-access';
 import { Box, Section } from '@game-store-monorepo/ui-native';
 import { Dimensions } from 'react-native';
-import { carouselStyles } from '../styles';
-import { GameCarousel } from 'src/components';
+import { StyledGameCarousel } from '../styles';
 
 const queryParams: GamesQueryParams = {
   variables: {
@@ -22,12 +21,7 @@ const BestGames: React.FC = () => {
   return (
     <Box marginTop={15}>
       <Section title="Best Of All Time" actionButtonText="See all" onButtonActionPressed={onSeeAllButtonClick}>
-        <GameCarousel
-          queryParams={queryParams}
-          width={ITEM_WIDTH}
-          height={ITEM_HEIGHT}
-          contentContainerStyle={carouselStyles.listContentContainerStyle}
-        />
+        <StyledGameCarousel queryParams={queryParams} width={ITEM_WIDTH} height={ITEM_HEIGHT} />
       </Section>
     </Box>
   );

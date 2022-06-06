@@ -19,14 +19,14 @@ export const Section: React.FC<SectionProps> = ({ children, title, actionButtonT
 
   return (
     <Box>
-      <Box flexDirection="row" alignItems="center" justifyContent="space-between" marginY={10}>
+      <Box flexDirection="row" alignItems="center" justifyContent="space-between" marginY={10} paddingX={15}>
         {title && (
-          <Text fontSize={18} fontWeight="bold" marginLeft={15}>
+          <Text fontSize={18} fontWeight="bold">
             {title}
           </Text>
         )}
         {actionButtonText && (
-          <Button onPress={_onButtonActionPressed} type="clear" color="primary" title={actionButtonText} />
+          <Button onPress={_onButtonActionPressed} size="sm" type="clear" color="primary" title={actionButtonText} />
         )}
       </Box>
       {children}

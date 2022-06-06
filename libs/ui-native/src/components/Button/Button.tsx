@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@rneui/themed';
-import styled from '../../theme/styled-component';
+import { styled } from '../../theme/styled-component';
 import {
   alignItems,
   AlignItemsProps,

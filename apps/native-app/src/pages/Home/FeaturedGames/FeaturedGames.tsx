@@ -1,7 +1,6 @@
 import React from 'react';
 import { GamesQueryParams } from '@game-store-monorepo/data-access';
-import { carouselStyles } from '../styles';
-import { GameCarousel } from 'src/components';
+import { StyledGameCarousel } from '../styles';
 import { Box } from '@game-store-monorepo/ui-native';
 
 const queryParams: GamesQueryParams = {
@@ -15,7 +14,7 @@ const queryParams: GamesQueryParams = {
 const FeaturedGames: React.FC = () => {
   return (
     <Box marginTop={15}>
-      <GameCarousel queryParams={queryParams} contentContainerStyle={carouselStyles.listContentContainerStyle} />
+      <StyledGameCarousel queryParams={queryParams} />
     </Box>
   );
 };

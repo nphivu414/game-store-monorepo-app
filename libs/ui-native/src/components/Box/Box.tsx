@@ -20,7 +20,7 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import styled from '../../theme/styled-component';
+import { styled } from '../../theme/styled-component';
 
 export type BoxStyledProps = SpaceProps &
   ColorProps &

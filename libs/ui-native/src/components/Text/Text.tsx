@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text as BaseText, TextProps as BaseTextProps } from '@rneui/themed';
-import styled from '../../theme/styled-component';
+import { styled } from '../../theme/styled-component';
 import {
   alignItems,
   AlignItemsProps,

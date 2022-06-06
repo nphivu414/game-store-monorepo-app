@@ -21,5 +21,4 @@ const StyledThemeProvider = ({ children }: StyledThemeProviderProps) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-export { css, StyledThemeProvider };
-export default styled;
+export { css, StyledThemeProvider, styled };

@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
-export const carouselStyles = StyleSheet.create({
-  listContentContainerStyle: {
+import { styled } from '@game-store-monorepo/ui-native';
+import { GameCarousel } from 'src/components';
+
+export const StyledGameCarousel = styled(GameCarousel).attrs((props) => ({
+  contentContainerStyle: {
     paddingLeft: 15,
   },
-});
+}))``;
