@@ -2,12 +2,10 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Dimensions, FlatListProps, ListRenderItemInfo } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { Card } from '@rneui/themed';
-import { Box, Text, LoadingIndicator, PlatformLogos } from '@game-store-monorepo/ui-native';
-import { StyledGameCard } from './styles';
+import { LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { GameCard } from '../GameCard';
 
 type GameCarouselProps = {
   queryParams?: GamesQueryParams;
@@ -22,27 +20,8 @@ export const GameCarousel = ({ queryParams, width = ITEM_WIDTH, height = ITEM_HE
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const renderItem = React.useCallback(
-    ({ item: { thumbnailImage, name, genres, parentPlatforms } }: ListRenderItemInfo<Game>) => {
-      return (
-        <StyledGameCard width={width} height={height}>
-          <Card.Image
-            borderTopLeftRadius={10}
-            borderTopRightRadius={10}
-            source={{
-              uri: thumbnailImage,
-            }}
-          />
-          <Box padding={10}>
-            <Card.FeaturedTitle numberOfLines={1}>
-              <Text fontSize={16}>{name}</Text>
-            </Card.FeaturedTitle>
-            <PlatformLogos data={parentPlatforms} marginBottom={10} />
-            <Card.FeaturedSubtitle numberOfLines={1}>
-              <Text>{getMultipleItemNames(genres, 3)}</Text>
-            </Card.FeaturedSubtitle>
-          </Box>
-        </StyledGameCard>
-      );
+    ({ item }: ListRenderItemInfo<Game>) => {
+      return <GameCard data={item} width={width} height={height} />;
     },
     [height, width],
   );
