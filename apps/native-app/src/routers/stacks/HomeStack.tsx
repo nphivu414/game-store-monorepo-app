@@ -13,6 +13,8 @@ export const HomeStack = () => {
     <Stack.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{
+        headerLargeTitle: true,
+        headerLargeTitleShadowVisible: true,
         ...headerBlurEffectOptions,
       }}
     >

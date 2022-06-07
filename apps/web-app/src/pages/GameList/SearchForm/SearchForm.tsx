@@ -5,9 +5,8 @@ import * as React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { SEARCH_GAMES } from '@game-store-monorepo/graphql-client';
-import { useDebounce } from 'src/hooks';
 import { ROUTES } from 'src/routes/routes';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { getMultipleItemNames, useDebounce } from '@game-store-monorepo/util';
 import { Button, FormInput, List, ListItem, PlatformLogos } from '@game-store-monorepo/ui-web';
 
 type SearchFormProps = React.HTMLAttributes<HTMLDivElement>;

@@ -12,7 +12,5 @@ export const useHeaderBlurEffectOptions = (): Partial<NativeStackNavigationOptio
   return {
     headerBlurEffect: dark ? 'dark' : 'light',
     headerTransparent: true,
-    headerLargeTitle: true,
-    headerLargeTitleShadowVisible: true,
   };
 };
