@@ -20,6 +20,8 @@
     "@rneui/themed": "*",
     "styled-components": "*",
     "styled-system": "*",
-    "@apollo/client": "*"
+    "@apollo/client": "*",
+    "@react-navigation/elements": "*",
+    "@rneui/base": "*"
   }
 }

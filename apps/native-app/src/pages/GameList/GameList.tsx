@@ -6,7 +6,7 @@ import { useQuery, NetworkStatus } from '@apollo/client';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
 import { GameCard } from 'src/components/GameCard';
 import { StyledSeparator } from './styles';
-import { Box, LoadingIndicator, SearchBar } from '@game-store-monorepo/ui-native';
+import { Box, LoadingIndicator } from '@game-store-monorepo/ui-native';
 import SearchForm from './SearchForm';
 
 const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
@@ -52,7 +52,7 @@ const GameList = () => {
       <SearchForm />
       <FlatList<Game>
         ref={flatListRef}
-        contentInsetAdjustmentBehavior="automatic"
+        // contentInsetAdjustmentBehavior="automatic"
         numColumns={2}
         data={results}
         keyExtractor={({ id }, index) => `${id}-${index}`}
