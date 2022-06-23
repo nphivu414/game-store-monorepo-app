@@ -5,11 +5,11 @@ import { SEARCH_GAMES } from '@game-store-monorepo/graphql-client';
 import { getMultipleItemNames, useDebounce } from '@game-store-monorepo/util';
 import { Box, SearchBar, Text, useThemeColors } from '@game-store-monorepo/ui-native';
 import { Avatar, ListItem } from '@rneui/themed';
-import { ScrollView } from 'react-native';
+import { Platform, ScrollView } from 'react-native';
 import { Portal } from '@gorhom/portal';
 import { useHeaderHeight } from '@react-navigation/elements';
 
-const SEARCH_BAR_HEIGHT = 55;
+const SEARCH_BAR_HEIGHT = Platform.OS === 'ios' ? 70 : 55;
 
 const SearchForm: React.FC = () => {
   const { background } = useThemeColors();
