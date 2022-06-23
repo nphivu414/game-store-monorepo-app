@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
+import { PortalProvider } from '@gorhom/portal';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { BottomTabNavigator } from '../routers';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -17,7 +18,9 @@ export const App = () => {
       <SafeAreaProvider>
         <NavigationContainer theme={theme}>
           <ThemeProvider>
-            <BottomTabNavigator />
+            <PortalProvider>
+              <BottomTabNavigator />
+            </PortalProvider>
           </ThemeProvider>
         </NavigationContainer>
       </SafeAreaProvider>

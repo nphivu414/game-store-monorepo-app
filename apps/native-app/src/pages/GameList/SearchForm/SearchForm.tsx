@@ -6,6 +6,10 @@ import { getMultipleItemNames, useDebounce } from '@game-store-monorepo/util';
 import { Box, SearchBar, Text, useThemeColors } from '@game-store-monorepo/ui-native';
 import { Avatar, ListItem } from '@rneui/themed';
 import { ScrollView } from 'react-native';
+import { Portal } from '@gorhom/portal';
+import { useHeaderHeight } from '@react-navigation/elements';
+
+const SEARCH_BAR_HEIGHT = 55;
 
 const SearchForm: React.FC = () => {
   const { background } = useThemeColors();
@@ -13,6 +17,8 @@ const SearchForm: React.FC = () => {
   const [searchVisible, setSearchVisible] = React.useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm);
   const [searchGames, { data, loading }] = useLazyQuery<SearchGamesQueryResponse>(SEARCH_GAMES);
+  const headerHeight = useHeaderHeight();
+  const searchResultTopPosition = headerHeight + SEARCH_BAR_HEIGHT;
 
   React.useEffect(() => {
     if (debouncedSearchTerm) {
@@ -57,6 +63,7 @@ const SearchForm: React.FC = () => {
   };
 
   const onClear = () => {
+    console.log('🚀 ~ file: SearchForm.tsx ~ line 68 ~ onClear ~ onClear');
     setSearchTerm('');
   };
   const onCancel = () => {
@@ -71,49 +78,53 @@ const SearchForm: React.FC = () => {
 
   return (
     <Box position="relative" zIndex={10}>
-      <SearchBar
-        value={searchTerm}
-        onChangeText={handleChange}
-        onClear={onClear}
-        onCancel={onCancel}
-        placeholder="Search games..."
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        showLoading={loading}
-      />
-      <Box
-        position="absolute"
-        top={70}
-        width={1}
-        height={400}
-        style={{
-          display: searchVisible ? 'flex' : 'none',
-        }}
-      >
-        <ScrollView
+      <Box height={SEARCH_BAR_HEIGHT}>
+        <SearchBar
+          value={searchTerm}
+          onChangeText={handleChange}
+          onClear={onClear}
+          onCancel={onCancel}
+          placeholder="Search games..."
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          showLoading={loading}
+        />
+      </Box>
+      <Portal>
+        <Box
+          position="absolute"
+          top={searchResultTopPosition}
+          width={1}
+          height={400}
           style={{
-            backgroundColor: background,
+            display: searchVisible ? 'flex' : 'none',
           }}
         >
-          {results?.map((game, index) => {
-            return (
-              <ListItem key={index} bottomDivider>
-                <Avatar rounded size="medium" source={{ uri: game.thumbnailImage }} />
-                <ListItem.Content>
-                  <ListItem.Title>
-                    <Text fontWeight="bold">{game.name}</Text>
-                  </ListItem.Title>
-                  {/* <PlatformLogos marginTop={10} data={game.parentPlatforms} marginBottom={10} /> */}
-                  <ListItem.Subtitle>
-                    <Text>{getMultipleItemNames(game.genres, 3)}</Text>
-                  </ListItem.Subtitle>
-                </ListItem.Content>
-                <ListItem.Chevron type="ionicon" name="chevron-forward" />
-              </ListItem>
-            );
-          })}
-        </ScrollView>
-      </Box>
+          <ScrollView
+            style={{
+              backgroundColor: background,
+            }}
+          >
+            {results?.map((game, index) => {
+              return (
+                <ListItem key={index} bottomDivider>
+                  <Avatar rounded size="medium" source={{ uri: game.thumbnailImage }} />
+                  <ListItem.Content>
+                    <ListItem.Title>
+                      <Text fontWeight="bold">{game.name}</Text>
+                    </ListItem.Title>
+                    {/* <PlatformLogos marginTop={10} data={game.parentPlatforms} marginBottom={10} /> */}
+                    <ListItem.Subtitle>
+                      <Text>{getMultipleItemNames(game.genres, 3)}</Text>
+                    </ListItem.Subtitle>
+                  </ListItem.Content>
+                  <ListItem.Chevron type="ionicon" name="chevron-forward" />
+                </ListItem>
+              );
+            })}
+          </ScrollView>
+        </Box>
+      </Portal>
     </Box>
   );
 };
