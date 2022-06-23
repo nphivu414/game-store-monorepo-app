@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { Box, Button, LoadingIndicator, Text } from '@game-store-monorepo/ui-native';
+import { Box, Button, LoadingIndicator, PlatformLogos, Text } from '@game-store-monorepo/ui-native';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import { Avatar, ListItem } from '@rneui/themed';
 import React from 'react';
@@ -33,8 +33,9 @@ const NewReleases = () => {
             <Avatar rounded size="medium" source={{ uri: game.thumbnailImage }} />
             <ListItem.Content>
               <ListItem.Title>
-                <Text>{game.name}</Text>
+                <Text fontWeight="bold">{game.name}</Text>
               </ListItem.Title>
+              <PlatformLogos marginTop={10} data={game.parentPlatforms} marginBottom={10} />
               <ListItem.Subtitle>
                 <Text>{getMultipleItemNames(game.genres, 3)}</Text>
               </ListItem.Subtitle>

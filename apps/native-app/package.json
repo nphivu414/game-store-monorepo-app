@@ -21,6 +21,7 @@
     "styled-components": "*",
     "styled-system": "*",
     "@apollo/client": "*",
+    "@react-navigation/elements": "*",
     "@rneui/base": "*"
   }
 }

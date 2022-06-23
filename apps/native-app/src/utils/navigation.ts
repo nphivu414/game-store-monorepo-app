@@ -10,9 +10,7 @@ export const useHeaderBlurEffectOptions = (): Partial<NativeStackNavigationOptio
   }
 
   return {
-    headerBlurEffect: dark ? 'dark' : 'light',
+    headerBlurEffect: dark ? 'systemUltraThinMaterialDark' : 'light',
     headerTransparent: true,
-    headerLargeTitle: true,
-    headerLargeTitleShadowVisible: true,
   };
 };

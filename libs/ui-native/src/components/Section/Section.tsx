@@ -26,7 +26,7 @@ export const Section: React.FC<SectionProps> = ({ children, title, actionButtonT
           </Text>
         )}
         {actionButtonText && (
-          <Button onPress={_onButtonActionPressed} size="sm" type="clear" color="primary" title={actionButtonText} />
+          <Button onPress={_onButtonActionPressed} type="clear" color="primary" title={actionButtonText} />
         )}
       </Box>
       {children}

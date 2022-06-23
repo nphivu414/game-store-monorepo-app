@@ -21,6 +21,7 @@ export const StyledTabItem = styled(Tab.Item).attrs((props) => ({
   titleStyle: {
     fontSize: 18,
     color: props.theme.colors.black,
+    fontWeight: 'bold',
   },
 }))``;
 
