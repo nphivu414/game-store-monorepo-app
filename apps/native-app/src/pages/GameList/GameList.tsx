@@ -53,7 +53,6 @@ const GameList = () => {
         ref={flatListRef}
         numColumns={2}
         data={results}
-        automaticallyAdjustKeyboardInsets={true}
         keyExtractor={({ id }, index) => `${id}-${index}`}
         getItemLayout={(_, index) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index })}
         renderItem={renderItem}

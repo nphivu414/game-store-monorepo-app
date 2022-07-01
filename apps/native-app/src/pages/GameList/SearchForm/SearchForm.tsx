@@ -9,7 +9,6 @@ import { Dimensions, Platform, ScrollView } from 'react-native';
 import { Portal } from '@gorhom/portal';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useKeyboard } from '@react-native-community/hooks';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 const SEARCH_BAR_HEIGHT = Platform.OS === 'ios' ? 70 : 55;
 const RESULT_BOX_PADDING = 80;
@@ -21,17 +20,15 @@ const SearchForm: React.FC = () => {
   const debouncedSearchTerm = useDebounce(searchTerm);
   const [searchGames, { data, loading }] = useLazyQuery<SearchGamesQueryResponse>(SEARCH_GAMES);
   const headerHeight = useHeaderHeight();
-  const bottomTabBarHeight = useBottomTabBarHeight();
+  const searchResultTopPosition = headerHeight + SEARCH_BAR_HEIGHT;
   const { keyboardHeight } = useKeyboard();
   const getSearchBoxHeight = () => {
-    let height = Dimensions.get('screen').height - (keyboardHeight + headerHeight + bottomTabBarHeight);
+    let height = Dimensions.get('screen').height - (keyboardHeight + searchResultTopPosition);
     if (Platform.OS === 'android') {
       height -= RESULT_BOX_PADDING;
     }
     return height;
   };
-
-  const searchResultTopPosition = headerHeight + SEARCH_BAR_HEIGHT;
 
   React.useEffect(() => {
     if (debouncedSearchTerm) {
@@ -116,9 +113,6 @@ const SearchForm: React.FC = () => {
           <ScrollView
             style={{
               backgroundColor: background,
-            }}
-            contentInset={{
-              bottom: RESULT_BOX_PADDING,
             }}
           >
             {results?.map((game, index) => {
