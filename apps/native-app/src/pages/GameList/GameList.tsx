@@ -49,10 +49,8 @@ const GameList = () => {
 
   return (
     <Box flex={1}>
-      <SearchForm />
       <FlatList<Game>
         ref={flatListRef}
-        // contentInsetAdjustmentBehavior="automatic"
         numColumns={2}
         data={results}
         keyExtractor={({ id }, index) => `${id}-${index}`}
@@ -63,6 +61,9 @@ const GameList = () => {
         onRefresh={refetch}
         refreshing={refetching}
         ItemSeparatorComponent={StyledSeparator}
+        ListHeaderComponent={SearchForm}
+        stickyHeaderHiddenOnScroll={true}
+        stickyHeaderIndices={[0]}
         ListFooterComponent={LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,

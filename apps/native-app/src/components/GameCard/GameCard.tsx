@@ -23,6 +23,7 @@ export const GameCard = ({ data, height, width }: GameCardProps) => {
       <Card.Image
         borderTopLeftRadius={10}
         borderTopRightRadius={10}
+        transition
         source={{
           uri: thumbnailImage,
         }}

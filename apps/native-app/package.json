@@ -23,6 +23,7 @@
     "@apollo/client": "*",
     "@react-navigation/elements": "*",
     "@rneui/base": "*",
-    "@gorhom/portal": "*"
+    "@gorhom/portal": "*",
+    "@react-native-community/hooks": "*"
   }
 }

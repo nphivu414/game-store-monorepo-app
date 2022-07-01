@@ -3,13 +3,15 @@ import { useLazyQuery } from '@apollo/client';
 import { GamesQueryParams, SearchGamesQueryResponse } from '@game-store-monorepo/data-access';
 import { SEARCH_GAMES } from '@game-store-monorepo/graphql-client';
 import { getMultipleItemNames, useDebounce } from '@game-store-monorepo/util';
-import { Box, SearchBar, Text, useThemeColors } from '@game-store-monorepo/ui-native';
+import { Box, PlatformLogos, SearchBar, Text, useThemeColors } from '@game-store-monorepo/ui-native';
 import { Avatar, ListItem } from '@rneui/themed';
-import { Platform, ScrollView } from 'react-native';
+import { Dimensions, Platform, ScrollView } from 'react-native';
 import { Portal } from '@gorhom/portal';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { useKeyboard } from '@react-native-community/hooks';
 
 const SEARCH_BAR_HEIGHT = Platform.OS === 'ios' ? 70 : 55;
+const RESULT_BOX_PADDING = 80;
 
 const SearchForm: React.FC = () => {
   const { background } = useThemeColors();
@@ -18,6 +20,8 @@ const SearchForm: React.FC = () => {
   const debouncedSearchTerm = useDebounce(searchTerm);
   const [searchGames, { data, loading }] = useLazyQuery<SearchGamesQueryResponse>(SEARCH_GAMES);
   const headerHeight = useHeaderHeight();
+  const { keyboardHeight } = useKeyboard();
+  const resultBoxHeight = Dimensions.get('screen').height - (keyboardHeight + headerHeight);
   const searchResultTopPosition = headerHeight + SEARCH_BAR_HEIGHT;
 
   React.useEffect(() => {
@@ -95,7 +99,7 @@ const SearchForm: React.FC = () => {
           position="absolute"
           top={searchResultTopPosition}
           width={1}
-          height={400}
+          height={resultBoxHeight}
           style={{
             display: searchVisible ? 'flex' : 'none',
           }}
@@ -104,16 +108,24 @@ const SearchForm: React.FC = () => {
             style={{
               backgroundColor: background,
             }}
+            contentInset={{
+              bottom: RESULT_BOX_PADDING,
+            }}
           >
             {results?.map((game, index) => {
               return (
                 <ListItem key={index} bottomDivider>
-                  <Avatar rounded size="medium" source={{ uri: game.thumbnailImage }} />
+                  <Avatar
+                    imageProps={{ transition: true }}
+                    rounded
+                    size="medium"
+                    source={{ uri: game.thumbnailImage }}
+                  />
                   <ListItem.Content>
                     <ListItem.Title>
                       <Text fontWeight="bold">{game.name}</Text>
                     </ListItem.Title>
-                    {/* <PlatformLogos marginTop={10} data={game.parentPlatforms} marginBottom={10} /> */}
+                    <PlatformLogos marginTop={10} data={game.parentPlatforms} marginBottom={10} />
                     <ListItem.Subtitle>
                       <Text>{getMultipleItemNames(game.genres, 3)}</Text>
                     </ListItem.Subtitle>
