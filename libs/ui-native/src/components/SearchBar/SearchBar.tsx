@@ -10,7 +10,7 @@ type SearchBarProps = {
 } & BaseSearchBarProps;
 
 export const SearchBar = ({ onCancel, onClear, ...rest }: SearchBarProps) => {
-  const { grey2 } = useThemeColors();
+  const { grey2, black } = useThemeColors();
   return (
     <BaseSearchBar
       round
@@ -21,6 +21,9 @@ export const SearchBar = ({ onCancel, onClear, ...rest }: SearchBarProps) => {
       clearIcon={<Ionicons name="close" size={18} color={grey2} onPress={onClear} />}
       cancelIcon={<Ionicons name="chevron-back" size={18} color={grey2} onPress={onCancel} />}
       cancelButtonProps={{ onPress: onCancel }}
+      inputStyle={{
+        color: black,
+      }}
       {...rest}
     />
   );
