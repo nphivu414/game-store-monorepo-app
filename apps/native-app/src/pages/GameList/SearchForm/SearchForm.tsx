@@ -9,6 +9,7 @@ import { Dimensions, Platform, ScrollView } from 'react-native';
 import { Portal } from '@gorhom/portal';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useKeyboard } from '@react-native-community/hooks';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 const SEARCH_BAR_HEIGHT = Platform.OS === 'ios' ? 70 : 55;
 const RESULT_BOX_PADDING = 80;
@@ -21,6 +22,14 @@ const SearchForm: React.FC = () => {
   const [searchGames, { data, loading }] = useLazyQuery<SearchGamesQueryResponse>(SEARCH_GAMES);
   const headerHeight = useHeaderHeight();
   const searchResultTopPosition = headerHeight + SEARCH_BAR_HEIGHT;
+  const searchResultOpacity = useSharedValue(0);
+  const searchResultAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(searchResultOpacity.value, {
+        duration: 200,
+      }),
+    };
+  });
   const { keyboardHeight } = useKeyboard();
   const getSearchBoxHeight = () => {
     let height = Dimensions.get('screen').height - (keyboardHeight + searchResultTopPosition);
@@ -30,13 +39,25 @@ const SearchForm: React.FC = () => {
     return height;
   };
 
+  const showSearchResult = React.useCallback(() => {
+    searchResultOpacity.value = 1;
+    setSearchVisible(true);
+  }, [searchResultOpacity]);
+
+  const hideSearchResult = React.useCallback(() => {
+    searchResultOpacity.value = 0;
+    setTimeout(() => {
+      setSearchVisible(false);
+    }, 200);
+  }, [searchResultOpacity]);
+
   React.useEffect(() => {
     if (debouncedSearchTerm) {
-      setSearchVisible(true);
+      showSearchResult();
     } else {
-      setSearchVisible(false);
+      hideSearchResult();
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, hideSearchResult, showSearchResult]);
 
   React.useEffect(() => {
     if (!debouncedSearchTerm) {
@@ -60,24 +81,21 @@ const SearchForm: React.FC = () => {
   };
 
   const handleBlur = () => {
-    setTimeout(() => {
-      setSearchVisible(false);
-    }, 200);
+    hideSearchResult();
   };
 
   const handleFocus = () => {
     if (!results?.length) {
       return;
     }
-    setSearchVisible(true);
+    showSearchResult();
   };
 
   const onClear = () => {
-    console.log('🚀 ~ file: SearchForm.tsx ~ line 68 ~ onClear ~ onClear');
     setSearchTerm('');
   };
   const onCancel = () => {
-    setSearchVisible(false);
+    hideSearchResult();
   };
 
   const onItemClick = () => {};
@@ -110,10 +128,13 @@ const SearchForm: React.FC = () => {
             display: searchVisible ? 'flex' : 'none',
           }}
         >
-          <ScrollView
-            style={{
-              backgroundColor: background,
-            }}
+          <Animated.ScrollView
+            style={[
+              {
+                backgroundColor: background,
+              },
+              searchResultAnimatedStyle,
+            ]}
           >
             {results?.map((game, index) => {
               return (
@@ -137,7 +158,7 @@ const SearchForm: React.FC = () => {
                 </ListItem>
               );
             })}
-          </ScrollView>
+          </Animated.ScrollView>
         </Box>
       </Portal>
     </Box>

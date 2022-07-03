@@ -24,6 +24,7 @@
     "@react-navigation/elements": "*",
     "@rneui/base": "*",
     "@gorhom/portal": "*",
-    "@react-native-community/hooks": "*"
+    "@react-native-community/hooks": "*",
+    "react-native-reanimated": "*"
   }
 }
