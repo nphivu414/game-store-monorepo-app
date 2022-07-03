@@ -4,10 +4,9 @@ import { useScrollToTop } from '@react-navigation/native';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
 import { useQuery, NetworkStatus } from '@apollo/client';
 import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { GameCard } from 'src/components/GameCard';
-import { StyledSeparator } from './styles';
-import { Box, LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { Box, Divider, LoadingIndicator } from '@game-store-monorepo/ui-native';
 import SearchForm from './SearchForm';
+import { GameCard } from 'src/components';
 
 const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
 const ITEM_HEIGHT = 250;
@@ -56,15 +55,17 @@ const GameList = () => {
         keyExtractor={({ id }, index) => `${id}-${index}`}
         getItemLayout={(_, index) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index })}
         renderItem={renderItem}
-        onEndReachedThreshold={0.8}
         onEndReached={handleFetchMore}
         onRefresh={refetch}
         refreshing={refetching}
-        ItemSeparatorComponent={StyledSeparator}
+        ItemSeparatorComponent={Divider}
         ListHeaderComponent={SearchForm}
         stickyHeaderHiddenOnScroll={true}
         stickyHeaderIndices={[0]}
-        ListFooterComponent={LoadingIndicator}
+        ListHeaderComponentStyle={{
+          marginBottom: 10,
+        }}
+        ListFooterComponent={hasMore && LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,
         }}

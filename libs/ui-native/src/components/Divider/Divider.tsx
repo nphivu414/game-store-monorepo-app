@@ -1,6 +1,7 @@
-import { Box, styled } from '@game-store-monorepo/ui-native';
+import { Box } from '../Box';
+import { styled } from '../../theme';
 
-export const StyledSeparator = styled(Box)`
+export const Divider = styled(Box)`
   margin-top: ${(props) => props.theme.spacing.md}px;
   margin-bottom: ${(props) => props.theme.spacing.md}px;
 `;
