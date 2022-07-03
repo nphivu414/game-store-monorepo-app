@@ -11,6 +11,8 @@ export const GenreStack = () => {
     <Stack.Navigator
       initialRouteName="GenreScreen"
       screenOptions={{
+        headerLargeTitle: true,
+        headerLargeTitleShadowVisible: true,
         ...headerBlurEffectOptions,
       }}
     >

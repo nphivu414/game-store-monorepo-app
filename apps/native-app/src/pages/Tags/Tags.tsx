@@ -1,12 +1,73 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native';
+import { useScrollToTop } from '@react-navigation/native';
+import { GamesQueryParams, Tag, TagsQueryResponse } from '@game-store-monorepo/data-access';
+import { useQuery, NetworkStatus } from '@apollo/client';
+import { GET_TAGS } from '@game-store-monorepo/graphql-client';
+import { TagCard } from 'src/components/TagCard';
+import { Box, Divider, LoadingIndicator } from '@game-store-monorepo/ui-native';
+
+const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
+const ITEM_HEIGHT = 230;
 
 const Tags = () => {
+  const flatListRef = React.useRef<FlatList>(null);
+  useScrollToTop(flatListRef);
+
+  const queryParams: GamesQueryParams = React.useMemo(() => {
+    return {
+      variables: {
+        page: 1,
+        pageSize: 10,
+      },
+      notifyOnNetworkStatusChange: true,
+    };
+  }, []);
+
+  const { data, refetch, networkStatus, fetchMore } = useQuery<TagsQueryResponse>(GET_TAGS, queryParams);
+  const tagResults = data?.allTags.results;
+  const nextPage = data?.allTags.nextPage;
+  const hasMore = nextPage ? true : false;
+  const refetching = networkStatus === NetworkStatus.refetch;
+
+  const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Tag>) => {
+    return <TagCard data={item} width={ITEM_WIDTH} height={ITEM_HEIGHT} />;
+  }, []);
+
+  const handleFetchMore = React.useCallback(() => {
+    if (!hasMore) {
+      return;
+    }
+    fetchMore({
+      variables: {
+        page: nextPage,
+      },
+    });
+  }, [fetchMore, hasMore, nextPage]);
+
   return (
-    <View>
-      <Text>Tags page</Text>
-    </View>
+    <Box flex={1}>
+      <FlatList
+        contentInsetAdjustmentBehavior="automatic"
+        ref={flatListRef}
+        numColumns={2}
+        data={tagResults}
+        keyExtractor={({ id }, index) => `${id}-${index}`}
+        getItemLayout={(_, index) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index })}
+        renderItem={renderItem}
+        onEndReached={handleFetchMore}
+        onRefresh={refetch}
+        refreshing={refetching}
+        ItemSeparatorComponent={Divider}
+        ListFooterComponent={hasMore && LoadingIndicator}
+        ListFooterComponentStyle={{
+          paddingVertical: 10,
+        }}
+        contentContainerStyle={{
+          padding: 10,
+        }}
+      />
+    </Box>
   );
 };
 

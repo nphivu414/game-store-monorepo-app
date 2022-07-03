@@ -11,6 +11,8 @@ export const TagStack = () => {
     <Stack.Navigator
       initialRouteName="TagScreen"
       screenOptions={{
+        headerLargeTitle: true,
+        headerLargeTitleShadowVisible: true,
         ...headerBlurEffectOptions,
       }}
     >

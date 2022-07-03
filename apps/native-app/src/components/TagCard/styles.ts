@@ -1,12 +1,12 @@
 import { styled } from '@game-store-monorepo/ui-native';
 import { Card } from '@rneui/themed';
 
-type GenreCardProps = {
+type TagCardProps = {
   width?: number;
   height?: number;
 };
 
-export const StyledGenreCard = styled(Card).attrs<GenreCardProps>((props) => ({
+export const StyledTagCard = styled(Card).attrs<TagCardProps>((props) => ({
   containerStyle: {
     width: props.width,
     height: props.height,
@@ -17,4 +17,4 @@ export const StyledGenreCard = styled(Card).attrs<GenreCardProps>((props) => ({
     marginTop: 0,
     marginLeft: 0,
   },
-}))<GenreCardProps>``;
+}))<TagCardProps>``;
