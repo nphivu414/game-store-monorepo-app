@@ -21,7 +21,15 @@ export type ThemeValue =
   | 'wireframe'
   | 'black'
   | 'luxury'
-  | 'dracula';
+  | 'dracula'
+  | 'cmyk'
+  | 'autumn'
+  | 'business'
+  | 'acid'
+  | 'lemonade'
+  | 'night'
+  | 'coffee'
+  | 'winter';
 
 export type ThemeItem = {
   icon: string;

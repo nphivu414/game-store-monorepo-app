@@ -103,7 +103,47 @@ export const THEMES: ThemeItem[] = [
   },
   {
     icon: '💎',
-    label: 'Lxury',
+    label: 'Luxury',
     value: 'luxury',
+  },
+  {
+    icon: '🎨',
+    label: 'Cmyk',
+    value: 'cmyk',
+  },
+  {
+    icon: '🍁',
+    label: 'Autumn',
+    value: 'autumn',
+  },
+  {
+    icon: '💼',
+    label: 'Business',
+    value: 'business',
+  },
+  {
+    icon: '🧪',
+    label: 'Acid',
+    value: 'acid',
+  },
+  {
+    icon: '🍋',
+    label: 'Lemonade',
+    value: 'lemonade',
+  },
+  {
+    icon: '🌙',
+    label: 'Night',
+    value: 'night',
+  },
+  {
+    icon: '☕️',
+    label: 'Coffee',
+    value: 'coffee',
+  },
+  {
+    icon: '❄️',
+    label: 'Winter',
+    value: 'winter',
   },
 ];

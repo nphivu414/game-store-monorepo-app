@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "data-access": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/data-access",
       "sourceRoot": "libs/data-access/src",
       "projectType": "library",
@@ -24,6 +25,7 @@
       }
     },
     "graphql-client": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/graphql-client",
       "sourceRoot": "libs/graphql-client/src",
       "projectType": "library",
@@ -47,6 +49,7 @@
       }
     },
     "native-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/native-app",
       "sourceRoot": "apps/native-app/src",
       "projectType": "application",
@@ -127,6 +130,7 @@
       "tags": []
     },
     "native-app-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/native-app-e2e",
       "sourceRoot": "apps/native-app-e2e/src",
       "projectType": "application",
@@ -191,6 +195,7 @@
       "implicitDependencies": ["native-app"]
     },
     "nestjs-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/nestjs-app",
       "sourceRoot": "apps/nestjs-app/src",
       "projectType": "application",
@@ -242,6 +247,7 @@
       }
     },
     "ui-native": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/ui-native",
       "sourceRoot": "libs/ui-native/src",
       "projectType": "library",
@@ -265,6 +271,7 @@
       }
     },
     "ui-web": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/ui-web",
       "sourceRoot": "libs/ui-web/src",
       "projectType": "library",
@@ -288,6 +295,7 @@
       }
     },
     "utils": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
       "projectType": "library",
@@ -310,6 +318,7 @@
       }
     },
     "web-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/web-app",
       "sourceRoot": "apps/web-app/src",
       "projectType": "application",
@@ -396,6 +405,7 @@
       }
     },
     "web-app-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/web-app-e2e",
       "sourceRoot": "apps/web-app-e2e/src",
       "projectType": "application",
@@ -422,5 +432,6 @@
         }
       }
     }
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

@@ -2,12 +2,12 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 require_relative '../node_modules/@nrwl/react-native/nx_post_install'
 
-platform :ios, '11.0'
+platform :ios, '14.0'
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'NativeApp' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-  
+
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -21,6 +21,11 @@ target 'NativeApp' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  target 'NativeAppTests' do
+    inherit! :complete
+    # Pods for testing
+  end
 
   # Enables Flipper.
   #

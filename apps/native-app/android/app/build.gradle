@@ -87,12 +87,6 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'Ionicons.ttf', 'MaterialCommunityIcons.ttf' ] // Name of the font files you want to copy
-]
-
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -153,6 +147,7 @@ android {
         
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        missingDimensionStrategy 'detox', 'full'
         
 
         if (isNewArchitectureEnabled()) {
@@ -171,11 +166,9 @@ android {
                     // Make sure this target name is the same you specify inside the
                     // src/main/jni/Android.mk file for the `LOCAL_MODULE` variable.
                     targets "nativeapp_appmodules"
-
                     // Fix for windows limit on number of character in file paths and in command lines
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                        arguments "NDK_OUT=${rootProject.projectDir.getParent()}\\.cxx",
-                            "NDK_APP_SHORT_COMMANDS=true"
+                        arguments "NDK_APP_SHORT_COMMANDS=true"
                     }
                 }
             }
@@ -310,7 +303,7 @@ dependencies {
     }
 
     
-    androidTestImplementation('com.wix:detox:+')
+    androidTestImplementation(project(path: ":detox"))
     
 }
 
