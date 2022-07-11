@@ -26,7 +26,7 @@ const SearchForm: React.FC = () => {
   const searchResultAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: withTiming(searchResultOpacity.value, {
-        duration: 200,
+        duration: 300,
       }),
     };
   });
