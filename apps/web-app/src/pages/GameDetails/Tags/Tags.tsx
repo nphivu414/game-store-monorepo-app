@@ -1,9 +1,7 @@
 import { Tag } from '@game-store-monorepo/data-access';
+import { Badge, Section, Skeleton } from '@game-store-monorepo/ui-web';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Badge from 'src/components/Badge';
-import Section from 'src/components/Section';
-import Skeleton from 'src/components/Skeleton';
 import { ROUTES } from 'src/routes/routes';
 
 type TagsProps = {

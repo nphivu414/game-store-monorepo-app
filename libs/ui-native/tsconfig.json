@@ -1,0 +1,33 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@game-store-monorepo/data-access": ["../data-access/src/index.ts"],
+      "@game-store-monorepo/graphql-client": ["../graphql-client/src/index.ts"],
+      "@game-store-monorepo/util": ["../utils/src/index.ts"],
+    }
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

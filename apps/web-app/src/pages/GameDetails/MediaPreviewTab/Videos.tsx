@@ -1,6 +1,6 @@
 import { Trailer } from '@game-store-monorepo/data-access';
+import { Carousel, CarouselItem } from '@game-store-monorepo/ui-web';
 import * as React from 'react';
-import Carousel, { CarouselItem } from 'src/components/Carousel';
 
 type VideosProps = {
   data?: Trailer[];

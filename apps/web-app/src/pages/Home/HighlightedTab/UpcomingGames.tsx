@@ -3,11 +3,9 @@ import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-
 import { getMultipleItemNames } from '@game-store-monorepo/util';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from 'src/components/Button';
-import List, { ListItem } from 'src/components/List';
-import PlatformLogos from 'src/components/PlatformLogos';
-import { GET_GAMES } from 'src/graphql/queries';
+import { GET_GAMES } from '@game-store-monorepo/graphql-client';
 import { ROUTES } from 'src/routes/routes';
+import { Button, List, ListItem, PlatformLogos } from '@game-store-monorepo/ui-web';
 
 const queryParams: GamesQueryParams = {
   variables: {

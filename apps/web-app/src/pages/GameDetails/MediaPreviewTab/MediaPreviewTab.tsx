@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Game } from '@game-store-monorepo/data-access';
-import TabView from 'src/components/TabView';
-import { TabViewItem } from 'src/components/TabView/TabView';
 import Screenshots from './Screenshots';
 import Videos from './Videos';
+import { TabView, TabViewItem } from '@game-store-monorepo/ui-web';
 
 type MediaPreviewTabProps = {
   data?: Game;

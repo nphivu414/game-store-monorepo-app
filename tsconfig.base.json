@@ -13,7 +13,11 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@game-store-monorepo/ui-native": ["libs/ui-native/src/index.ts"],
+      "@game-store-monorepo/ui-web": ["libs/ui-web/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

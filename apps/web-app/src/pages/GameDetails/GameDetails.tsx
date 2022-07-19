@@ -3,14 +3,14 @@ import { useQuery } from '@apollo/client';
 import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@game-store-monorepo/data-access';
 import { useParams } from 'react-router-dom';
 import { NavigationContext } from 'src/context/navigation';
-import { GET_GAME_DETAILS } from 'src/graphql/queries';
+import { GET_GAME_DETAILS } from '@game-store-monorepo/graphql-client';
 import GeneralInformation from './GeneralInformation';
 import MediaPreviewTab from './MediaPreviewTab';
-import ScrollToTop from 'src/components/ScrollToTop';
 import Tags from './Tags';
 import Description from './Description';
 import GameSeries from './GameSeries/GameSeries';
 import GamesInGenres from './GamesInGenres';
+import { ScrollToTop } from '@game-store-monorepo/ui-web';
 
 type GameDetailRouteParams = {
   id: string;

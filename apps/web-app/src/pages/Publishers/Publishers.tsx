@@ -1,17 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ScrollToTop from 'src/components/ScrollToTop';
-import Spinner from 'src/components/Spinner';
 import { Genre, PublishersQueryParams, PublishersQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_PUBLISHERS } from 'src/graphql/queries';
+import { GET_PUBLISHERS } from '@game-store-monorepo/graphql-client';
 import { useQuery } from '@apollo/client';
 import { NavigationContext } from 'src/context/navigation';
-import Card from 'src/components/Card';
 import { ROUTES } from 'src/routes/routes';
 import { useNavigate } from 'react-router-dom';
 import { getMultipleItemNames } from '@game-store-monorepo/util';
-import ViewDisplayOptions from 'src/components/ViewDisplayOptions';
+import { Card, ScrollToTop, Spinner, ViewDisplayOptions } from '@game-store-monorepo/ui-web';
 
 type ViewType = 'Grid' | 'List';
 
