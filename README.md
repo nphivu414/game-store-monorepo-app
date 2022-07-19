@@ -4,7 +4,7 @@
     
 # Game Store Monorepo
 
-A full-stack web application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
+A full-stack web / mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
 ## Authors
