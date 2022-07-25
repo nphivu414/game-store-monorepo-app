@@ -7,12 +7,7 @@ import {
   NormalizedCacheObject,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import {
-  RawgGameResponse,
-  RawgGenreResponse,
-  RawgPublisherResponse,
-  RawgTagResponse,
-} from '@game-store-monorepo/data-access';
+import { RawgGameResponse, RawgGenreResponse, RawgPublisherResponse, RawgTagResponse } from '@root/data-access';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   console.log('networkError', networkError);

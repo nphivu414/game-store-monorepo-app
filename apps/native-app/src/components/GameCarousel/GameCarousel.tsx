@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_GAMES } from '@game-store-monorepo/graphql-client';
+import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
+import { GET_GAMES } from '@root/graphql-client';
 import { Dimensions, FlatListProps, ListRenderItemInfo } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { LoadingIndicator } from '@root/ui-native';
 import { GameCard } from '../GameCard';
 
 type GameCarouselProps = {

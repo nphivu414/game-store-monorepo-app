@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GamesQueryParams, SearchGamesQueryResponse } from '@game-store-monorepo/data-access';
-import { SEARCH_GAMES } from '@game-store-monorepo/graphql-client';
-import { getMultipleItemNames, useDebounce } from '@game-store-monorepo/util';
-import { Box, PlatformLogos, SearchBar, Text, useThemeColors } from '@game-store-monorepo/ui-native';
+import { GamesQueryParams, SearchGamesQueryResponse } from '@root/data-access';
+import { SEARCH_GAMES } from '@root/graphql-client';
+import { getMultipleItemNames, useDebounce } from '@root/utils';
+import { Box, PlatformLogos, SearchBar, Text, useThemeColors } from '@root/ui-native';
 import { Avatar, ListItem } from '@rneui/themed';
 import { Dimensions, Platform, ScrollView } from 'react-native';
 import { Portal } from '@gorhom/portal';

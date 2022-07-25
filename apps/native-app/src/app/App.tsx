@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Appearance } from 'react-native';
 import { client } from '../graphql';
 import { ApolloProvider } from '@apollo/client';
-import { ThemeProvider } from '@game-store-monorepo/ui-native';
+import { ThemeProvider } from '@root/ui-native';
 
 export const App = () => {
   const colorScheme = Appearance.getColorScheme();

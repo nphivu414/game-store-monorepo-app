@@ -11,12 +11,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
-    "baseUrl": ".",
-    "paths": {
-      "@game-store-monorepo/data-access": ["../data-access/src/index.ts"],
-      "@game-store-monorepo/util": ["../utils/src/index.ts"],
-    }
+    "noImplicitAny": false
   },
   "files": [],
   "include": [],

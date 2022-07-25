@@ -1,5 +1,5 @@
-import { Trailer } from '@game-store-monorepo/data-access';
-import { Carousel, CarouselItem } from '@game-store-monorepo/ui-web';
+import { Trailer } from '@root/data-access';
+import { Carousel, CarouselItem } from '@root/ui-web';
 import * as React from 'react';
 
 type VideosProps = {

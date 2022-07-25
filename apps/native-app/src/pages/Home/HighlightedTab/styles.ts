@@ -1,4 +1,4 @@
-import { styled } from '@game-store-monorepo/ui-native';
+import { styled } from '@root/ui-native';
 import { TabView } from '@rneui/base';
 import { Tab } from '@rneui/themed';
 

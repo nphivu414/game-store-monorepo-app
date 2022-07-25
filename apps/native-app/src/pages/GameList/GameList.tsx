@@ -1,12 +1,12 @@
 import React from 'react';
 import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
-import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
+import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
 import { useQuery, NetworkStatus } from '@apollo/client';
-import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { Box, Divider, LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { GET_GAMES } from '@root/graphql-client';
+import { Box, Divider, LoadingIndicator } from '@root/ui-native';
 import SearchForm from './SearchForm';
-import { GameCard } from 'src/components';
+import { GameCard } from '../../components';
 
 const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
 const ITEM_HEIGHT = 250;

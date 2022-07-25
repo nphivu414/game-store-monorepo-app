@@ -1,4 +1,4 @@
-import { Text } from '@game-store-monorepo/ui-native';
+import { Text } from '@root/ui-native';
 import React from 'react';
 
 const GameDetails: React.FC = () => {

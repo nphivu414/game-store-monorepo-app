@@ -1,6 +1,6 @@
 import React from 'react';
-import { GamesQueryParams } from '@game-store-monorepo/data-access';
-import { Box, Section } from '@game-store-monorepo/ui-native';
+import { GamesQueryParams } from '@root/data-access';
+import { Box, Section } from '@root/ui-native';
 import { Dimensions } from 'react-native';
 import { StyledGameCarousel } from '../styles';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationContext } from 'src/context/navigation';
+import { NavigationContext } from '../../context/navigation';
 import BestGames from './BestGames';
 import FeaturedGames from './FeaturedGames';
 import HighlightedTab from './HighlightedTab';

@@ -1,4 +1,4 @@
-import { BottomTab, ThemeContext } from '@game-store-monorepo/ui-web';
+import { BottomTab, ThemeContext } from '@root/ui-web';
 import * as React from 'react';
 import NavigationBar from '../NavigationBar/NavigationBar';
 

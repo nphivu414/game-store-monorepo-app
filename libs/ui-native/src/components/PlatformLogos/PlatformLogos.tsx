@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from '@game-store-monorepo/data-access';
+import { Platform } from '@root/data-access';
 import { Box, BoxStyledProps } from '../Box';
 import { ViewProps } from 'react-native';
 import { StyledIcon } from './styles';

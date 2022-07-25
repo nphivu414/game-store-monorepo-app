@@ -1,10 +1,10 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-import { ThemeProvider, ToastifyContainer } from '@game-store-monorepo/ui-web';
-import Routes from 'src/routes';
-import { client } from 'src/graphql';
-import { NavigationProvider } from 'src/context/navigation/navigation-provider';
-import MainLayout from 'src/components/MainLayout/MainLayout';
+import { ThemeProvider, ToastifyContainer } from '@root/ui-web';
+import { client } from '../graphql';
+import { NavigationProvider } from '../context/navigation/navigation-provider';
+import MainLayout from '../components/MainLayout/MainLayout';
+import Routes from '../routes';
 
 export function App() {
   return (

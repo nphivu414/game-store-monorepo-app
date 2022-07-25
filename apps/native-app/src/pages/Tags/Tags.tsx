@@ -1,11 +1,11 @@
 import React from 'react';
 import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
-import { GamesQueryParams, Tag, TagsQueryResponse } from '@game-store-monorepo/data-access';
+import { GamesQueryParams, Tag, TagsQueryResponse } from '@root/data-access';
 import { useQuery, NetworkStatus } from '@apollo/client';
-import { GET_TAGS } from '@game-store-monorepo/graphql-client';
-import { TagCard } from 'src/components/TagCard';
-import { Box, Divider, LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { GET_TAGS } from '@root/graphql-client';
+import { Box, Divider, LoadingIndicator } from '@root/ui-native';
+import { TagCard } from '../../components/TagCard';
 
 const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
 const ITEM_HEIGHT = 230;

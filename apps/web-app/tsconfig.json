@@ -10,14 +10,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "strictPropertyInitialization": false,
-    "noImplicitAny": false,
-    "baseUrl": ".",
-    "paths": {
-      "@game-store-monorepo/ui-web": ["../../libs/ui-web/src/index.ts"],
-      "@game-store-monorepo/data-access": ["../../libs/data-access/src/index.ts"],
-      "@game-store-monorepo/graphql-client": ["../../libs/graphql-client/src/index.ts"],
-      "@game-store-monorepo/util": ["../../libs/utils/src/index.ts"],
-    }
+    "noImplicitAny": false
   },
   "files": [],
   "include": [],

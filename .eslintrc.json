@@ -13,8 +13,24 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:graphql-client",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:backend-app",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:web-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:graphql-client", "scope:ui-web"]
+              },
+              {
+                "sourceTag": "scope:native-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:graphql-client", "scope:ui-native"]
               }
             ]
           }

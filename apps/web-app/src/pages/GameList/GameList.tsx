@@ -3,13 +3,12 @@ import { useQuery } from '@apollo/client';
 import { useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Game, GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
-import { ROUTES } from 'src/routes/routes';
-import { NavigationContext } from 'src/context/navigation';
+import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
+import { GET_GAMES } from '@root/graphql-client';
+import { getMultipleItemNames } from '@root/utils';
 import SearchForm from './SearchForm';
-import { Card, PlatformLogos, ScrollToTop, Spinner, ViewDisplayOptions } from '@game-store-monorepo/ui-web';
+import { Card, PlatformLogos, ROUTES, ScrollToTop, Spinner, ViewDisplayOptions } from '@root/ui-web';
+import { NavigationContext } from '../../context/navigation';
 
 type ViewType = 'Grid' | 'List';
 
