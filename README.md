@@ -12,11 +12,14 @@ A full-stack web/mobile application that helps you find and discover over 500,00
 - [@nphivu414](https://github.com/nphivu414)
 
 ## Main stacks
- - [Nx](https://nx.dev/)
+ - [Nx Build System](https://nx.dev/)
  - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
  - [TailwindCSS](https://tailwindcss.com/)
  - [DaisyUI](https://daisyui.com/)
+ - [React Native](https://reactnative.dev/)
+ - [Styled Components](https://styled-components.com/)
+ - [Styled System](https://styled-system.com/)
  - [NestJS](https://nestjs.com/)
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
