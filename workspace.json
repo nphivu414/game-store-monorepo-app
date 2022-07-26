@@ -434,7 +434,8 @@
           },
           "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "implicitDependencies": ["native-app"]
     }
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
