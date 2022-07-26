@@ -1,7 +1,7 @@
 import { from, HttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
-import { getApolloClient } from '@game-store-monorepo/graphql-client';
+import { getApolloClient } from '@root/graphql-client';
 import { Platform } from 'react-native';
 import { NX_API_ANDROID_URL, NX_API_IOS_URL } from '../configs';
 

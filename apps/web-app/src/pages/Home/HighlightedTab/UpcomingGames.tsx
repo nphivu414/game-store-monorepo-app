@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { GamesQueryParams, GamesQueryResponse } from '@root/data-access';
+import { getMultipleItemNames } from '@root/utils';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { ROUTES } from 'src/routes/routes';
-import { Button, List, ListItem, PlatformLogos } from '@game-store-monorepo/ui-web';
+import { GET_GAMES } from '@root/graphql-client';
+import { Button, List, ListItem, PlatformLogos, ROUTES } from '@root/ui-web';
 
 const queryParams: GamesQueryParams = {
   variables: {

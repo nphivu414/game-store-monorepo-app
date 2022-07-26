@@ -2,11 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "@game-store-monorepo/data-access": ["../data-access/src/index.ts"],
-    }
+    "types": ["node"]
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",

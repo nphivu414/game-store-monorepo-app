@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useQuery } from '@apollo/client';
-import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@game-store-monorepo/data-access';
+import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@root/data-access';
 import { useParams } from 'react-router-dom';
-import { NavigationContext } from 'src/context/navigation';
-import { GET_GAME_DETAILS } from '@game-store-monorepo/graphql-client';
+import { GET_GAME_DETAILS } from '@root/graphql-client';
 import GeneralInformation from './GeneralInformation';
 import MediaPreviewTab from './MediaPreviewTab';
 import Tags from './Tags';
 import Description from './Description';
 import GameSeries from './GameSeries/GameSeries';
 import GamesInGenres from './GamesInGenres';
-import { ScrollToTop } from '@game-store-monorepo/ui-web';
+import { ScrollToTop } from '@root/ui-web';
+import { NavigationContext } from '../../context/navigation';
 
 type GameDetailRouteParams = {
   id: string;

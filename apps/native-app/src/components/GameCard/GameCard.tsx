@@ -1,9 +1,9 @@
 import React from 'react';
-import { Game } from '@game-store-monorepo/data-access';
+import { Game } from '@root/data-access';
 import { StyledGameCard } from './styles';
 import { Card } from '@rneui/themed';
-import { Box, Text, PlatformLogos } from '@game-store-monorepo/ui-native';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { Box, Text, PlatformLogos } from '@root/ui-native';
+import { getMultipleItemNames } from '@root/utils';
 
 type GameCardProps = {
   data?: Game;

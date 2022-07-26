@@ -1,8 +1,8 @@
 import { from, HttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
-import { getApolloClient } from '@game-store-monorepo/graphql-client';
-import { toastError } from '@game-store-monorepo/ui-web';
+import { getApolloClient } from '@root/graphql-client';
+import { toastError } from '@root/ui-web';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   toastError({

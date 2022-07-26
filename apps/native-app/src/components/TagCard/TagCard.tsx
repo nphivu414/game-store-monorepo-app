@@ -1,9 +1,9 @@
 import React from 'react';
-import { Genre } from '@game-store-monorepo/data-access';
+import { Genre } from '@root/data-access';
 import { StyledTagCard } from './styles';
 import { Card } from '@rneui/themed';
-import { Box, Text } from '@game-store-monorepo/ui-native';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { Box, Text } from '@root/ui-native';
+import { getMultipleItemNames } from '@root/utils';
 
 type TagCardProps = {
   data?: Genre;

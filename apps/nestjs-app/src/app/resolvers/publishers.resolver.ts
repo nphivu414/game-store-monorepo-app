@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
-import { Publisher, RawgPublisherResponse } from '@game-store-monorepo/data-access';
+import { Publisher, RawgPublisherResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 

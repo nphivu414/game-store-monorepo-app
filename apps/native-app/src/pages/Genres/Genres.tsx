@@ -1,11 +1,11 @@
 import React from 'react';
 import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
-import { GamesQueryParams, Genre, GenresQueryResponse } from '@game-store-monorepo/data-access';
+import { GamesQueryParams, Genre, GenresQueryResponse } from '@root/data-access';
 import { useQuery, NetworkStatus } from '@apollo/client';
-import { GET_GENRES } from '@game-store-monorepo/graphql-client';
-import { GenreCard } from 'src/components/GenreCard';
-import { Box, Divider, LoadingIndicator } from '@game-store-monorepo/ui-native';
+import { GET_GENRES } from '@root/graphql-client';
+import { Box, Divider, LoadingIndicator } from '@root/ui-native';
+import { GenreCard } from '../../components';
 
 const ITEM_WIDTH = Dimensions.get('screen').width / 2 - 20;
 const ITEM_HEIGHT = 230;

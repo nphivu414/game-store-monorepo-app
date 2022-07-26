@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { GamesQueryParams, Genre } from '@game-store-monorepo/data-access';
+import { GamesQueryParams, Genre } from '@root/data-access';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from 'src/routes/routes';
-import { Button, Section } from '@game-store-monorepo/ui-web';
-import GameCarousel from 'src/components/GameCarousel/GameCarousel';
+import { Button, ROUTES, Section } from '@root/ui-web';
+import GameCarousel from '../../../components/GameCarousel/GameCarousel';
 
 type GamesInGenresProps = {
   data?: Genre[];

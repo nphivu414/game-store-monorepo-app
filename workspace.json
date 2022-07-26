@@ -22,14 +22,14 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:shared"]
     },
     "graphql-client": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/graphql-client",
       "sourceRoot": "libs/graphql-client/src",
       "projectType": "library",
-      "tags": [],
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -46,7 +46,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:graphql-client"]
     },
     "native-app": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -127,7 +128,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["scope:native-app"]
     },
     "native-app-e2e": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -244,14 +245,14 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:backend-app"]
     },
     "ui-native": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/ui-native",
       "sourceRoot": "libs/ui-native/src",
       "projectType": "library",
-      "tags": [],
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -268,14 +269,14 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:ui-native"]
     },
     "ui-web": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/ui-web",
       "sourceRoot": "libs/ui-web/src",
       "projectType": "library",
-      "tags": [],
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -292,7 +293,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:ui-web"]
     },
     "utils": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -315,7 +317,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:shared"]
     },
     "web-app": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -402,7 +405,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:web-app"]
     },
     "web-app-e2e": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -430,7 +434,8 @@
           },
           "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "implicitDependencies": ["native-app"]
     }
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"

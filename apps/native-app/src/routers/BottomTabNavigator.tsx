@@ -2,7 +2,7 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeStack, GameListStack, GenreStack, TagStack, PublisherStack } from './stacks';
-import { useThemeColors } from '@game-store-monorepo/ui-native';
+import { useThemeColors } from '@root/ui-native';
 
 const Tab = createBottomTabNavigator();
 

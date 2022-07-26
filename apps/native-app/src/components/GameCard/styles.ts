@@ -1,4 +1,4 @@
-import { styled } from '@game-store-monorepo/ui-native';
+import { styled } from '@root/ui-native';
 import { Card } from '@rneui/themed';
 
 type GameCardProps = {

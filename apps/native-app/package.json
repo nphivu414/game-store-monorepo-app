@@ -25,6 +25,8 @@
     "@rneui/base": "*",
     "@gorhom/portal": "*",
     "@react-native-community/hooks": "*",
-    "react-native-reanimated": "*"
+    "react-native-reanimated": "*",
+    "@nestjs/graphql": "*",
+    "class-transformer": "*"
   }
 }

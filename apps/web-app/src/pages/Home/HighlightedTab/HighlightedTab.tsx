@@ -1,4 +1,4 @@
-import { Card, TabView, TabViewItem } from '@game-store-monorepo/ui-web';
+import { Card, TabView, TabViewItem } from '@root/ui-web';
 import NewReleases from './NewReleases';
 import UpcomingGames from './UpcomingGames';
 

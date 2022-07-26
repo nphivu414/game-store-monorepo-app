@@ -4,9 +4,8 @@ import { CgDarkMode } from 'react-icons/cg';
 import Helmet from 'react-helmet';
 import cn from 'classnames';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { NavigationContext } from 'src/context/navigation';
-import { ROUTES } from 'src/routes/routes';
-import { Button, Dropdown, DropdownItem, ThemeContext, ThemeValue } from '@game-store-monorepo/ui-web';
+import { Button, Dropdown, DropdownItem, ROUTES, ThemeContext, ThemeValue } from '@root/ui-web';
+import { NavigationContext } from '../../context/navigation';
 
 type NavigationBarProps = {
   isSticky?: boolean;

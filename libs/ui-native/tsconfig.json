@@ -12,13 +12,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "target": "esnext",
-    "noImplicitAny": false,
-    "baseUrl": ".",
-    "paths": {
-      "@game-store-monorepo/data-access": ["../data-access/src/index.ts"],
-      "@game-store-monorepo/graphql-client": ["../graphql-client/src/index.ts"],
-      "@game-store-monorepo/util": ["../utils/src/index.ts"],
-    }
+    "noImplicitAny": false
   },
   "files": [],
   "include": [],

@@ -1,4 +1,4 @@
-import { Box } from '@game-store-monorepo/ui-native';
+import { Box } from '@root/ui-native';
 import React from 'react';
 import NewReleases from './NewReleases';
 import { StyledTab, StyledTabItem, StyledTabView, StyledTabViewItem } from './styles';

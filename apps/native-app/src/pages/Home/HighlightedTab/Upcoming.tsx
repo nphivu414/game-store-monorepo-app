@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client';
-import { GamesQueryParams, GamesQueryResponse } from '@game-store-monorepo/data-access';
-import { GET_GAMES } from '@game-store-monorepo/graphql-client';
-import { Box, Button, LoadingIndicator, PlatformLogos, Text } from '@game-store-monorepo/ui-native';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { GamesQueryParams, GamesQueryResponse } from '@root/data-access';
+import { GET_GAMES } from '@root/graphql-client';
+import { Box, Button, LoadingIndicator, PlatformLogos, Text } from '@root/ui-native';
+import { getMultipleItemNames } from '@root/utils';
 import { Avatar, ListItem } from '@rneui/themed';
 import React from 'react';
 
