@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useQuery } from '@apollo/client';
 import { useNavigate, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
-import { GET_GAMES } from '@root/graphql-client';
+import { Game, GamesQueryParams } from '@root/data-access';
+import { useGamesQuery } from '@root/graphql-client';
 import { getMultipleItemNames } from '@root/utils';
 import SearchForm from './SearchForm';
 import { Card, PlatformLogos, ROUTES, ScrollToTop, Spinner, ViewDisplayOptions } from '@root/ui-web';
@@ -45,10 +44,7 @@ const GameList: React.FC = () => {
     };
   }, [search]);
 
-  const { data, loading, fetchMore } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
-  const gameResults = data?.allGames.results;
-  const nextPage = data?.allGames.nextPage;
-  const hasMore = nextPage ? true : false;
+  const { results, nextPage, hasMore, loading, fetchMore } = useGamesQuery(queryParams);
 
   React.useEffect(() => {
     setTitle('Games');
@@ -73,10 +69,10 @@ const GameList: React.FC = () => {
   };
 
   const renderGames = () => {
-    if (!gameResults?.length) {
+    if (!results?.length) {
       return null;
     }
-    return gameResults.map((item) => {
+    return results.map((item) => {
       const { id, name, thumbnailImage, parentPlatforms, genres } = item;
       return (
         <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -99,7 +95,7 @@ const GameList: React.FC = () => {
         </div>
         <InfiniteScroll
           className={cn(gridClass)}
-          dataLength={gameResults?.length || 0}
+          dataLength={results?.length || 0}
           scrollThreshold="100px"
           next={handleFetchMore}
           hasMore={hasMore}
