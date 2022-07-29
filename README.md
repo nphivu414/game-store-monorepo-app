@@ -35,7 +35,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
   ### Native App
   |  |  |  |  |
 | :-------- | :------- | :------------------------- | :------------------------- |
-| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-ios.png) |
+| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-ios.png) |
 ## Demo
 
 [Check out the live demo](https://mono-game-store.netlify.app/)
