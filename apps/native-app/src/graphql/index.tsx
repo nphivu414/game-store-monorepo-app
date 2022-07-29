@@ -3,11 +3,19 @@ import { onError } from '@apollo/client/link/error';
 
 import { getApolloClient } from '@root/graphql-client';
 import { Platform } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { NX_API_ANDROID_URL, NX_API_IOS_URL } from '../configs';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  console.log('🚀 ~ file: index.tsx ~ line 7 ~ errorLink ~ networkError', networkError);
-  console.log('🚀 ~ file: index.tsx ~ line 7 ~ errorLink ~ graphQLErrors', graphQLErrors);
+  Toast.show({
+    type: 'error',
+    text1: networkError.message,
+    text2: graphQLErrors
+      ?.map(({ message }) => {
+        return message;
+      })
+      .join(','),
+  });
 });
 
 const httpLink = new HttpLink({

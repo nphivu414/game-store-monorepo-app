@@ -1,9 +1,8 @@
 import React from 'react';
 import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
-import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
-import { useQuery, NetworkStatus } from '@apollo/client';
-import { GET_GAMES } from '@root/graphql-client';
+import { Game, GamesQueryParams } from '@root/data-access';
+import { useGamesQuery } from '@root/graphql-client';
 import { Box, Divider, LoadingIndicator } from '@root/ui-native';
 import SearchForm from './SearchForm';
 import { GameCard } from '../../components';
@@ -25,11 +24,7 @@ const GameList = () => {
     };
   }, []);
 
-  const { data, networkStatus, fetchMore, refetch } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
-  const results = data?.allGames.results;
-  const nextPage = data?.allGames.nextPage;
-  const hasMore = nextPage ? true : false;
-  const refetching = networkStatus === NetworkStatus.refetch;
+  const { hasMore, nextPage, refetching, results, fetchMore, refetch, loading } = useGamesQuery(queryParams);
 
   const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Game>) => {
     return <GameCard data={item} width={ITEM_WIDTH} height={ITEM_HEIGHT} />;
@@ -65,7 +60,7 @@ const GameList = () => {
         ListHeaderComponentStyle={{
           marginBottom: 10,
         }}
-        ListFooterComponent={hasMore && LoadingIndicator}
+        ListFooterComponent={(hasMore || loading) && LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,
         }}

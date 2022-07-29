@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   const { setTitle } = React.useContext(NavigationContext);
 
   React.useEffect(() => {
-    setTitle('Game Store Monorepo');
+    setTitle('Explore');
   }, [setTitle]);
 
   return (
