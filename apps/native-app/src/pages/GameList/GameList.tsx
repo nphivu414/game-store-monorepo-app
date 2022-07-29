@@ -24,7 +24,7 @@ const GameList = () => {
     };
   }, []);
 
-  const { hasMore, nextPage, refetching, results, fetchMore, refetch } = useGamesQuery(queryParams);
+  const { hasMore, nextPage, refetching, results, fetchMore, refetch, loading } = useGamesQuery(queryParams);
 
   const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Game>) => {
     return <GameCard data={item} width={ITEM_WIDTH} height={ITEM_HEIGHT} />;
@@ -60,7 +60,7 @@ const GameList = () => {
         ListHeaderComponentStyle={{
           marginBottom: 10,
         }}
-        ListFooterComponent={hasMore && LoadingIndicator}
+        ListFooterComponent={(hasMore || loading) && LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,
         }}

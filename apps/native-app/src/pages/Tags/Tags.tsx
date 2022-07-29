@@ -24,7 +24,7 @@ const Tags = () => {
     };
   }, []);
 
-  const { data, refetch, networkStatus, fetchMore } = useQuery<TagsQueryResponse>(GET_TAGS, queryParams);
+  const { data, refetch, networkStatus, fetchMore, loading } = useQuery<TagsQueryResponse>(GET_TAGS, queryParams);
   const tagResults = data?.allTags.results;
   const nextPage = data?.allTags.nextPage;
   const hasMore = nextPage ? true : false;
@@ -59,7 +59,7 @@ const Tags = () => {
         onRefresh={refetch}
         refreshing={refetching}
         ItemSeparatorComponent={Divider}
-        ListFooterComponent={hasMore && LoadingIndicator}
+        ListFooterComponent={(hasMore || loading) && LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,
         }}

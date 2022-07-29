@@ -27,6 +27,7 @@
     "@react-native-community/hooks": "*",
     "react-native-reanimated": "*",
     "@nestjs/graphql": "*",
-    "class-transformer": "*"
+    "class-transformer": "*",
+    "react-native-toast-message": "*"
   }
 }

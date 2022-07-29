@@ -24,7 +24,7 @@ const Genres = () => {
     };
   }, []);
 
-  const { data, refetch, networkStatus, fetchMore } = useQuery<GenresQueryResponse>(GET_GENRES, queryParams);
+  const { data, refetch, networkStatus, fetchMore, loading } = useQuery<GenresQueryResponse>(GET_GENRES, queryParams);
   const genreResults = data?.allGenres.results;
   const nextPage = data?.allGenres.nextPage;
   const hasMore = nextPage ? true : false;
@@ -59,7 +59,7 @@ const Genres = () => {
         onRefresh={refetch}
         refreshing={refetching}
         ItemSeparatorComponent={Divider}
-        ListFooterComponent={hasMore && LoadingIndicator}
+        ListFooterComponent={(hasMore || loading) && LoadingIndicator}
         ListFooterComponentStyle={{
           paddingVertical: 10,
         }}

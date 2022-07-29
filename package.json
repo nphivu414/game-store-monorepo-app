@@ -32,6 +32,9 @@
     "help": "nx help"
   },
   "private": true,
+  "resolutions": {
+    "@types/react": "18.0.1"
+  },
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@gorhom/portal": "^1.0.13",
@@ -77,6 +80,7 @@
     "react-native-reanimated": "^2.9.1",
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
+    "react-native-toast-message": "^2.1.5",
     "react-native-vector-icons": "^9.2.0",
     "react-router-dom": "6.3.0",
     "react-spinners": "^0.11.0",
@@ -124,7 +128,7 @@
     "@types/node": "18.0.0",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
-    "@types/react-native": "0.69.2",
+    "@types/react-native": "0.69.3",
     "@types/react-router-dom": "5.3.3",
     "@typescript-eslint/eslint-plugin": "5.30.5",
     "@typescript-eslint/parser": "5.30.5",

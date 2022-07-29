@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import { PortalProvider } from '@gorhom/portal';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { BottomTabNavigator } from '../routers';
@@ -24,6 +25,7 @@ export const App = () => {
           </ThemeProvider>
         </NavigationContainer>
       </SafeAreaProvider>
+      <Toast />
     </ApolloProvider>
   );
 };

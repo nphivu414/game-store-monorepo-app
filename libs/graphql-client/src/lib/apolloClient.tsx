@@ -1,22 +1,5 @@
-import {
-  ApolloClient,
-  ApolloClientOptions,
-  from,
-  HttpLink,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
+import { ApolloClient, ApolloClientOptions, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { RawgGameResponse, RawgGenreResponse, RawgPublisherResponse, RawgTagResponse } from '@root/data-access';
-
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  console.log('networkError', networkError);
-  console.log('graphQLErrors', graphQLErrors);
-});
-
-const httpLink = new HttpLink({
-  uri: process.env['NX_API_URL'],
-});
 
 const handleQueryMergeResult = <T,>(existing: T, incoming: T): T => {
   if (!existing) {
@@ -30,7 +13,6 @@ const handleQueryMergeResult = <T,>(existing: T, incoming: T): T => {
 };
 
 const defaultOptions: ApolloClientOptions<NormalizedCacheObject> = {
-  link: from([errorLink, httpLink]),
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
