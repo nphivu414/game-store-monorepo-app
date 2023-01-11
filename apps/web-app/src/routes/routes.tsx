@@ -1,19 +1,12 @@
 import * as React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Home from 'src/pages/Home';
-import GameDetails from 'src/pages/GameDetails';
-import GameList from 'src/pages/GameList';
-import Genres from 'src/pages/Genres';
-import Tags from 'src/pages/Tags';
-import Publishers from 'src/pages/Publishers';
-
-export const ROUTES = {
-  ROOT: '/',
-  GAMES: '/games',
-  GENRES: '/genres',
-  TAGS: '/tags',
-  PUBLISHERS: '/publishers',
-};
+import Home from '../pages/Home';
+import GameDetails from '../pages/GameDetails';
+import GameList from '../pages/GameList';
+import Genres from '../pages/Genres';
+import Tags from '../pages/Tags';
+import Publishers from '../pages/Publishers';
+import { ROUTES } from '@root/ui-web';
 
 const Routers: React.FC = () => {
   const location = useLocation();

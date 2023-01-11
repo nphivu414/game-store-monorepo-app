@@ -2,14 +2,10 @@ import * as React from 'react';
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Game, GameSeriesQueryParams, GameSeriesQueryResponse } from '@game-store-monorepo/data-access';
-import PlatformLogos from 'src/components/PlatformLogos';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
-import Card from 'src/components/Card';
-import { ROUTES } from 'src/routes/routes';
-import Spinner from 'src/components/Spinner';
-import { GET_GAME_SERIES } from 'src/graphql/queries/get-game-series';
-import Section from 'src/components/Section';
+import { Game, GameSeriesQueryParams, GameSeriesQueryResponse } from '@root/data-access';
+import { getMultipleItemNames } from '@root/utils';
+import { GET_GAME_SERIES } from '@root/graphql-client';
+import { Card, PlatformLogos, ROUTES, Section, Spinner } from '@root/ui-web';
 
 type GameSeriesProps = {
   gameId: number;

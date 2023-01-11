@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "data-access": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/data-access",
       "sourceRoot": "libs/data-access/src",
       "projectType": "library",
@@ -21,9 +22,181 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:shared"]
+    },
+    "graphql-client": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "root": "libs/graphql-client",
+      "sourceRoot": "libs/graphql-client/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/graphql-client/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/graphql-client"],
+          "options": {
+            "jestConfig": "libs/graphql-client/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["scope:graphql-client"]
+    },
+    "native-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "root": "apps/native-app",
+      "sourceRoot": "apps/native-app/src",
+      "projectType": "application",
+      "targets": {
+        "start": {
+          "executor": "@nrwl/react-native:start",
+          "options": {
+            "port": 8081
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "nx start native-app"
+          }
+        },
+        "run-ios": {
+          "executor": "@nrwl/react-native:run-ios",
+          "options": {
+            "sync": true,
+            "install": false,
+            "simulator": "iPhone 13 Pro"
+          }
+        },
+        "bundle-ios": {
+          "executor": "@nrwl/react-native:bundle",
+          "outputs": ["apps/native-app/build"],
+          "options": {
+            "entryFile": "src/main.tsx",
+            "platform": "ios",
+            "bundleOutput": "dist/apps/native-app/ios/main.jsbundle"
+          }
+        },
+        "run-android": {
+          "executor": "@nrwl/react-native:run-android",
+          "options": {}
+        },
+        "build-android": {
+          "executor": "@nrwl/react-native:build-android",
+          "outputs": [
+            "apps/native-app/android/app/build/outputs/bundle",
+            "apps/native-app/android/app/build/outputs/apk"
+          ],
+          "options": {}
+        },
+        "bundle-android": {
+          "executor": "@nrwl/react-native:bundle",
+          "options": {
+            "entryFile": "src/main.tsx",
+            "platform": "android",
+            "bundleOutput": "dist/apps/native-app/android/main.jsbundle"
+          }
+        },
+        "sync-deps": {
+          "executor": "@nrwl/react-native:sync-deps",
+          "options": {}
+        },
+        "ensure-symlink": {
+          "executor": "@nrwl/react-native:ensure-symlink",
+          "options": {}
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/native-app/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/native-app"],
+          "options": {
+            "jestConfig": "apps/native-app/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["scope:native-app"]
+    },
+    "native-app-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "root": "apps/native-app-e2e",
+      "sourceRoot": "apps/native-app-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "build-ios": {
+          "executor": "@nrwl/detox:build",
+          "options": {
+            "detoxConfiguration": "ios.sim.debug"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "ios.sim.release"
+            }
+          }
+        },
+        "test-ios": {
+          "executor": "@nrwl/detox:test",
+          "options": {
+            "detoxConfiguration": "ios.sim.debug",
+            "buildTarget": "native-app-e2e:build-ios"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "ios.sim.release",
+              "buildTarget": "native-app-e2e:build-ios:prod"
+            }
+          }
+        },
+        "build-android": {
+          "executor": "@nrwl/detox:build",
+          "options": {
+            "detoxConfiguration": "android.emu.debug"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "android.emu.release"
+            }
+          }
+        },
+        "test-android": {
+          "executor": "@nrwl/detox:test",
+          "options": {
+            "detoxConfiguration": "android.emu.debug",
+            "buildTarget": "native-app-e2e:build-android"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "android.emu.release",
+              "buildTarget": "native-app-e2e:build-android:prod"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/native-app-e2e/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["native-app"]
     },
     "nestjs-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/nestjs-app",
       "sourceRoot": "apps/nestjs-app/src",
       "projectType": "application",
@@ -72,9 +245,59 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:backend-app"]
+    },
+    "ui-native": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "root": "libs/ui-native",
+      "sourceRoot": "libs/ui-native/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ui-native/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-native"],
+          "options": {
+            "jestConfig": "libs/ui-native/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["scope:ui-native"]
+    },
+    "ui-web": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
+      "root": "libs/ui-web",
+      "sourceRoot": "libs/ui-web/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ui-web/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-web"],
+          "options": {
+            "jestConfig": "libs/ui-web/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["scope:ui-web"]
     },
     "utils": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
       "projectType": "library",
@@ -94,9 +317,11 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:shared"]
     },
     "web-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/web-app",
       "sourceRoot": "apps/web-app/src",
       "projectType": "application",
@@ -180,9 +405,11 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["scope:web-app"]
     },
     "web-app-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/web-app-e2e",
       "sourceRoot": "apps/web-app-e2e/src",
       "projectType": "application",
@@ -207,7 +434,9 @@
           },
           "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "implicitDependencies": ["web-app"]
     }
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

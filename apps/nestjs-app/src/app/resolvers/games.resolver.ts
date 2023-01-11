@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
-import { Game, RawgGameResponse, RawgScreenshotResponse, RawgTrailerResponse } from '@game-store-monorepo/data-access';
+import { Game, RawgGameResponse, RawgScreenshotResponse, RawgTrailerResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 

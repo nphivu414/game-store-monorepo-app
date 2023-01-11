@@ -2,13 +2,10 @@ import * as React from 'react';
 import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
 import { CgDarkMode } from 'react-icons/cg';
 import Helmet from 'react-helmet';
-import Button from 'src/components//Button';
-import Dropdown, { DropdownItem } from 'src/components//Dropdown';
-import { ThemeContext, ThemeValue } from 'src/context/theme';
 import cn from 'classnames';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { NavigationContext } from 'src/context/navigation';
-import { ROUTES } from 'src/routes/routes';
+import { Button, Dropdown, DropdownItem, ROUTES, ThemeContext, ThemeValue } from '@root/ui-web';
+import { NavigationContext } from '../../context/navigation';
 
 type NavigationBarProps = {
   isSticky?: boolean;

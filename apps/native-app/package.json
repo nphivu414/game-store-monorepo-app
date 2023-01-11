@@ -1,0 +1,33 @@
+{
+  "name": "native-app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-config": "*",
+    "react-native-svg": "*",
+    "@react-native-async-storage/async-storage": "*",
+    "react-native-gesture-handler": "*",
+    "@react-navigation/native": "*",
+    "@react-navigation/native-stack": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "react-native-screens": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-vector-icons": "*",
+    "@rneui/themed": "*",
+    "styled-components": "*",
+    "styled-system": "*",
+    "@apollo/client": "*",
+    "@react-navigation/elements": "*",
+    "@rneui/base": "*",
+    "@gorhom/portal": "*",
+    "@react-native-community/hooks": "*",
+    "react-native-reanimated": "*",
+    "@nestjs/graphql": "*",
+    "class-transformer": "*",
+    "react-native-toast-message": "*"
+  }
+}

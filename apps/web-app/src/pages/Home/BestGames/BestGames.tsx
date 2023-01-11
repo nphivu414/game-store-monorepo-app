@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { GamesQueryParams } from '@game-store-monorepo/data-access';
+import { GamesQueryParams } from '@root/data-access';
 import { useNavigate } from 'react-router-dom';
-import Button from 'src/components/Button';
-import Section from 'src/components/Section';
-import { ROUTES } from 'src/routes/routes';
-import GameCarousel from 'src/components/common/GameCarousel';
+import { Button, ROUTES, Section } from '@root/ui-web';
+import GameCarousel from '../../../components/GameCarousel/GameCarousel';
 
 const queryParams: GamesQueryParams = {
   variables: {

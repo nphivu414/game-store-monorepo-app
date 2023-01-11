@@ -4,7 +4,7 @@
     
 # Game Store Monorepo
 
-A full-stack web application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
+A full-stack web/mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
 ## Authors
@@ -12,11 +12,14 @@ A full-stack web application that helps you find and discover over 500,000+ vide
 - [@nphivu414](https://github.com/nphivu414)
 
 ## Main stacks
- - [Nx](https://nx.dev/)
+ - [Nx Build System](https://nx.dev/)
  - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
  - [TailwindCSS](https://tailwindcss.com/)
  - [DaisyUI](https://daisyui.com/)
+ - [React Native](https://reactnative.dev/)
+ - [Styled Components](https://styled-components.com/)
+ - [Styled System](https://styled-system.com/)
  - [NestJS](https://nestjs.com/)
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
@@ -24,12 +27,15 @@ A full-stack web application that helps you find and discover over 500,000+ vide
 
 
 ## Screenshots
-
+ ### Web App
 |  |  |  |  |
 | :-------- | :------- | :------------------------- | :------------------------- |
-| ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
+| ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
 
-  
+  ### Native App
+  | Android | iOS |
+| :-------- | :------- |
+| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-ios.png) |
 ## Demo
 
 [Check out the live demo](https://mono-game-store.netlify.app/)
@@ -66,7 +72,21 @@ A full-stack web application that helps you find and discover over 500,000+ vide
   yarn start:web
 ```
 
-4. Start exploring GraphQL Playground at http://localhost:3333/graphql and Game Store Web App at http://localhost:4200/
+4. Start the iOS app
+
+- If you're not using M1, run 
+```bash
+   yarn start:ios:install
+```
+
+- If you're on M1, first install the x86 version of the ffi gem using ```sudo arch -x86_64 gem install ffi``` then run ```yarn start:ios:install:m1``` (see [here](https://github.com/CocoaPods/CocoaPods/issues/10723#issuecomment-864408657))
+
+- Use yarn start:ios for subsequent starts (it's faster since it skips pod install and uses xcode's cache)
+
+5. Start the Android app
+
+- Run yarn start:android and the app should appear in the Android simulator
+
 ## GRAPHQL API Reference
 
 #### Get a list of games
