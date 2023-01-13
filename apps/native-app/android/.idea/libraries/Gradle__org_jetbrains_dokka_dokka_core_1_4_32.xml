@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.dokka:dokka-core:1.4.32">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.dokka/dokka-core/1.4.32/3011d0a885e87643e41d41a902e5905934251499/dokka-core-1.4.32.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.dokka/dokka-core/1.4.32/91e49f5cf90a9a6fd3eb23954a3c330e8bbdcc14/dokka-core-1.4.32-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

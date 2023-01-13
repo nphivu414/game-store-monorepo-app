@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains:markdown-jvm:0.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/markdown-jvm/0.2.1/7e8952fa13f7a45739c9a5f576609a87bdcac588/markdown-jvm-0.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/markdown-jvm/0.2.1/e25f8188d43b679364fb55b0b9a671e5bee77feb/markdown-jvm-0.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
