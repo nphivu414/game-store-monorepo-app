@@ -49,7 +49,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {children}
       <ul
         className={cn(
-          'shadow menu dropdown-content bg-base-100 text-base-content rounded-box w-52 overflow-y-auto',
+          'shadow menu dropdown-content bg-base-100 text-base-content rounded-box min-w-52 overflow-y-auto',
           className,
         )}
       >
