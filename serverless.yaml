@@ -1,0 +1,38 @@
+service: gamestore-backend
+
+plugins:
+  - serverless-plugin-common-excludes
+  - serverless-plugin-include-dependencies
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+package:
+  exclude:
+    - .git/**
+    - apps/**
+    - test/**
+    - e2e/**
+    - nodemon.json
+    - README.md
+
+custom:
+  dotenv:
+    path: ./apps/nestjs-app/.env
+    include:
+      - RAWG_API_HOST
+      - RAWG_PUBLIC_API_KEY
+
+functions:
+  main:
+    handler: dist/apps/nestjs-app/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
