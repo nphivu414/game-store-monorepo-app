@@ -39,6 +39,7 @@ testem.log
 Thumbs.db
 
 # React Native
+cxx/
 
 ## Xcode
 

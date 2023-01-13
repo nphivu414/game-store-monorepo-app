@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="11">
+      <module name="react-native-gradle-plugin" target="1.8" />
+      <module name="react-native-gradle-plugin.main" target="1.8" />
+      <module name="react-native-gradle-plugin.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

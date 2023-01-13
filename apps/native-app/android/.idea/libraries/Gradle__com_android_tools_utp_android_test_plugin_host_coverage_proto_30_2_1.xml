@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.tools.utp:android-test-plugin-host-coverage-proto:30.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.utp/android-test-plugin-host-coverage-proto/30.2.1/a7ede88b7bcca1d232cf177e4e609b2b56f3a22a/android-test-plugin-host-coverage-proto-30.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.utp/android-test-plugin-host-coverage-proto/30.2.1/2cb65b6d24b0e0a5a589c128c8a24c947b621e65/android-test-plugin-host-coverage-proto-30.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

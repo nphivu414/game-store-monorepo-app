@@ -28,6 +28,7 @@
     "react-native-reanimated": "*",
     "@nestjs/graphql": "*",
     "class-transformer": "*",
-    "react-native-toast-message": "*"
+    "react-native-toast-message": "*",
+    "metro-config": "*"
   }
 }
