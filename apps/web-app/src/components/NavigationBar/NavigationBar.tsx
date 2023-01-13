@@ -68,7 +68,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
     }
 
     return (
-      <Dropdown items={themeDropdownItems} trigger="hover" className="max-h-96">
+      <Dropdown items={themeDropdownItems} trigger="hover" className="max-h-[80vh] w-[300px]">
         <Button isRounded isGhost className="px-0" size="small">
           <div className="flex items-center">
             <CgDarkMode size={22} className="mx-1" />
