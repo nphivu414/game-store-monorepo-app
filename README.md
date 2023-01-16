@@ -21,6 +21,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
  - [Styled Components](https://styled-components.com/)
  - [Styled System](https://styled-system.com/)
  - [NestJS](https://nestjs.com/)
+ - [Serverless](https://www.serverless.com/)
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
@@ -50,6 +51,10 @@ A full-stack web/mobile application that helps you find and discover over 500,00
 2. Install dependencies
    ```sh
    yarn install
+   ```
+3. Install serverless globally
+   ```sh
+   npm install -g serverless
    ```
     
 ## Run Locally
