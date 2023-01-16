@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start:backend": "sls offline --httpPort=3333",
+    "start:backend": "nx build nestjs-app && sls offline --httpPort=3333",
     "start:web": "nx serve web-app",
     "start:android": "nx run-android native-app",
     "start:ios": "nx run-ios native-app",
