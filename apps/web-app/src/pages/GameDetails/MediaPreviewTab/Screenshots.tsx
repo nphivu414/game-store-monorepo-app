@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Carousel, { CarouselItem } from 'src/components/Carousel';
-import { Screenshot } from '@game-store-monorepo/data-access';
+import { Screenshot } from '@root/data-access';
+import { Carousel, CarouselItem } from '@root/ui-web';
 
 type ScreenshotsProps = {
   data?: Screenshot[];

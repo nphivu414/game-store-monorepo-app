@@ -1,7 +1,6 @@
+import { BottomTab, ThemeContext } from '@root/ui-web';
 import * as React from 'react';
-import NavigationBar from 'src/components//NavigationBar';
-import { ThemeContext } from 'src/context/theme';
-import BottomTab from '../BottomTab';
+import NavigationBar from '../NavigationBar/NavigationBar';
 
 type MainLayoutProps = {
   children?: React.ReactNode;

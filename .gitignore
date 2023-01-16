@@ -39,6 +39,7 @@ testem.log
 Thumbs.db
 
 # React Native
+cxx/
 
 ## Xcode
 
@@ -89,8 +90,12 @@ buck-out/
 
 ## CocoaPods
 **/ios/Pods/
-/
 
+
+apps/native-app/node_modules
 ## Nested node_modules
 
-node_modules/
+apps/native-app-e2e/artifacts
+## Nested node_modules
+
+*.serverless

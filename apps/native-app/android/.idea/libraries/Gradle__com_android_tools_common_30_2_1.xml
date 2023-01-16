@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.tools:common:30.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools/common/30.2.1/2243ffc2818633cea65ed2da911d393908016591/common-30.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools/common/30.2.1/8a467235d08dd4caf46a91edeb1a822d43957694/common-30.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

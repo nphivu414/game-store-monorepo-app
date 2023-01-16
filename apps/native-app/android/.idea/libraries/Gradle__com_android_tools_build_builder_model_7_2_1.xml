@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.tools.build:builder-model:7.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/7.2.1/35f0f5aa396d2a3daa0ab20221d200375784a2aa/builder-model-7.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/7.2.1/8a9c1148b53c44e46d99efc7256e36710ccd2c3f/builder-model-7.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

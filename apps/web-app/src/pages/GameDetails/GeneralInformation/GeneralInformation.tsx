@@ -1,9 +1,7 @@
-import { Game } from '@game-store-monorepo/data-access';
-import { getMultipleItemNames } from '@game-store-monorepo/util';
+import { Game } from '@root/data-access';
+import { Button, PlatformLogos, Skeleton } from '@root/ui-web';
+import { getMultipleItemNames } from '@root/utils';
 import * as React from 'react';
-import Button from 'src/components/Button';
-import PlatformLogos from 'src/components/PlatformLogos';
-import Skeleton from 'src/components/Skeleton';
 
 type GeneralInformationProps = {
   data?: Game;

@@ -13,7 +13,14 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@root/ui-native": ["libs/ui-native/src/index.ts"],
+      "@root/ui-web": ["libs/ui-web/src/index.ts"],
+      "@root/data-access": ["libs/data-access/src/index.ts"],
+      "@root/utils": ["libs/utils/src/index.ts"],
+      "@root/graphql-client": ["libs/graphql-client/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

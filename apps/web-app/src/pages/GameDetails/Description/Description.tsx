@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import Section from 'src/components/Section';
-import Skeleton from 'src/components/Skeleton';
+import { Section, Skeleton } from '@root/ui-web';
 
 type DescriptionProps = {
   data?: string;

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.tools.utp:android-test-plugin-host-retention-proto:30.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.utp/android-test-plugin-host-retention-proto/30.2.1/6c12af8ece914157353f46176e8b1d94de25e711/android-test-plugin-host-retention-proto-30.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.utp/android-test-plugin-host-retention-proto/30.2.1/75038dc9d1edb184f3df6df7b69939fc9cc79324/android-test-plugin-host-retention-proto-30.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

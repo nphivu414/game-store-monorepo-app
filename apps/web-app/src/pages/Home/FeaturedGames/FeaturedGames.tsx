@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { GamesQueryParams } from '@game-store-monorepo/data-access';
-import GameCarousel from 'src/components/common/GameCarousel';
+import { GamesQueryParams } from '@root/data-access';
+import GameCarousel from '../../../components/GameCarousel/GameCarousel';
 
 const queryParams: GamesQueryParams = {
   variables: {

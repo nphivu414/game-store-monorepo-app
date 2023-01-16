@@ -4,36 +4,41 @@
     
 # Game Store Monorepo
 
-A full-stack web app built with NestJS and ReactJS that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
+A full-stack web/mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
 
 
 ## Authors
 
 - [@nphivu414](https://github.com/nphivu414)
-<p>
-    <a href="https://www.buymeacoffee.com/nphivu414" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-</p>
 
-## Built With
-
- - [Nx](https://nx.dev/)
- - [NestJS](https://nestjs.com/)
+## Main stacks
+ - [Nx Build System](https://nx.dev/)
+ - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
+ - [TailwindCSS](https://tailwindcss.com/)
+ - [DaisyUI](https://daisyui.com/)
+ - [React Native](https://reactnative.dev/)
+ - [Styled Components](https://styled-components.com/)
+ - [Styled System](https://styled-system.com/)
+ - [NestJS](https://nestjs.com/)
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
 
 
 ## Screenshots
-
+ ### Web App
 |  |  |  |  |
 | :-------- | :------- | :------------------------- | :------------------------- |
-| ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
+| ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
 
-  
+  ### Native App
+  | Android | iOS |
+| :-------- | :------- |
+| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-ios.png) |
 ## Demo
 
-[Game store on Netlify](https://mono-game-store.netlify.app/)
+[Check out the live demo](https://mono-game-store.netlify.app/)
 
   
 ## Installation
@@ -58,16 +63,30 @@ A full-stack web app built with NestJS and ReactJS that helps you find and disco
 2. Start the NodeJS server
 
 ```bash
-  yarn nx serve nestjs-app
+  yarn start:backend
 ```
 
 3. Start the ReactJS web app
 
 ```bash
-  yarn nx serve web-app
+  yarn start:web
 ```
 
-4. Start exploring GraphQL Playground at http://localhost:3333/graphql and Game Store Web App at http://localhost:4200/
+4. Start the iOS app
+
+- If you're not using M1, run 
+```bash
+   yarn start:ios:install
+```
+
+- If you're on M1, first install the x86 version of the ffi gem using ```sudo arch -x86_64 gem install ffi``` then run ```yarn start:ios:install:m1``` (see [here](https://github.com/CocoaPods/CocoaPods/issues/10723#issuecomment-864408657))
+
+- Use yarn start:ios for subsequent starts (it's faster since it skips pod install and uses xcode's cache)
+
+5. Start the Android app
+
+- Run yarn start:android and the app should appear in the Android simulator
+
 ## GRAPHQL API Reference
 
 #### Get a list of games
