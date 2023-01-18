@@ -15,21 +15,22 @@ A full-stack web/mobile application that helps you find and discover over 500,00
  - [Nx Build System](https://nx.dev/)
  - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
- - [TailwindCSS](https://tailwindcss.com/)
- - [DaisyUI](https://daisyui.com/)
  - [React Native](https://reactnative.dev/)
- - [Styled Components](https://styled-components.com/)
- - [Styled System](https://styled-system.com/)
  - [NestJS](https://nestjs.com/)
  - [Serverless](https://www.serverless.com/)
  - [Apollo GraphQL](https://www.apollographql.com/)
+ - [TailwindCSS](https://tailwindcss.com/)
+ - [DaisyUI](https://daisyui.com/)
+ - [Styled Components](https://styled-components.com/)
+ - [React Native Elements](https://github.com/react-native-elements/react-native-elements)
+ - [Styled System](https://styled-system.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
 
 
 ## Screenshots
  ### Web App
-|  |  |  |  |
+| Explore | Game Details | Games | Genres |
 | :-------- | :------- | :------------------------- | :------------------------- |
 | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
 
