@@ -23,6 +23,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
  - [React Native](https://reactnative.dev/)
  - [NestJS](https://nestjs.com/)
  - [Serverless](https://www.serverless.com/)
+ - [AWS Lambda](https://aws.amazon.com/lambda/)
  - [Apollo GraphQL](https://www.apollographql.com/)
  - [TailwindCSS](https://tailwindcss.com/)
  - [DaisyUI](https://daisyui.com/)
