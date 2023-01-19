@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start:backend": "nx build nestjs-app && sls offline --httpPort=3333",
+    "start:backend": "nx serve nestjs-app",
+    "start:backend:serverless": "nx build:serverless nestjs-app && sls offline",
     "start:web": "nx serve web-app",
     "start:android": "nx run-android native-app",
     "start:ios": "nx run-ios native-app",
@@ -12,6 +13,7 @@
     "start:ios:install:m1": "arch -x86_64 nx run-ios native-app --install",
     "start:metro": "nx serve native-app",
     "build": "nx build",
+    "deploy:backend": "serverless deploy",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",

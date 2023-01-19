@@ -72,7 +72,7 @@
           "options": {
             "sync": true,
             "install": false,
-            "simulator": "iPhone 13 Pro"
+            "simulator": "iPhone 14 Pro"
           }
         },
         "bundle-ios": {
@@ -207,6 +207,29 @@
           "options": {
             "outputPath": "dist/apps/nestjs-app",
             "main": "apps/nestjs-app/src/main.ts",
+            "tsConfig": "apps/nestjs-app/tsconfig.app.json",
+            "assets": ["apps/nestjs-app/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/nestjs-app/src/environments/environment.ts",
+                  "with": "apps/nestjs-app/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "build:serverless": {
+          "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/nestjs-app",
+            "main": "apps/nestjs-app/src/serverless.ts",
             "tsConfig": "apps/nestjs-app/tsconfig.app.json",
             "assets": ["apps/nestjs-app/src/assets"]
           },
