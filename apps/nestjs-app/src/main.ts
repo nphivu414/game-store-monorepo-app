@@ -1,29 +1,16 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
-import { configure as serverlessExpress } from '@vendia/serverless-express';
-import { Callback, Context, Handler } from 'aws-lambda';
-
-let server: Handler;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  await app.init();
-
-  const expressApp = app.getHttpAdapter().getInstance();
-  return serverlessExpress({
-    app: expressApp,
+  const port = process.env.PORT || 3333;
+  await app.listen(port, () => {
+    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
   });
 }
 
-export const handler: Handler = async (event: any, context: Context, callback: Callback) => {
-  server = server ?? (await bootstrap());
-  return server(event, context, callback);
-};
+bootstrap();
