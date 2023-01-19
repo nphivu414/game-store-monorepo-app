@@ -52,7 +52,8 @@ const GamesInGenres: React.FC<GamesInGenresProps> = ({ data }) => {
         queryParams={queryParams}
         isCompact
         className="carousel-center"
-        itemClassName="w-2/5 first:ml-4 last:mr-4"
+        itemClassName="first:ml-4 last:mr-4"
+        itemSize="small"
       />
     </Section>
   );

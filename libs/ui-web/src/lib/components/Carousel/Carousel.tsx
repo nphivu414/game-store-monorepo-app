@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Card } from '../Card';
-import { Skeleton } from '../Skeleton';
+import { Skeleton, SkeletonProps } from '../Skeleton';
 
 export type CarouselProps = {
   className?: string;
@@ -10,6 +10,7 @@ export type CarouselProps = {
   isCompact?: boolean;
   isLoading?: boolean;
   noPadding?: boolean;
+  loadingSkeletonType?: SkeletonProps['theme'];
   onItemClick?: (value: CarouselItem) => void;
 };
 
@@ -19,6 +20,7 @@ export type CarouselItem = {
   title?: string;
   subTitle?: string;
   content?: React.ReactNode;
+  size?: 'large' | 'medium' | 'small';
 };
 
 export const Carousel: React.FC<CarouselProps> = ({
@@ -28,13 +30,11 @@ export const Carousel: React.FC<CarouselProps> = ({
   isCompact,
   isLoading,
   noPadding,
+  loadingSkeletonType = 'GAME_CARD_ITEM',
   onItemClick,
 }) => {
   const carouselClass = cn({
     'carousel pb-2 overflow-x-auto': true,
-  });
-  const carouselItemClass = cn({
-    'carousel-item mr-4 w-1/2 last:mr-0': true,
   });
   const carouselItemBodyClass = cn({
     '!p-0': noPadding,
@@ -48,7 +48,13 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   const renderCarouselItem = () => {
     return data?.map((item) => {
-      const { id, title, subTitle, content, headerImageUrl } = item;
+      const { id, title, subTitle, content, headerImageUrl, size = 'medium' } = item;
+      const carouselItemClass = cn({
+        'carousel-item mr-4 last:mr-0': true,
+        'w-2/5': size === 'small',
+        'w-2/3': size === 'medium',
+        'w-4/5': size === 'large',
+      });
       return (
         <Card
           key={id}
@@ -73,7 +79,7 @@ export const Carousel: React.FC<CarouselProps> = ({
           .fill(0)
           .map((_, i) => (
             <div key={i} className="carousel-item ml-4 w-3/4">
-              <Skeleton theme="GAME_CARD_ITEM" />
+              <Skeleton theme={loadingSkeletonType} />
             </div>
           ))}
       </div>

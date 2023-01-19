@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Facebook, Instagram, Code, List, BulletList, IContentLoaderProps } from 'react-content-loader';
 import { useTransition, animated } from 'react-spring';
+import BasicRect from './BasicRect';
 import GameCardItemSkeleton from './GameCardItemSkeleton';
 import GameListItemSkeleton from './GameListItemSkeleton';
 import ProfileInfoCardSkeleton from './ProfileInfoCardSkeleton';
 import TextSkeleton from './TextSkeletion';
 
-type SkeletonProps = IContentLoaderProps & {
+export type SkeletonProps = IContentLoaderProps & {
   isLoading?: boolean;
   theme?:
     | 'FACEBOOK'
@@ -17,7 +18,8 @@ type SkeletonProps = IContentLoaderProps & {
     | 'GAME_LIST_ITEM'
     | 'GAME_CARD_ITEM'
     | 'PROFILE_INFO_CARD'
-    | 'TEXT';
+    | 'TEXT'
+    | 'BASIC_RECT';
 };
 
 export const Skeleton: React.FC<SkeletonProps> = ({ isLoading = true, theme, children }) => {
@@ -48,6 +50,8 @@ export const Skeleton: React.FC<SkeletonProps> = ({ isLoading = true, theme, chi
         return <ProfileInfoCardSkeleton />;
       case 'TEXT':
         return <TextSkeleton />;
+      case 'BASIC_RECT':
+        return <BasicRect />;
       default:
         return null;
     }

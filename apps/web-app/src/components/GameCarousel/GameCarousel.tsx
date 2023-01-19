@@ -9,9 +9,10 @@ import { Carousel, CarouselItem, CarouselProps, PlatformLogos, ROUTES } from '@r
 
 type GameCarouselProps = {
   queryParams: GamesQueryParams;
+  itemSize?: CarouselItem['size'];
 } & CarouselProps;
 
-const GameCarousel: React.FC<GameCarouselProps> = ({ queryParams, className, itemClassName, ...rest }) => {
+const GameCarousel: React.FC<GameCarouselProps> = ({ queryParams, className, itemSize, ...rest }) => {
   const navigate = useNavigate();
   const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
@@ -24,6 +25,7 @@ const GameCarousel: React.FC<GameCarouselProps> = ({ queryParams, className, ite
         id: item.id,
         headerImageUrl: item.thumbnailImage,
         title: item.name,
+        size: itemSize,
         content: (
           <div>
             <PlatformLogos data={item.parentPlatforms} className="mt-1" />
@@ -35,7 +37,7 @@ const GameCarousel: React.FC<GameCarouselProps> = ({ queryParams, className, ite
         ),
       };
     });
-  }, [data]);
+  }, [data, itemSize]);
 
   const onItemClick = (value: CarouselItem) => {
     navigate(`${ROUTES.GAMES}/${value.id}`);
@@ -46,7 +48,6 @@ const GameCarousel: React.FC<GameCarouselProps> = ({ queryParams, className, ite
       data={carouselData}
       isLoading={loading}
       className={cn('mb-6', className)}
-      itemClassName={itemClassName}
       onItemClick={onItemClick}
       {...rest}
     />

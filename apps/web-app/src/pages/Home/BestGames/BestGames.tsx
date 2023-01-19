@@ -32,7 +32,7 @@ const BestGames: React.FC = () => {
         </Button>
       }
     >
-      <GameCarousel queryParams={queryParams} isCompact itemClassName="w-2/3" />
+      <GameCarousel queryParams={queryParams} isCompact />
     </Section>
   );
 };
