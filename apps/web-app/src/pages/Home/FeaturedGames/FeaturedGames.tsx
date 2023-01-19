@@ -11,7 +11,7 @@ const queryParams: GamesQueryParams = {
 };
 
 const FeaturedGames: React.FC = () => {
-  return <GameCarousel queryParams={queryParams} className="carousel-center mb-6" itemClassName="w-4/5" />;
+  return <GameCarousel queryParams={queryParams} className="carousel-center mb-6" itemSize="large" />;
 };
 
 export default FeaturedGames;
