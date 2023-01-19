@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="https://evilmartians.com/?utm_source=size-limit">
+  <a href="https://mono-game-store.netlify.app/">
     <img src="https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg"
          alt="Sponsored by Evil Martians">
   </a>
@@ -10,7 +10,7 @@
 # Game Store Monorepo
 
 A full-stack web/mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
-
+[Live demo](https://mono-game-store.netlify.app/)
 
 ## Authors
 
@@ -43,10 +43,6 @@ A full-stack web/mobile application that helps you find and discover over 500,00
   | Android | iOS |
 | :-------- | :------- |
 | ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-ios.png) |
-## Demo
-
-[Check out the live demo](https://mono-game-store.netlify.app/)
-
   
 ## Installation
 
