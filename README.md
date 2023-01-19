@@ -1,5 +1,10 @@
 
-![Logo](https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg)
+<p align="center">
+  <a href="https://evilmartians.com/?utm_source=size-limit">
+    <img src="https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg"
+         alt="Sponsored by Evil Martians">
+  </a>
+</p>
 
     
 # Game Store Monorepo
@@ -37,7 +42,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
   ### Native App
   | Android | iOS |
 | :-------- | :------- |
-| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-ios.png) |
+| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-ios.png) |
 ## Demo
 
 [Check out the live demo](https://mono-game-store.netlify.app/)
