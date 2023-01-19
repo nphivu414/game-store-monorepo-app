@@ -1,11 +1,16 @@
 
-![Logo](https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg)
+<p align="center">
+  <a href="https://mono-game-store.netlify.app/">
+    <img src="https://github.com/nphivu414/game-store-monorepo-app/blob/7ddad62ae62de05ee2b6b45c0f30b9669c25f542/game-store.jpg"
+         alt="Sponsored by Evil Martians">
+  </a>
+</p>
 
     
 # Game Store Monorepo
 
 A full-stack web/mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
-
+[Live demo](https://mono-game-store.netlify.app/)
 
 ## Authors
 
@@ -15,31 +20,29 @@ A full-stack web/mobile application that helps you find and discover over 500,00
  - [Nx Build System](https://nx.dev/)
  - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
+ - [React Native](https://reactnative.dev/)
+ - [NestJS](https://nestjs.com/)
+ - [Serverless](https://www.serverless.com/)
+ - [Apollo GraphQL](https://www.apollographql.com/)
  - [TailwindCSS](https://tailwindcss.com/)
  - [DaisyUI](https://daisyui.com/)
- - [React Native](https://reactnative.dev/)
  - [Styled Components](https://styled-components.com/)
+ - [React Native Elements](https://github.com/react-native-elements/react-native-elements)
  - [Styled System](https://styled-system.com/)
- - [NestJS](https://nestjs.com/)
- - [Apollo GraphQL](https://www.apollographql.com/)
  - [RAWG Video Games Database API](https://rawg.io/apidocs)
 
 
 
 ## Screenshots
  ### Web App
-|  |  |  |  |
+| Explore | Game Details | Games | Genres |
 | :-------- | :------- | :------------------------- | :------------------------- |
 | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store1.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store2.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store3.png) | ![Web App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store4.png) |
 
   ### Native App
   | Android | iOS |
 | :-------- | :------- |
-| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/develop/assets/mono-game-store-ios.png) |
-## Demo
-
-[Check out the live demo](https://mono-game-store.netlify.app/)
-
+| ![Android App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-android.png) | ![iOS App Screenshot](https://github.com/nphivu414/game-store-monorepo-app/blob/master/assets/mono-game-store-ios.png) |
   
 ## Installation
 
@@ -50,6 +53,10 @@ A full-stack web/mobile application that helps you find and discover over 500,00
 2. Install dependencies
    ```sh
    yarn install
+   ```
+3. Install serverless globally
+   ```sh
+   npm install -g serverless
    ```
     
 ## Run Locally
