@@ -271,6 +271,103 @@
       },
       "tags": ["scope:backend-app"]
     },
+    "next-web-app": {
+      "root": "apps/next-web-app",
+      "sourceRoot": "apps/next-web-app",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "root": "apps/next-web-app",
+            "outputPath": "dist/apps/next-web-app"
+          },
+          "configurations": {
+            "development": {
+              "outputPath": "apps/next-web-app"
+            },
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "defaultConfiguration": "development",
+          "options": {
+            "buildTarget": "next-web-app:build",
+            "dev": true
+          },
+          "configurations": {
+            "development": {
+              "buildTarget": "next-web-app:build:development",
+              "dev": true
+            },
+            "production": {
+              "buildTarget": "next-web-app:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "next-web-app:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+          "options": {
+            "jestConfig": "apps/next-web-app/jest.config.ts",
+            "passWithNoTests": true
+          },
+          "configurations": {
+            "ci": {
+              "ci": true,
+              "codeCoverage": true
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/next-web-app/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      },
+      "tags": ["scope:next-web-app"]
+    },
+    "next-web-app-e2e": {
+      "root": "apps/next-web-app-e2e",
+      "sourceRoot": "apps/next-web-app-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/next-web-app-e2e/cypress.json",
+            "devServerTarget": "next-web-app:serve:development",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "next-web-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/next-web-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["next-web-app"]
+    },
     "ui-native": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/ui-native",
