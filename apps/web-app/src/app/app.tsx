@@ -5,6 +5,8 @@ import { client } from '../graphql';
 import { NavigationProvider } from '../context/navigation/navigation-provider';
 import MainLayout from '../components/MainLayout/MainLayout';
 import Routes from '../routes';
+import 'react-toastify/dist/ReactToastify.min.css';
+import './styles.css';
 
 export function App() {
   return (

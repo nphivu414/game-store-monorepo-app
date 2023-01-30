@@ -1,0 +1,20 @@
+.carousel {
+  &::-webkit-scrollbar {
+    @media (min-width: 500px) {
+      display: block;
+    }
+  }
+  scrollbar-width: 7px;
+}
+
+.text-base-content-secondary {
+  @apply text-base-content text-opacity-60;
+}
+
+.divide-base-content-secondary {
+  @apply divide-base-content divide-opacity-20
+}
+
+.btn-addon-right {
+  @apply absolute right-0 top-0 rounded-l-none
+}

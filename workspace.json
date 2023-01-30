@@ -282,7 +282,8 @@
           "defaultConfiguration": "production",
           "options": {
             "root": "apps/next-web-app",
-            "outputPath": "dist/apps/next-web-app"
+            "outputPath": "dist/apps/next-web-app",
+            "postcssConfig": "apps/next-web-app/postcss.config.js"
           },
           "configurations": {
             "development": {

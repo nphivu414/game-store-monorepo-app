@@ -1,5 +1,4 @@
 import { ToastContainer, toast, ToastContent, ToastOptions } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export type ToastParams = {
   content: ToastContent;
