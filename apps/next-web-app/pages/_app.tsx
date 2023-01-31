@@ -4,17 +4,21 @@ import Head from 'next/head';
 import { MainLayout } from '../components';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './styles.css';
+import { ApolloProvider } from '@apollo/client';
+import { client } from '../graphql';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <Head>
-        <title>Welcome to next-web-app!</title>
-      </Head>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider>
+        <Head>
+          <title>Welcome to next-web-app!</title>
+        </Head>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
 
