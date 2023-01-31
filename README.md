@@ -21,6 +21,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
  - [Typescript](https://www.typescriptlang.org/)
  - [ReactJS](https://reactjs.org/)
  - [React Native](https://reactnative.dev/)
+ - [NextJS](https://nextjs.org/)
  - [NestJS](https://nestjs.com/)
  - [Serverless](https://www.serverless.com/)
  - [AWS Lambda](https://aws.amazon.com/lambda/)
@@ -68,17 +69,22 @@ A full-stack web/mobile application that helps you find and discover over 500,00
   cd game-store-monorepo-app
 ```
 
-2. Start the NodeJS server
+2. Start the backend server
 
 ```bash
   yarn start:backend
 ```
 
-3. Start the ReactJS web app
-
-```bash
-  yarn start:web
-```
+3. Start the web app
+ 
+    - React Single Page App
+        ```bash
+        yarn start:web
+        ```
+    - NextJS App (Beta)
+        ```bash
+        yarn start:next
+        ```
 
 4. Start the iOS app
 
