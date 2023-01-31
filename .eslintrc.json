@@ -30,6 +30,11 @@
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:graphql-client", "scope:ui-web"]
               },
               {
+                "sourceTag": "scope:next-web-app",
+                "bannedExternalImports": ["*react-native*", "*rneui*", "*react-navigation*"],
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:graphql-client", "scope:ui-web"]
+              },
+              {
                 "sourceTag": "scope:native-app",
                 "bannedExternalImports": ["react-icons", "react-router-dom", "react-spinners", "react-toastify"],
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:graphql-client", "scope:ui-native"]
