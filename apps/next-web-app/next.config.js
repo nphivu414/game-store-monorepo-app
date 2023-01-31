@@ -12,6 +12,16 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.rawg.io',
+        port: '',
+        pathname: '/media/**',
+      },
+    ],
+  },
 };
 
 module.exports = withNx(nextConfig);

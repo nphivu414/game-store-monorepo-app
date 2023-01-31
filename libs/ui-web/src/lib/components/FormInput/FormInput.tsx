@@ -47,7 +47,7 @@ export const FormInput: React.FC<FormInputProps> = ({
     }
 
     return (
-      <div className="relative">
+      <div className="input-group relative">
         {inputElement}
         {addonElement && addonElement}
       </div>
