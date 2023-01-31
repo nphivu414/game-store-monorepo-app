@@ -81,12 +81,12 @@ A full-stack web/mobile application that helps you find and discover over 500,00
         ```bash
         yarn start:web
         ```
-    - NextJS App (Beta)
+    - NextJS App (beta)
         ```bash
         yarn start:next
         ```
 
-4. Start the iOS app
+4. Start the iOS app (beta)
 
 - If you're not using M1, run 
 ```bash
@@ -97,7 +97,7 @@ A full-stack web/mobile application that helps you find and discover over 500,00
 
 - Use yarn start:ios for subsequent starts (it's faster since it skips pod install and uses xcode's cache)
 
-5. Start the Android app
+5. Start the Android app (beta)
 
 - Run yarn start:android and the app should appear in the Android simulator
 
