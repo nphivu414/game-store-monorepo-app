@@ -10,7 +10,11 @@
 # Game Store Monorepo
 
 A full-stack web/mobile application that helps you find and discover over 500,000+ video games on your device. Powered by RAWG API.
-[Live demo](https://mono-game-store.netlify.app/)
+## Demo
+
+[React Single Page App on Netlify](https://mono-game-store.netlify.app/)
+<br/>
+[NextJS App on Vercel (Beta)](https://mono-game-store.vercel.app/)
 
 ## Authors
 
