@@ -6,17 +6,20 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './styles.css';
 import { ApolloProvider } from '@apollo/client';
 import { client } from '../graphql';
+import { NavigationProvider } from '../context/navigation/navigation-provider';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider>
-        <Head>
-          <title>Welcome to next-web-app!</title>
-        </Head>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <NavigationProvider>
+          <Head>
+            <title>Welcome to next-web-app!</title>
+          </Head>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </NavigationProvider>
       </ThemeProvider>
     </ApolloProvider>
   );
