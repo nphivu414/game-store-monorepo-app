@@ -35,3 +35,44 @@ export const GET_GAMES = gql`
     }
   }
 `;
+
+export const GET_EXPLORE_GAMES = gql`
+  ${CORE_GAME_FIELDS}
+  ${CORE_GENRE_FIELDS}
+  query GET_GAMES {
+    exploreGames {
+      featureGames {
+        results {
+          ...CoreGameFields
+          genres {
+            ...CoreGenreFields
+          }
+        }
+      }
+      bestGames {
+        results {
+          ...CoreGameFields
+          genres {
+            ...CoreGenreFields
+          }
+        }
+      }
+      newReleaseGames {
+        results {
+          ...CoreGameFields
+          genres {
+            ...CoreGenreFields
+          }
+        }
+      }
+      upcomingGames {
+        results {
+          ...CoreGameFields
+          genres {
+            ...CoreGenreFields
+          }
+        }
+      }
+    }
+  }
+`;
