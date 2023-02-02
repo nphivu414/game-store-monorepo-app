@@ -5,6 +5,7 @@ import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { Game, RawgGameResponse, RawgScreenshotResponse, RawgTrailerResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 @Resolver(() => Game)
@@ -39,10 +40,9 @@ export class GameResolver {
       ordering,
     };
     this.logger.debug('getAllGames called with params', params);
-    const res = await this.httpService
-      .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgGameResponse, res.data);
+    const res = this.httpService.get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`);
+    const value = await lastValueFrom(res);
+    const rawgResponse = plainToClass(RawgGameResponse, value.data);
     return rawgResponse;
   }
 
@@ -61,10 +61,9 @@ export class GameResolver {
       search,
     };
     this.logger.debug('searchGames called with params', params);
-    const res = await this.httpService
-      .get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgGameResponse, res.data);
+    const res = this.httpService.get<RawgGameResponse>(`${this.host}/games?${stringifyQueryObject(params)}`);
+    const value = await lastValueFrom(res);
+    const rawgResponse = plainToClass(RawgGameResponse, value.data);
     return rawgResponse;
   }
 
@@ -76,25 +75,26 @@ export class GameResolver {
       key: this.apiKey,
     };
     this.logger.debug('getGameDetails called with params', params);
-    const detailRes = await this.httpService
-      .get<Game>(`${this.host}/games/${id}?${stringifyQueryObject(params)}`)
-      .toPromise();
+    const detailRes = this.httpService.get<Game>(`${this.host}/games/${id}?${stringifyQueryObject(params)}`);
+    const detailValue = await lastValueFrom(detailRes);
 
     const mediaParams = {
       key: this.apiKey,
       pageSize: 5,
     };
-    const screenshotRes = await this.httpService
-      .get<RawgScreenshotResponse>(`${this.host}/games/${id}/screenshots?${stringifyQueryObject(mediaParams)}`)
-      .toPromise();
-    const trailerRes = await this.httpService
-      .get<RawgTrailerResponse>(`${this.host}/games/${id}/movies?${stringifyQueryObject(mediaParams)}`)
-      .toPromise();
+    const screenshotRes = this.httpService.get<RawgScreenshotResponse>(
+      `${this.host}/games/${id}/screenshots?${stringifyQueryObject(mediaParams)}`,
+    );
+    const screenshotValues = await lastValueFrom(screenshotRes);
+    const trailerRes = this.httpService.get<RawgTrailerResponse>(
+      `${this.host}/games/${id}/movies?${stringifyQueryObject(mediaParams)}`,
+    );
+    const trailerValues = await lastValueFrom(trailerRes);
 
-    detailRes.data.screenshots = screenshotRes.data.results;
-    detailRes.data.trailers = trailerRes.data.results;
+    detailValue.data.screenshots = screenshotValues.data.results;
+    detailValue.data.trailers = trailerValues.data.results;
 
-    const gameDetailResponse = plainToClass(Game, detailRes.data);
+    const gameDetailResponse = plainToClass(Game, detailValue.data);
     return gameDetailResponse;
   }
 
@@ -112,10 +112,11 @@ export class GameResolver {
       page_size: pageSize || 10,
     };
     this.logger.debug('getGameSeries called with params', params);
-    const res = await this.httpService
-      .get<RawgGameResponse>(`${this.host}/games/${id}/game-series?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgGameResponse, res.data);
+    const res = this.httpService.get<RawgGameResponse>(
+      `${this.host}/games/${id}/game-series?${stringifyQueryObject(params)}`,
+    );
+    const value = await lastValueFrom(res);
+    const rawgResponse = plainToClass(RawgGameResponse, value.data);
     return rawgResponse;
   }
 }

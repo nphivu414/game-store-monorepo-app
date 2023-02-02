@@ -42,3 +42,12 @@ export type GameSeriesQueryParams = {
 export type GameSeriesQueryResponse = {
   gameSeries: RawgGameResponse;
 };
+
+export type GameExploreResponse = {
+  gameExplore: {
+    featureGames: RawgGameResponse;
+    bestGames: RawgGameResponse;
+    newReleaseGames: RawgGameResponse;
+    upcomingGames: RawgGameResponse;
+  };
+};

@@ -5,6 +5,7 @@ import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { Tag, RawgTagResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 @Resolver(() => Tag)
@@ -29,10 +30,10 @@ export class TagResolver {
       ordering,
     };
     this.logger.debug('getAllTags called with params', params);
-    const res = await this.httpService
-      .get<RawgTagResponse>(`${this.host}/tags?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgTagResponse, res.data);
+    const res = this.httpService.get<RawgTagResponse>(`${this.host}/tags?${stringifyQueryObject(params)}`);
+    const value = await lastValueFrom(res);
+
+    const rawgResponse = plainToClass(RawgTagResponse, value.data);
     return rawgResponse;
   }
 }

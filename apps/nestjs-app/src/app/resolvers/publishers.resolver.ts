@@ -5,6 +5,7 @@ import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { Publisher, RawgPublisherResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 @Resolver(() => Publisher)
@@ -29,10 +30,9 @@ export class PublisherResolver {
       ordering,
     };
     this.logger.debug('getAllPublishers called with params', params);
-    const res = await this.httpService
-      .get<RawgPublisherResponse>(`${this.host}/publishers?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgPublisherResponse, res.data);
+    const res = this.httpService.get<RawgPublisherResponse>(`${this.host}/publishers?${stringifyQueryObject(params)}`);
+    const value = await lastValueFrom(res);
+    const rawgResponse = plainToClass(RawgPublisherResponse, value.data);
     return rawgResponse;
   }
 }
