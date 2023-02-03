@@ -14,7 +14,7 @@
     "start:ios:install:m1": "arch -x86_64 nx run-ios native-app --install",
     "start:metro": "nx serve native-app",
     "build": "nx build",
-    "deploy:backend": "serverless deploy",
+    "deploy:backend": "nx build:serverless nestjs-app && serverless deploy",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
