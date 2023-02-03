@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import cn from 'classnames';
 import { Button, Dropdown, DropdownItem, ROUTES, ThemeContext, ThemeValue } from '@root/ui-web';
 import { NavigationContext } from '../../context/navigation';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 type NavigationBarProps = {
   isSticky?: boolean;
@@ -18,7 +18,8 @@ const checkIsMainPage = (path: string) => {
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ isSticky }) => {
-  const { pathname, back } = useRouter();
+  const { back } = useRouter();
+  const pathname = usePathname();
   const { changeTheme, theme, themeList } = React.useContext(ThemeContext);
   const { title } = React.useContext(NavigationContext);
   const navbarClass = cn({

@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { AiTwotoneAppstore, AiFillTags } from 'react-icons/ai';
 import { RiGameFill, RiShieldUserFill } from 'react-icons/ri';
 import { IoGameController } from 'react-icons/io5';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export const ROUTES = {
@@ -16,7 +16,7 @@ export const ROUTES = {
 const routeKeys = Object.keys(ROUTES);
 
 const BottomTab: React.FC = () => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
 
   const renderTabIcon = (path: string) => {
     switch (path) {
