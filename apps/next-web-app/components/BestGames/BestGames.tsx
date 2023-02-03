@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import { RawgGameResponse } from '@root/data-access';
 import { Button, ROUTES, Section } from '@root/ui-web';
 import PureGameCarousel from '../PureGameCarousel';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type BestGamesProps = {
   data?: RawgGameResponse;
 };
 
-const BestGames: React.FC = ({ data }: BestGamesProps) => {
+const BestGames = ({ data }: BestGamesProps) => {
   const { push } = useRouter();
   const onSeeAllButtonClick = () => {
     const queryString = new URLSearchParams({

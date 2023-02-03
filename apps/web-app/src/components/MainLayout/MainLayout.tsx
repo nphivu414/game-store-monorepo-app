@@ -1,5 +1,5 @@
 import { BottomTab, ThemeContext } from '@root/ui-web';
-import * as React from 'react';
+import React from 'react';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 type MainLayoutProps = {

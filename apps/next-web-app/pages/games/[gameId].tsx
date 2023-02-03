@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GameDetailsQueryParams, GameDetailsQueryResponse } from '@root/data-access';
 import { GET_GAME_DETAILS } from '@root/graphql-client';

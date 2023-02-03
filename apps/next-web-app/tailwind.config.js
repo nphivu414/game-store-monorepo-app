@@ -1,5 +1,10 @@
 module.exports = {
-  content: ['./apps/next-web-app/**/*.{js,ts,jsx,tsx}', './libs/ui-web/src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './apps/next-web-app/app/**/*.{js,ts,jsx,tsx}',
+    './apps/next-web-app/pages/**/*.{js,ts,jsx,tsx}',
+    './apps/next-web-app/components/**/*.{js,ts,jsx,tsx}',
+    './libs/ui-web/src/**/*.{js,ts,jsx,tsx}'
+  ],
   plugins: [require('daisyui'), require('@tailwindcss/line-clamp')],
   variants: {
     extend: {

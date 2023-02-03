@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GamesQueryParams } from '@root/data-access';
@@ -7,7 +7,7 @@ import { getMultipleItemNames } from '@root/utils';
 import { Card, PlatformLogos, ROUTES, ScrollToTop, Spinner, ViewDisplayOptions } from '@root/ui-web';
 import { NavigationContext } from '../../context/navigation';
 import { SearchForm } from '../../components';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
 type ViewType = 'Grid' | 'List';

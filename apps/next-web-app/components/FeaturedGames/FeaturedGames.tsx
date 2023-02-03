@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { RawgGameResponse } from '@root/data-access';
 import PureGameCarousel from '../PureGameCarousel';
 

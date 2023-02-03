@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { GamesQueryParams, Genre } from '@root/data-access';
 import { Button, ROUTES, Section } from '@root/ui-web';
 import GameCarousel from '../../../components/GameCarousel/GameCarousel';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type GamesInGenresProps = {
   data?: Genre[];

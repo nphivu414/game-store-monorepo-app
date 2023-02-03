@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Genre, PublishersQueryParams, PublishersQueryResponse } from '@root/data-access';

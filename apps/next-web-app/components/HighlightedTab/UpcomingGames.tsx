@@ -1,10 +1,8 @@
-import { useQuery } from '@apollo/client';
-import { GamesQueryParams, GamesQueryResponse } from '@root/data-access';
+import { GamesQueryParams, RawgGameResponse } from '@root/data-access';
 import { getMultipleItemNames } from '@root/utils';
-import * as React from 'react';
-import { GET_GAMES } from '@root/graphql-client';
+import React from 'react';
 import { Button, List, ListItem, PlatformLogos, ROUTES } from '@root/ui-web';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const queryParams: GamesQueryParams = {
   variables: {
@@ -14,15 +12,18 @@ const queryParams: GamesQueryParams = {
   },
 };
 
-const UpcomingGames: React.FC = () => {
+type UpcomingGamesProps = {
+  data?: RawgGameResponse;
+};
+
+const UpcomingGames = ({ data }: UpcomingGamesProps) => {
   const { push } = useRouter();
-  const { data, loading } = useQuery<GamesQueryResponse>(GET_GAMES, queryParams);
 
   const listData: ListItem[] = React.useMemo(() => {
     if (!data) {
       return [];
     }
-    return data.allGames.results.map((item): ListItem => {
+    return data.results.map((item): ListItem => {
       return {
         id: item.id,
         avatarUrl: item.thumbnailImage,
@@ -54,7 +55,7 @@ const UpcomingGames: React.FC = () => {
 
   return (
     <>
-      <List data={listData} onItemClick={onItemClick} isLoading={loading} />
+      <List data={listData} onItemClick={onItemClick} />
       {listData.length > 0 && (
         <Button isBlock variant="primary" className="mt-2" onClick={onSeeAllButtonClick}>
           See all

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { AiTwotoneAppstore, AiFillTags } from 'react-icons/ai';
 import { RiGameFill, RiShieldUserFill } from 'react-icons/ri';
 import { IoGameController } from 'react-icons/io5';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export const ROUTES = {

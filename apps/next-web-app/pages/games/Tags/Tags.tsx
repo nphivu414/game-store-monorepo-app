@@ -1,7 +1,7 @@
 import { Tag } from '@root/data-access';
 import { Badge, ROUTES, Section, Skeleton } from '@root/ui-web';
-import { useRouter } from 'next/router';
-import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 type TagsProps = {
   data?: Tag[];

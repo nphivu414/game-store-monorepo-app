@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from '../pages/Home';
 import GameDetails from '../pages/GameDetails';

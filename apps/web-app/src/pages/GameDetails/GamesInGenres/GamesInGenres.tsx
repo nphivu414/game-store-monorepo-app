@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { GamesQueryParams, Genre } from '@root/data-access';
 import { useNavigate } from 'react-router-dom';
 import { Button, ROUTES, Section } from '@root/ui-web';

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { RawgGameResponse } from '@root/data-access';
 import { getMultipleItemNames } from '@root/utils';
 import { Carousel, CarouselItem, CarouselProps, PlatformLogos, ROUTES } from '@root/ui-web';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type PureGameCarouselProps = {
   itemSize?: CarouselItem['size'];
