@@ -2,7 +2,7 @@ import { Game } from '@root/data-access';
 import { Button, PlatformLogos, Skeleton } from '@root/ui-web';
 import { getMultipleItemNames } from '@root/utils';
 import Image from 'next/image';
-import * as React from 'react';
+import React from 'react';
 
 type GeneralInformationProps = {
   data?: Game;

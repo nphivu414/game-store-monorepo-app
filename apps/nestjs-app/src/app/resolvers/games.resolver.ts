@@ -2,7 +2,14 @@ import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
-import { Game, RawgGameResponse, RawgScreenshotResponse, RawgTrailerResponse } from '@root/data-access';
+import {
+  Game,
+  GameExploreQueryResponse,
+  GameExploreResponse,
+  RawgGameResponse,
+  RawgScreenshotResponse,
+  RawgTrailerResponse,
+} from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
 import { lastValueFrom } from 'rxjs';
@@ -118,5 +125,60 @@ export class GameResolver {
     const value = await lastValueFrom(res);
     const rawgResponse = plainToClass(RawgGameResponse, value.data);
     return rawgResponse;
+  }
+
+  @Query(() => GameExploreResponse, {
+    name: 'exploreGames',
+  })
+  async getExploreGames(): Promise<GameExploreResponse> {
+    const featureGameRes = this.httpService.get<RawgGameResponse>(
+      `${this.host}/games?${stringifyQueryObject({
+        key: this.apiKey,
+        page_size: 5,
+        dates: '2020-01-01,2020-12-31',
+        ordering: '-added',
+      })}`,
+    );
+
+    const bestGameRes = this.httpService.get<RawgGameResponse>(
+      `${this.host}/games?${stringifyQueryObject({
+        key: this.apiKey,
+        page_size: 5,
+        dates: '1990-01-01,2020-12-31',
+        ordering: '-added',
+      })}`,
+    );
+
+    const newReleaseGameRes = this.httpService.get<RawgGameResponse>(
+      `${this.host}/games?${stringifyQueryObject({
+        key: this.apiKey,
+        page_size: 5,
+        dates: '2021-01-31,2021-08-01',
+        ordering: '-added',
+      })}`,
+    );
+
+    const upcomingGameRes = this.httpService.get<RawgGameResponse>(
+      `${this.host}/games?${stringifyQueryObject({
+        key: this.apiKey,
+        page_size: 5,
+        dates: '2021-08-31,2021-12-31',
+        ordering: '-added',
+      })}`,
+    );
+
+    const [featureGameValue, bestGameValue, newReleaseGameValue, upcomingGameValue] = await Promise.all([
+      lastValueFrom(featureGameRes),
+      lastValueFrom(bestGameRes),
+      lastValueFrom(newReleaseGameRes),
+      lastValueFrom(upcomingGameRes),
+    ]);
+
+    return {
+      featureGames: plainToClass(RawgGameResponse, featureGameValue.data),
+      bestGames: plainToClass(RawgGameResponse, bestGameValue.data),
+      newReleaseGames: plainToClass(RawgGameResponse, newReleaseGameValue.data),
+      upcomingGames: plainToClass(RawgGameResponse, upcomingGameValue.data),
+    };
   }
 }

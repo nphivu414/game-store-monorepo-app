@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ThemeContext, ThemeValue } from './theme';
 import { THEMES } from '../constants';
 import './main.module.scss';

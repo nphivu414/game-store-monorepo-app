@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
 import { CgDarkMode } from 'react-icons/cg';
 import Helmet from 'react-helmet';

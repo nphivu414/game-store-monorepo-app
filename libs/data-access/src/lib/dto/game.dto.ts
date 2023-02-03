@@ -43,8 +43,8 @@ export type GameSeriesQueryResponse = {
   gameSeries: RawgGameResponse;
 };
 
-export type GameExploreResponse = {
-  gameExplore: {
+export type GameExploreQueryResponse = {
+  exploreGames: {
     featureGames: RawgGameResponse;
     bestGames: RawgGameResponse;
     newReleaseGames: RawgGameResponse;

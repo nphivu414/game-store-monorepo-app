@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NavigationContext } from '../../context/navigation';
 import BestGames from './BestGames';
 import FeaturedGames from './FeaturedGames';

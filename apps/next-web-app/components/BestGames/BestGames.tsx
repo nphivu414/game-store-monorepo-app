@@ -1,18 +1,14 @@
-import * as React from 'react';
-import { GamesQueryParams } from '@root/data-access';
+import React from 'react';
+import { RawgGameResponse } from '@root/data-access';
 import { Button, ROUTES, Section } from '@root/ui-web';
-import GameCarousel from '../GameCarousel';
-import { useRouter } from 'next/router';
+import PureGameCarousel from '../PureGameCarousel';
+import { useRouter } from 'next/navigation';
 
-const queryParams: GamesQueryParams = {
-  variables: {
-    pageSize: 6,
-    dates: '1990-01-01,2020-12-31',
-    ordering: '-added',
-  },
+type BestGamesProps = {
+  data?: RawgGameResponse;
 };
 
-const BestGames: React.FC = () => {
+const BestGames = ({ data }: BestGamesProps) => {
   const { push } = useRouter();
   const onSeeAllButtonClick = () => {
     const queryString = new URLSearchParams({
@@ -32,7 +28,7 @@ const BestGames: React.FC = () => {
         </Button>
       }
     >
-      <GameCarousel queryParams={queryParams} isCompact />
+      <PureGameCarousel gameData={data} isCompact />
     </Section>
   );
 };

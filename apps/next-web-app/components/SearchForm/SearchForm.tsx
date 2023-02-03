@@ -1,12 +1,12 @@
 import { useLazyQuery } from '@apollo/client';
 import cn from 'classnames';
 import { GamesQueryParams, SearchGamesQueryResponse } from '@root/data-access';
-import * as React from 'react';
+import React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { SEARCH_GAMES } from '@root/graphql-client';
 import { getMultipleItemNames, useDebounce } from '@root/utils';
 import { Button, FormInput, List, ListItem, PlatformLogos, ROUTES } from '@root/ui-web';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type SearchFormProps = React.HTMLAttributes<HTMLDivElement>;
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Platform } from '@root/data-access';
 import { FaDesktop, FaGlobe } from 'react-icons/fa';
 import { SiNintendoswitch, SiApple, SiAndroid, SiPlaystation, SiXbox, SiLinux, SiIos, SiAtari } from 'react-icons/si';

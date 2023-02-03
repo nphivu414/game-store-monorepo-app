@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 import { useThemeColors } from '../../theme';
 import {

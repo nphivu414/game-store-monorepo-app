@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 const GameListItemSkeleton: React.FC = () => {

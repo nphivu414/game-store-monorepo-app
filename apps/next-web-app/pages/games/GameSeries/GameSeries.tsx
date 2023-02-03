@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Game, GameSeriesQueryParams, GameSeriesQueryResponse } from '@root/data-access';
 import { getMultipleItemNames } from '@root/utils';
 import { GET_GAME_SERIES } from '@root/graphql-client';
 import { Card, PlatformLogos, ROUTES, Section, Spinner } from '@root/ui-web';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type GameSeriesProps = {
   gameId: number;
