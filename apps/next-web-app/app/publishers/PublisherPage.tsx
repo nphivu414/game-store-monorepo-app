@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Genre, PublishersQueryParams, PublishersQueryResponse } from '@root/data-access';
+import { Genre, Publisher, PublishersQueryParams, PublishersQueryResponse } from '@root/data-access';
 import { GET_PUBLISHERS } from '@root/graphql-client';
 import { useQuery } from '@apollo/client';
 import { getMultipleItemNames } from '@root/utils';
@@ -18,7 +20,13 @@ const queryParams: PublishersQueryParams = {
   },
 };
 
-const Publishers: React.FC = () => {
+type PublisherPageProps = {
+  initialData: Publisher[];
+  initialNextPage?: number;
+  initialHasMore?: boolean;
+};
+
+const Publishers = ({ initialData, initialHasMore, initialNextPage }:PublisherPageProps) => {
   const { push } = useRouter();
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { setTitle } = React.useContext(NavigationContext);
@@ -39,10 +47,12 @@ const Publishers: React.FC = () => {
     'line-clamp-2': viewType === 'Grid',
   });
 
-  const { data, loading, fetchMore } = useQuery<PublishersQueryResponse>(GET_PUBLISHERS, queryParams);
-  const publisherResults = data?.allPublishers.results;
+  const { data, fetchMore } = useQuery<PublishersQueryResponse>(GET_PUBLISHERS, queryParams);
   const nextPage = data?.allPublishers.nextPage;
   const hasMore = nextPage ? true : false;
+  const pubishers = data?.allPublishers?.results || initialData;
+  const hasMoreData = hasMore || initialHasMore;
+  const nextPageData = nextPage || initialNextPage;
 
   React.useEffect(() => {
     setTitle('Publishers');
@@ -51,10 +61,10 @@ const Publishers: React.FC = () => {
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
       variables: {
-        page: nextPage,
+        page: nextPageData,
       },
     });
-  }, [fetchMore, nextPage]);
+  }, [fetchMore, nextPageData]);
 
   const onViewTypeChange = (type: ViewType) => {
     setViewType(type);
@@ -67,21 +77,21 @@ const Publishers: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
+    <div className="p-4">
       <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       <InfiniteScroll
         className={cn(gridClass)}
-        dataLength={publisherResults?.length || 0}
+        dataLength={pubishers?.length || 0}
         scrollThreshold="100px"
         next={handleFetchMore}
-        hasMore={hasMore}
+        hasMore={hasMoreData}
         loader={
           <div className={loadMoreSpinnerClass}>
             <Spinner isLoading={true} size={20} theme="ClipLoader" />
           </div>
         }
       >
-        {publisherResults?.map((item) => {
+        {pubishers?.map((item) => {
           const { id, name, thumbnailImage, games } = item;
           return (
             <Card key={id} title={name} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -91,7 +101,7 @@ const Publishers: React.FC = () => {
         })}
       </InfiniteScroll>
       <ScrollToTop />
-    </Spinner>
+    </div>
   );
 };
 
