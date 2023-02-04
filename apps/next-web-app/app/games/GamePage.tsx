@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -12,7 +14,13 @@ import { useSearchParams } from 'next/navigation';
 
 type ViewType = 'Grid' | 'List';
 
-const Games: React.FC = () => {
+type GamesPageProps = {
+  initialData: Game[];
+  initialNextPage?: number;
+  initialHasMore?: boolean;
+};
+
+const GamePage = ({ initialData, initialHasMore, initialNextPage }: GamesPageProps) => {
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { push } = useRouter();
   const search = useSearchParams();
@@ -45,7 +53,10 @@ const Games: React.FC = () => {
     };
   }, [search]);
 
-  const { results, nextPage, hasMore, loading, fetchMore } = useGamesQuery(queryParams);
+  const { data, nextPage, hasMore, fetchMore } = useGamesQuery(queryParams);
+  const games = data?.allGames?.results || initialData;
+  const hasMoreData = hasMore || initialHasMore;
+  const nextPageData = nextPage || initialNextPage;
 
   React.useEffect(() => {
     setTitle('Games');
@@ -54,10 +65,10 @@ const Games: React.FC = () => {
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
       variables: {
-        page: nextPage,
+        page: nextPageData,
       },
     });
-  }, [fetchMore, nextPage]);
+  }, [fetchMore, nextPageData]);
 
   const onItemClick = (value: Game) => {
     return () => {
@@ -70,10 +81,10 @@ const Games: React.FC = () => {
   };
 
   const renderGames = () => {
-    if (!results?.length) {
+    if (!games?.length) {
       return null;
     }
-    return results.map((item) => {
+    return games.map((item) => {
       const { id, name, thumbnailImage, parentPlatforms, genres } = item;
       return (
         <Card key={id} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -88,30 +99,28 @@ const Games: React.FC = () => {
   };
 
   return (
-    <div>
-      <Spinner isLoading={loading} isFullScreen size={30} className="px-4">
-        <div className="pt-4 relative z-10">
-          <SearchForm className="mb-4 sticky top-0" />
-          <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
-        </div>
-        <InfiniteScroll
-          className={cn(gridClass)}
-          dataLength={results?.length || 0}
-          scrollThreshold="100px"
-          next={handleFetchMore}
-          hasMore={hasMore}
-          loader={
-            <div className={loadMoreSpinnerClass}>
-              <Spinner isLoading={true} size={20} theme="ClipLoader" />
-            </div>
-          }
-        >
-          {renderGames()}
-        </InfiniteScroll>
-        <ScrollToTop />
-      </Spinner>
+    <div className="px-4">
+      <div className="pt-4 relative z-10">
+        <SearchForm className="mb-4 sticky top-0" />
+        <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
+      </div>
+      <InfiniteScroll
+        className={cn(gridClass)}
+        dataLength={games?.length || 0}
+        scrollThreshold="100px"
+        next={handleFetchMore}
+        hasMore={hasMoreData}
+        loader={
+          <div className={loadMoreSpinnerClass}>
+            <Spinner isLoading={true} size={20} theme="ClipLoader" />
+          </div>
+        }
+      >
+        {renderGames()}
+      </InfiniteScroll>
+      <ScrollToTop />
     </div>
   );
 };
 
-export default Games;
+export default GamePage;

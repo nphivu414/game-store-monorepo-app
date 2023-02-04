@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -18,7 +20,13 @@ const queryParams: GenresQueryParams = {
   },
 };
 
-const Genres: React.FC = () => {
+type GenrePageProps = {
+  initialData: Genre[];
+  initialNextPage?: number;
+  initialHasMore?: boolean;
+};
+
+const Genres = ({ initialData, initialHasMore, initialNextPage }: GenrePageProps) => {
   const { push } = useRouter();
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { setTitle } = React.useContext(NavigationContext);
@@ -39,10 +47,12 @@ const Genres: React.FC = () => {
     'line-clamp-2': viewType === 'Grid',
   });
 
-  const { data, loading, fetchMore } = useQuery<GenresQueryResponse>(GET_GENRES, queryParams);
-  const genreResults = data?.allGenres.results;
+  const { data, fetchMore } = useQuery<GenresQueryResponse>(GET_GENRES, queryParams);
   const nextPage = data?.allGenres.nextPage;
   const hasMore = nextPage ? true : false;
+  const genres = data?.allGenres?.results || initialData;
+  const hasMoreData = hasMore || initialHasMore;
+  const nextPageData = nextPage || initialNextPage;
 
   React.useEffect(() => {
     setTitle('Genres');
@@ -51,10 +61,10 @@ const Genres: React.FC = () => {
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
       variables: {
-        page: nextPage,
+        page: nextPageData,
       },
     });
-  }, [fetchMore, nextPage]);
+  }, [fetchMore, nextPageData]);
 
   const onViewTypeChange = (type: ViewType) => {
     setViewType(type);
@@ -67,21 +77,21 @@ const Genres: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
+    <div className="p-4">
       <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       <InfiniteScroll
         className={cn(gridClass)}
-        dataLength={genreResults?.length || 0}
+        dataLength={genres?.length || 0}
         scrollThreshold="100px"
         next={handleFetchMore}
-        hasMore={hasMore}
+        hasMore={hasMoreData}
         loader={
           <div className={loadMoreSpinnerClass}>
             <Spinner isLoading={true} size={20} theme="ClipLoader" />
           </div>
         }
       >
-        {genreResults?.map((item) => {
+        {genres?.map((item) => {
           const { id, name, thumbnailImage, games } = item;
           return (
             <Card key={id} title={name} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -91,7 +101,7 @@ const Genres: React.FC = () => {
         })}
       </InfiniteScroll>
       <ScrollToTop />
-    </Spinner>
+    </div>
   );
 };
 
