@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import cn from 'classnames';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -18,7 +20,13 @@ const queryParams: TagsQueryParams = {
   },
 };
 
-const Tags: React.FC = () => {
+type TagPageProps = {
+  initialData: Genre[];
+  initialNextPage?: number;
+  initialHasMore?: boolean;
+};
+
+const TagPage = ({ initialData, initialHasMore, initialNextPage }: TagPageProps) => {
   const { push } = useRouter();
   const [viewType, setViewType] = React.useState<ViewType>('Grid');
   const { setTitle } = React.useContext(NavigationContext);
@@ -39,10 +47,12 @@ const Tags: React.FC = () => {
     'line-clamp-2': viewType === 'Grid',
   });
 
-  const { data, loading, fetchMore } = useQuery<TagsQueryResponse>(GET_TAGS, queryParams);
-  const tagResults = data?.allTags.results;
+  const { data, fetchMore } = useQuery<TagsQueryResponse>(GET_TAGS, queryParams);
   const nextPage = data?.allTags.nextPage;
   const hasMore = nextPage ? true : false;
+  const tags = data?.allTags?.results || initialData;
+  const hasMoreData = hasMore || initialHasMore;
+  const nextPageData = nextPage || initialNextPage;
 
   React.useEffect(() => {
     setTitle('Tags');
@@ -51,10 +61,10 @@ const Tags: React.FC = () => {
   const handleFetchMore = React.useCallback(() => {
     fetchMore({
       variables: {
-        page: nextPage,
+        page: nextPageData,
       },
     });
-  }, [fetchMore, nextPage]);
+  }, [fetchMore, nextPageData]);
 
   const onViewTypeChange = (type: ViewType) => {
     setViewType(type);
@@ -67,21 +77,21 @@ const Tags: React.FC = () => {
   };
 
   return (
-    <Spinner isLoading={loading} isFullScreen size={30} className="p-4">
+    <div className="p-4">
       <ViewDisplayOptions viewType={viewType} onViewTypeChange={onViewTypeChange} />
       <InfiniteScroll
         className={cn(gridClass)}
-        dataLength={tagResults?.length || 0}
+        dataLength={tags?.length || 0}
         scrollThreshold="100px"
         next={handleFetchMore}
-        hasMore={hasMore}
+        hasMore={hasMoreData}
         loader={
           <div className={loadMoreSpinnerClass}>
             <Spinner isLoading={true} size={20} theme="ClipLoader" />
           </div>
         }
       >
-        {tagResults?.map((item) => {
+        {tags?.map((item) => {
           const { id, name, thumbnailImage, games } = item;
           return (
             <Card key={id} title={name} headerImageUrl={thumbnailImage} isCompact onClick={onItemClick(item)}>
@@ -91,8 +101,8 @@ const Tags: React.FC = () => {
         })}
       </InfiniteScroll>
       <ScrollToTop />
-    </Spinner>
+    </div>
   );
 };
 
-export default Tags;
+export default TagPage;
