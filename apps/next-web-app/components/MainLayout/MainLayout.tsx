@@ -1,5 +1,5 @@
 import { ThemeContext } from '@root/ui-web';
-import * as React from 'react';
+import React from 'react';
 import BottomTab from '../BottomTab';
 import NavigationBar from '../NavigationBar';
 

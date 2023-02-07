@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { BsViewList } from 'react-icons/bs';
 import { FiGrid } from 'react-icons/fi';
 import { ButtonGroup } from '../ButtonGroup';

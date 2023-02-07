@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Facebook, Instagram, Code, List, BulletList, IContentLoaderProps } from 'react-content-loader';
 import { useTransition, animated } from 'react-spring';
 import BasicRect from './BasicRect';

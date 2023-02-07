@@ -1,4 +1,4 @@
-import { NetworkStatus, OperationVariables, QueryResult, useQuery } from '@apollo/client';
+import { NetworkStatus, OperationVariables, QueryResult, useLazyQuery, useQuery } from '@apollo/client';
 import { Game, GamesQueryParams, GamesQueryResponse } from '@root/data-access';
 import { GET_GAMES } from '../queries';
 

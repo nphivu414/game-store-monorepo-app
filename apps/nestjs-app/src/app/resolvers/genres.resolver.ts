@@ -5,6 +5,7 @@ import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { Genre, RawgGenreResponse } from '@root/data-access';
 import { plainToClass } from 'class-transformer';
 import { stringifyQueryObject } from '../utils';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 @Resolver(() => Genre)
@@ -29,10 +30,9 @@ export class GenreResolver {
       ordering,
     };
     this.logger.debug('getAllGenres called with params', params);
-    const res = await this.httpService
-      .get<RawgGenreResponse>(`${this.host}/genres?${stringifyQueryObject(params)}`)
-      .toPromise();
-    const rawgResponse = plainToClass(RawgGenreResponse, res.data);
+    const res = this.httpService.get<RawgGenreResponse>(`${this.host}/genres?${stringifyQueryObject(params)}`);
+    const value = await lastValueFrom(res);
+    const rawgResponse = plainToClass(RawgGenreResponse, value.data);
     return rawgResponse;
   }
 }

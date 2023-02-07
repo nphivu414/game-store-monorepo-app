@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { AiTwotoneAppstore, AiFillTags } from 'react-icons/ai';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { GamesQueryParams } from '@root/data-access';
 import GameCarousel from '../../../components/GameCarousel/GameCarousel';
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import ClipLoader from 'react-spinners/ClipLoader';

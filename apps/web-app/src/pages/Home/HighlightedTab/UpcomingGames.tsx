@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GamesQueryParams, GamesQueryResponse } from '@root/data-access';
 import { getMultipleItemNames } from '@root/utils';
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GET_GAMES } from '@root/graphql-client';
 import { Button, List, ListItem, PlatformLogos, ROUTES } from '@root/ui-web';

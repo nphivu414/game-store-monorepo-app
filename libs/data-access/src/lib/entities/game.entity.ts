@@ -106,3 +106,18 @@ export class RawgGameResponse {
   @Field((type) => [Game])
   results: Game[];
 }
+
+@ObjectType()
+export class GameExploreResponse {
+  @Field((type) => RawgGameResponse)
+  featureGames: RawgGameResponse;
+
+  @Field((type) => RawgGameResponse)
+  bestGames: RawgGameResponse;
+
+  @Field((type) => RawgGameResponse)
+  newReleaseGames: RawgGameResponse;
+
+  @Field((type) => RawgGameResponse)
+  upcomingGames: RawgGameResponse;
+}

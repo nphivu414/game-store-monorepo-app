@@ -1,6 +1,6 @@
 import { Tag } from '@root/data-access';
 import { Badge, ROUTES, Section, Skeleton } from '@root/ui-web';
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type TagsProps = {
