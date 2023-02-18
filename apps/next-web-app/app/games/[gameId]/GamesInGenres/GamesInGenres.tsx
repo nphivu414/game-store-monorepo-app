@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { GamesQueryParams, Genre } from '@root/data-access';
 import { Button, ROUTES, Section } from '@root/ui-web';

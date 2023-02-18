@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Screenshot } from '@root/data-access';
 import { Carousel, CarouselItem } from '@root/ui-web';

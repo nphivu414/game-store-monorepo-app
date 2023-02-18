@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Game } from '@root/data-access';
 import Screenshots from './Screenshots';

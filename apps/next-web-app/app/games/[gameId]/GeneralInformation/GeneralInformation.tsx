@@ -1,3 +1,4 @@
+'use client';
 import { Game } from '@root/data-access';
 import { Button, PlatformLogos, Skeleton } from '@root/ui-web';
 import { getMultipleItemNames } from '@root/utils';
