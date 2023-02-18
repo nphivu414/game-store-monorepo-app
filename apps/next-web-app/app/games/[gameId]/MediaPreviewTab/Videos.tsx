@@ -1,3 +1,4 @@
+'use client';
 import { Trailer } from '@root/data-access';
 import { Carousel, CarouselItem } from '@root/ui-web';
 import React from 'react';

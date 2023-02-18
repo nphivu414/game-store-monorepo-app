@@ -1,3 +1,4 @@
+'use client';
 import { Tag } from '@root/data-access';
 import { Badge, ROUTES, Section, Skeleton } from '@root/ui-web';
 import { useRouter } from 'next/navigation';
