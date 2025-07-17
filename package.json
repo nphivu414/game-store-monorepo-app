@@ -1,6 +1,9 @@
 {
   "name": "game-store-monorepo",
   "version": "0.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "license": "MIT",
   "scripts": {
     "nx": "nx",
